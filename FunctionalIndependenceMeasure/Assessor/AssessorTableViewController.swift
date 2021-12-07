@@ -21,12 +21,12 @@ class AssessorTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
         guard let inputVC = nav.topViewController as? InputAssessorViewController else { return }
-//        guard let nextVC = nav.topViewController as? TargetPersonTableViewController else { return }
+        guard let nextVC = nav.topViewController as? TargetPersonTableViewController else { return }
 
         switch segue.identifier ?? "" {
-//        case "next":
-//            nextVC.AssessorUUID = nextAssessorUUID
-//
+        case "next":
+            nextVC.assessorUUID = nextAssessorUUID
+
         case "input":
             inputVC.mode = .input
         case "edit":

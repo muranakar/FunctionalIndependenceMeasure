@@ -59,9 +59,9 @@ final class FIMRepository {
     }
 
     // MARK: - TargetPersonRepository
-    func loadTargetPerson(AssessorUUID: UUID) -> [TargetPerson]? {
+    func loadTargetPerson(AssessorUUID: UUID) -> [TargetPerson] {
         let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: AssessorUUID.uuidString)
-        guard let targetPerson = assessor?.tagetPersons else { return nil }
+        guard let targetPerson = assessor?.tagetPersons else { return [] }
         return Array<TargetPerson>(targetPerson)
     }
 

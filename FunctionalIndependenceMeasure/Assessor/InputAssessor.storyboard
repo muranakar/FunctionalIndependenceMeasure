@@ -47,7 +47,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="assessorNameTextField" destination="iVt-gB-6E3" id="UEg-V0-ta7"/>
-                        <segue destination="prU-gm-LJ6" kind="unwind" identifier="edit" unwindAction="editWithSegue:" id="ceL-Ud-o2i"/>
                         <segue destination="prU-gm-LJ6" kind="unwind" identifier="save" unwindAction="saveWithSegue:" id="rYI-Zc-gjX"/>
                     </connections>
                 </viewController>
