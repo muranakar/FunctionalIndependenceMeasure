@@ -12,6 +12,10 @@ class AssessorTableViewController: UITableViewController {
     var nextAssessorUUID: UUID?
     var editingAssessorUUID: UUID?
     let fimRepository = FIMRepository()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     // MARK: - Segue- AssessorTableViewController →　inputAccessoryViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,26 +34,22 @@ class AssessorTableViewController: UITableViewController {
                 return
             }
             inputVC.mode = .edit(editingAssessorUUID)
+            
         default:
             break
         }
     }
+
+
+    @IBAction func input(_ sender: Any) {
+        performSegue(withIdentifier: "input", sender: nil)
+    }
+
     // MARK: - Segue- AssessorTableViewController ←　inputAccessoryViewController
     @IBAction private func cancel(segue: UIStoryboardSegue) { }
 
     @IBAction private func save(segue: UIStoryboardSegue) {
-    }
-
-    // Realmの疑問点、一つの項目を編集する際に、遷移元から、遷移先へ、UUIDを渡して、書き換えてから、遷移元へ戻ってはだめなのか？
-    // 遷移先から、遷移元に戻ってから、値を編集しようとすると、プロパティを一つ一つ書き換えなければ、
-    // Attempting to modify object outside of a write transaction - error in Realm　のエラーが出てしまう。
-    @IBAction private func edit(segue: UIStoryboardSegue) {
-        guard let inputVC = segue.source as? InputAssessorViewController,
-              let editedAssessorUUID = inputVC.editingAssessorUUID else
-              {
-                  return
-              }
-//        repository.update(uuid: uuid, name: newName)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -85,5 +85,6 @@ class AssessorTableViewController: UITableViewController {
         guard editingStyle == .delete else { return }
         guard let uuid = fimRepository.loadAssessor()[indexPath.row].uuid else { return }
         fimRepository.removeAssessor(uuid: uuid)
+        tableView.reloadData()
     }
 }

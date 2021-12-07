@@ -26,6 +26,7 @@ class InputAssessorViewController: UIViewController {
             fatalError("mode is nil.")
         }
 
+        // MARK: -テキストフィールドに名前を設定
         assessorNameTextField.text = {
             switch mode {
             case .input:
@@ -35,7 +36,9 @@ class InputAssessorViewController: UIViewController {
                     fatalError("editingAssessorUUID is nil")
                     return nil
                 }
+                print(1)
                 let assesorName = fimRepository.loadAssessor(assessorUUID: editingAssessorUUID)?.name
+                print(2)
                 return assesorName
             }
         }()
@@ -53,21 +56,12 @@ class InputAssessorViewController: UIViewController {
             guard let editingAssessorUUID = editingAssessorUUID else {
                 return
             }
-            let assessor = fimRepository.loadAssessor(assessorUUID: editingAssessorUUID)
             let editAssessorName = assessorNameTextField.text ?? ""
-//            nameプロパティを引数に入れて、トランザクションの中にいれるべきでは？
-//            fimRepository.updateAssessor(assessor: <#T##Assessor#>)
+            fimRepository.updateAssessor(uuid: editingAssessorUUID , name: editAssessorName)
         }
 
         performSegue(
-            withIdentifier: {
-                switch mode {
-                case .edit:
-                    return "edit"
-                case .input:
-                    return "save"
-                }
-            }(),
+            withIdentifier: "save",
             sender: sender
         )
     }

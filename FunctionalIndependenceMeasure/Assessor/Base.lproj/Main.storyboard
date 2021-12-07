@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NZw-YP-EIi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Assessor Table View Controller-->
+        <!--評価者-->
         <scene sceneID="G5c-6x-qqQ">
             <objects>
                 <tableViewController id="lOp-04-L7d" customClass="AssessorTableViewController" customModule="FunctionalIndependenceMeasure" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" id="jjQ-fo-Ega">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="cell" id="jjQ-fo-Ega" customClass="AssessorTableViewCell" customModule="FunctionalIndependenceMeasure" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jjQ-fo-Ega" id="Wj8-K5-Ins">
@@ -32,6 +32,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="5kZ-M9-pA6" id="6up-XP-edX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -39,11 +42,15 @@
                             <outlet property="delegate" destination="lOp-04-L7d" id="3AT-v7-4HT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="eZE-mP-Pu9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jOC-mq-Wl1"/>
+                    <navigationItem key="navigationItem" title="評価者" id="eZE-mP-Pu9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jOC-mq-Wl1">
+                            <connections>
+                                <action selector="input:" destination="lOp-04-L7d" id="ySb-dK-cwM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="7QI-UF-DLp" kind="presentation" identifier="add" modalPresentationStyle="fullScreen" id="VfS-hB-2Oz"/>
+                        <segue destination="7QI-UF-DLp" kind="presentation" identifier="input" modalPresentationStyle="fullScreen" id="VfS-hB-2Oz"/>
                         <segue destination="7QI-UF-DLp" kind="presentation" identifier="edit" id="yVg-SC-W4M"/>
                         <segue destination="yAT-iW-dMb" kind="presentation" identifier="next" modalPresentationStyle="fullScreen" id="5R0-0E-WvE"/>
                     </connections>

@@ -34,7 +34,7 @@ final class FIMRepository {
     }
 
     func loadAssessor(assessorUUID: UUID) -> Assessor?{
-        let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: assessorUUID)
+        let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: assessorUUID.uuidString)
         return assessor
     }
 
@@ -44,9 +44,10 @@ final class FIMRepository {
             realm.add(assesor)
         }
     }
-    func updateAssessor(assessor: Assessor) {
+    func updateAssessor(uuid: UUID, name: String) {
         try! realm.write() {
-            realm.add(assessor, update: .modified)
+            let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: uuid.uuidString)
+            assessor?.name = name
         }
     }
 
@@ -70,7 +71,7 @@ final class FIMRepository {
             list.append(targetPerson)
         }
     }
-
+// ↓編集していない。
     func updateTargetPerson(targetPerson: TargetPerson) {
         try! realm.write {
             realm.add(targetPerson, update: .modified)

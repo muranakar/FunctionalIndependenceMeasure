@@ -34,11 +34,25 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="a1K-dN-NNX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gSu-6s-fuu"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VVO-0C-SdL"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gSu-6s-fuu">
+                            <connections>
+                                <segue destination="prU-gm-LJ6" kind="unwind" identifier="cancel" unwindAction="cancelWithSegue:" id="Sy5-27-Ugg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VVO-0C-SdL">
+                            <connections>
+                                <action selector="saveAction:" destination="Y6W-OH-hqX" id="HW9-jf-59k"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="assessorNameTextField" destination="iVt-gB-6E3" id="UEg-V0-ta7"/>
+                        <segue destination="prU-gm-LJ6" kind="unwind" identifier="edit" unwindAction="editWithSegue:" id="ceL-Ud-o2i"/>
+                        <segue destination="prU-gm-LJ6" kind="unwind" identifier="save" unwindAction="saveWithSegue:" id="rYI-Zc-gjX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="prU-gm-LJ6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="109.82142857142857"/>
         </scene>
