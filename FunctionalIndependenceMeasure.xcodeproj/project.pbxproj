@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4F5D4E73540AFA0564D74F4A /* Pods_FunctionalIndependenceMeasure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */; };
+		B22FBEFE275FFA8600DA71C8 /* InputAssessor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */; };
+		B22FBF00275FFCB200DA71C8 /* TargetPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */; };
+		B22FBF02275FFCC900DA71C8 /* InputTargetPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FBF01275FFCC900DA71C8 /* InputTargetPerson.storyboard */; };
 		B237714F275EA64D00A48640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237714E275EA64D00A48640 /* AppDelegate.swift */; };
 		B2377151275EA64D00A48640 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377150275EA64D00A48640 /* SceneDelegate.swift */; };
 		B2377156275EA64D00A48640 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2377154275EA64D00A48640 /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 
 /* Begin PBXFileReference section */
 		4D8B94B1CE89B91CB532BA3A /* Pods-FunctionalIndependenceMeasure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.debug.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.debug.xcconfig"; sourceTree = "<group>"; };
+		B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputAssessor.storyboard; sourceTree = "<group>"; };
+		B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TargetPerson.storyboard; sourceTree = "<group>"; };
+		B22FBF01275FFCC900DA71C8 /* InputTargetPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputTargetPerson.storyboard; sourceTree = "<group>"; };
 		B237714B275EA64D00A48640 /* FunctionalIndependenceMeasure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunctionalIndependenceMeasure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B237714E275EA64D00A48640 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2377150275EA64D00A48640 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				B237714D275EA64D00A48640 /* FunctionalIndependenceMeasure */,
+				B2377157275EA64E00A48640 /* Assets.xcassets */,
+				B2377159275EA64E00A48640 /* LaunchScreen.storyboard */,
+				B237715C275EA64E00A48640 /* Info.plist */,
 				B237714C275EA64D00A48640 /* Products */,
 				D903B93819F5545EF620C84B /* Pods */,
 				5B78FB1E3382AAAE84D8098D /* Frameworks */,
@@ -99,10 +108,6 @@
 			children = (
 				B237714E275EA64D00A48640 /* AppDelegate.swift */,
 				B2377150275EA64D00A48640 /* SceneDelegate.swift */,
-				B2377154275EA64D00A48640 /* Main.storyboard */,
-				B2377157275EA64E00A48640 /* Assets.xcassets */,
-				B2377159275EA64E00A48640 /* LaunchScreen.storyboard */,
-				B237715C275EA64E00A48640 /* Info.plist */,
 				B2377184275EACF100A48640 /* FIMRepository */,
 				B2377176275EAAD400A48640 /* Assessor */,
 				B2377177275EAAFC00A48640 /* TargetPerson */,
@@ -118,6 +123,8 @@
 				B2377162275EA67A00A48640 /* AssessorTableViewController.swift */,
 				B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */,
 				B2377166275EA6E200A48640 /* InputAssessorViewController.swift */,
+				B2377154275EA64D00A48640 /* Main.storyboard */,
+				B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */,
 			);
 			path = Assessor;
 			sourceTree = "<group>";
@@ -128,6 +135,8 @@
 				B2377164275EA6BC00A48640 /* TargetPersonTableViewController.swift */,
 				B237717B275EABA300A48640 /* TargetPersonTableViewCell.swift */,
 				B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */,
+				B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */,
+				B22FBF01275FFCC900DA71C8 /* InputTargetPerson.storyboard */,
 			);
 			path = TargetPerson;
 			sourceTree = "<group>";
@@ -231,7 +240,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B237715B275EA64E00A48640 /* LaunchScreen.storyboard in Resources */,
+				B22FBF02275FFCC900DA71C8 /* InputTargetPerson.storyboard in Resources */,
 				B2377158275EA64E00A48640 /* Assets.xcassets in Resources */,
+				B22FBF00275FFCB200DA71C8 /* TargetPerson.storyboard in Resources */,
+				B22FBEFE275FFA8600DA71C8 /* InputAssessor.storyboard in Resources */,
 				B2377156275EA64D00A48640 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
