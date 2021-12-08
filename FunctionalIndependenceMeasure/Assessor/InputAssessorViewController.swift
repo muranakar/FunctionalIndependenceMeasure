@@ -36,9 +36,7 @@ class InputAssessorViewController: UIViewController {
                     fatalError("editingAssessorUUID is nil")
                     return nil
                 }
-                print(1)
                 let assesorName = fimRepository.loadAssessor(assessorUUID: editingAssessorUUID)?.name
-                print(2)
                 return assesorName
             }
         }()

@@ -9,21 +9,62 @@ import UIKit
 
 class InputTargetPersonViewController: UIViewController {
 
+    enum Mode {
+        case input
+        case edit(UUID?)
+    }
+
+    var mode: Mode?
+    let fimRepository = FIMRepository()
+    var assessorUUID: UUID?
+    private (set) var editingTargetPersonUUID: UUID?
+    private (set) var targetPerson: TargetPerson?
+    @IBOutlet weak private var targetPersonNameTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let mode = mode else {
+            fatalError("mode is nil.")
+        }
 
-        // Do any additional setup after loading the view.
+        // MARK: -テキストフィールドに名前を設定
+        targetPersonNameTextField.text = {
+            switch mode {
+            case .input:
+                return ""
+            case let .edit(editingTargetPersonUUID):
+                guard let editingTargetPersonUUID = editingTargetPersonUUID else {
+                    fatalError("editingAssessorUUID is nil")
+                    return nil
+                }
+                let targetPersonName = fimRepository.loadTargetPerson(targetPersonUUID: editingTargetPersonUUID)?.name
+                return targetPersonName
+            }
+        }()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    @IBAction private func saveAction(_ sender: Any) {
+        guard let mode = mode else { return }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch mode {
+        case .input:
+            let newTargetPerson = TargetPerson()
+            newTargetPerson.name = targetPersonNameTextField.text ?? ""
+            fimRepository.appendTargetPerson(assessorUUID: assessorUUID!, targetPerson: newTargetPerson)
+            // MARK: - ここまで　コード入力
+        case let .edit(editingAssessorUUID):
+            guard let editingAssessorUUID = editingAssessorUUID else {
+                return
+            }
+            let editAssessorName = assessorNameTextField.text ?? ""
+            fimRepository.updateAssessor(uuid: editingAssessorUUID , name: editAssessorName)
+        }
+
+        performSegue(
+            withIdentifier: "save",
+            sender: sender
+        )
     }
-    */
+
 
 }

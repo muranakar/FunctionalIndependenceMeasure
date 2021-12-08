@@ -65,13 +65,18 @@ final class FIMRepository {
         return Array<TargetPerson>(targetPerson)
     }
 
+    func loadTargetPerson(targetPersonUUID: UUID) -> TargetPerson?{
+        let targetPerson = realm.object(ofType: TargetPerson.self, forPrimaryKey: targetPersonUUID.uuidString)
+        return targetPerson
+    }
+
     func appendTargetPerson(assessorUUID: UUID, targetPerson: TargetPerson) {
         guard let list = realm.object(ofType: Assessor.self, forPrimaryKey: assessorUUID.uuidString)?.tagetPersons else { return }
         try! realm.write {
             list.append(targetPerson)
         }
     }
-// ↓編集していない。
+    // ↓編集していない。
     func updateTargetPerson(targetPerson: TargetPerson) {
         try! realm.write {
             realm.add(targetPerson, update: .modified)
@@ -105,28 +110,28 @@ final class FIMRepository {
         try! realm.write {
             fim.updatedAt = Date()
             realm.add(fim, update: .modified)
-//            loadedFIM.eating = fim.eating
-//            loadedFIM.grooming = fim.grooming
-//            loadedFIM.bathing = fim.bathing
-//            loadedFIM.dressingUpperBody = fim.dressingUpperBody
-//            loadedFIM.dressingLowerBody = fim.dressingLowerBody
-//            loadedFIM.toileting = fim.toileting
-//            loadedFIM.bladderManagement = fim.bladderManagement
-//            loadedFIM.bowelManagement = fim.bowelManagement
-//            loadedFIM.transfersBedChairWheelchair = fim.transfersBedChairWheelchair
-//            loadedFIM.transfersToilet = fim.transfersToilet
-//            loadedFIM.transfersBathShower = fim.transfersBathShower
-//            loadedFIM.walkWheelchair = fim.walkWheelchair
-//            loadedFIM.stairs = fim.stairs
-//            loadedFIM.comprehension = fim.comprehension
-//            loadedFIM.expression = fim.expression
-//            loadedFIM.socialInteraction = fim.socialInteraction
-//            loadedFIM.problemSolving = fim.problemSolving
-//            loadedFIM.memory = fim.memory
+            //            loadedFIM.eating = fim.eating
+            //            loadedFIM.grooming = fim.grooming
+            //            loadedFIM.bathing = fim.bathing
+            //            loadedFIM.dressingUpperBody = fim.dressingUpperBody
+            //            loadedFIM.dressingLowerBody = fim.dressingLowerBody
+            //            loadedFIM.toileting = fim.toileting
+            //            loadedFIM.bladderManagement = fim.bladderManagement
+            //            loadedFIM.bowelManagement = fim.bowelManagement
+            //            loadedFIM.transfersBedChairWheelchair = fim.transfersBedChairWheelchair
+            //            loadedFIM.transfersToilet = fim.transfersToilet
+            //            loadedFIM.transfersBathShower = fim.transfersBathShower
+            //            loadedFIM.walkWheelchair = fim.walkWheelchair
+            //            loadedFIM.stairs = fim.stairs
+            //            loadedFIM.comprehension = fim.comprehension
+            //            loadedFIM.expression = fim.expression
+            //            loadedFIM.socialInteraction = fim.socialInteraction
+            //            loadedFIM.problemSolving = fim.problemSolving
+            //            loadedFIM.memory = fim.memory
         }
     }
 
-    func removeTargetFIM(fimUUID: UUID) {
+    func removeFIM(fimUUID: UUID) {
         guard let fetchedFIM = realm.object(ofType: FIM.self, forPrimaryKey: fimUUID.uuidString) else { return }
         try! realm.write {
             realm.delete(fetchedFIM)

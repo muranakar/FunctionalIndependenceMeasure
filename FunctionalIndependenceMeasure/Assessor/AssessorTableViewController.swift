@@ -9,7 +9,7 @@ import UIKit
 
 class AssessorTableViewController: UITableViewController {
 
-    var nextAssessorUUID: UUID?
+    var selectedAssessorUUID: UUID?
     var editingAssessorUUID: UUID?
     let fimRepository = FIMRepository()
     
@@ -25,7 +25,7 @@ class AssessorTableViewController: UITableViewController {
 
         switch segue.identifier ?? "" {
         case "next":
-            nextVC.assessorUUID = nextAssessorUUID
+            nextVC.assessorUUID = selectedAssessorUUID
 
         case "input":
             inputVC.mode = .input
@@ -70,7 +70,7 @@ class AssessorTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        nextAssessorUUID = fimRepository.loadAssessor()[indexPath.row].uuid
+        selectedAssessorUUID = fimRepository.loadAssessor()[indexPath.row].uuid
         performSegue(withIdentifier: "next", sender: nil)
     }
 
