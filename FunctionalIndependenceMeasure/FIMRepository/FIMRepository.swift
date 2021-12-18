@@ -103,9 +103,9 @@ final class FIMRepository {
     }
 
     // MARK: - FIMRepository
-    func loadFIM(targetPersonUUID: UUID) -> [FIM]? {
+    func loadFIM(targetPersonUUID: UUID) -> [FIM] {
         let fimList = realm.object(ofType: TargetPerson.self, forPrimaryKey: targetPersonUUID.uuidString)?.FIM
-        guard let fimList = fimList else { return nil }
+        guard let fimList = fimList else { return [] }
         return Array<FIM>(fimList)
     }
 

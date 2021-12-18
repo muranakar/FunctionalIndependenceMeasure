@@ -18,7 +18,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kFm-6D-LRS"/>
+                    <navigationItem key="navigationItem" id="kFm-6D-LRS">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="76B-la-cPr"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

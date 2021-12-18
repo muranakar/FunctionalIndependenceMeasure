@@ -8,6 +8,9 @@
 import UIKit
 
 class FIMViewController: UIViewController {
+    //　画面遷移で値を受け取る変数
+    var fimUUID: UUID?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

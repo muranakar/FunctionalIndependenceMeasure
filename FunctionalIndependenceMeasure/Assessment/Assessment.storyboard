@@ -116,7 +116,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZhD-R1-kUd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="huX-tc-Azz"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="huX-tc-Azz">
+                            <connections>
+                                <segue destination="BAy-hJ-cKC" kind="unwind" unwindAction="cancelWithSegue:" id="3rV-D8-loM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="button1" destination="39M-TS-qVh" id="0Kg-4W-ULu"/>
@@ -132,6 +136,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="BAy-hJ-cKC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="79.6875"/>
         </scene>

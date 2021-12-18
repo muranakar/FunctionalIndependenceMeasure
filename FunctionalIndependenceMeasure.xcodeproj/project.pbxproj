@@ -26,7 +26,6 @@
 		B237716D275EA97000A48640 /* FunctionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */; };
 		B237716F275EAA0F00A48640 /* AssessmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237716E275EAA0F00A48640 /* AssessmentViewController.swift */; };
 		B2377171275EAA2F00A48640 /* FIMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377170275EAA2F00A48640 /* FIMViewController.swift */; };
-		B2377173275EAA4500A48640 /* InputFIMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377172275EAA4500A48640 /* InputFIMViewController.swift */; };
 		B2377175275EAAB100A48640 /* FIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377174275EAAB100A48640 /* FIMTableViewController.swift */; };
 		B237717A275EAB8F00A48640 /* AssessorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */; };
 		B237717C275EABA300A48640 /* TargetPersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237717B275EABA300A48640 /* TargetPersonTableViewCell.swift */; };
@@ -36,6 +35,7 @@
 		B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */; };
 		B23EA88B27614BC2000B64C7 /* FunctionSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */; };
 		B2549E40276E84760026127D /* FIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2549E3F276E84760026127D /* FIM.storyboard */; };
+		B2549E42276E9E970026127D /* InputFIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2549E41276E9E970026127D /* InputFIMTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +60,6 @@
 		B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionSelectionViewController.swift; sourceTree = "<group>"; };
 		B237716E275EAA0F00A48640 /* AssessmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewController.swift; sourceTree = "<group>"; };
 		B2377170275EAA2F00A48640 /* FIMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMViewController.swift; sourceTree = "<group>"; };
-		B2377172275EAA4500A48640 /* InputFIMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFIMViewController.swift; sourceTree = "<group>"; };
 		B2377174275EAAB100A48640 /* FIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMTableViewController.swift; sourceTree = "<group>"; };
 		B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessorTableViewCell.swift; sourceTree = "<group>"; };
 		B237717B275EABA300A48640 /* TargetPersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetPersonTableViewCell.swift; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 		B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTargetPersonViewController.swift; sourceTree = "<group>"; };
 		B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FunctionSelection.storyboard; sourceTree = "<group>"; };
 		B2549E3F276E84760026127D /* FIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FIM.storyboard; sourceTree = "<group>"; };
+		B2549E41276E9E970026127D /* InputFIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFIMTableViewController.swift; sourceTree = "<group>"; };
 		B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunctionalIndependenceMeasure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B651F3ECDBB9AA1F5A0B30F6 /* Pods-FunctionalIndependenceMeasure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.release.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,7 +159,7 @@
 				B2377174275EAAB100A48640 /* FIMTableViewController.swift */,
 				B237717D275EABB600A48640 /* FIMTableViewCell.swift */,
 				B2377170275EAA2F00A48640 /* FIMViewController.swift */,
-				B2377172275EAA4500A48640 /* InputFIMViewController.swift */,
+				B2549E41276E9E970026127D /* InputFIMTableViewController.swift */,
 				B20E68DC276DB723008CD04E /* FIMTable.storyboard */,
 				B20E68DF276DB74D008CD04E /* InputFIM.storyboard */,
 				B2549E3F276E84760026127D /* FIM.storyboard */,
@@ -334,9 +334,9 @@
 				B237714F275EA64D00A48640 /* AppDelegate.swift in Sources */,
 				B237717E275EABB600A48640 /* FIMTableViewCell.swift in Sources */,
 				B2377163275EA67A00A48640 /* AssessorTableViewController.swift in Sources */,
+				B2549E42276E9E970026127D /* InputFIMTableViewController.swift in Sources */,
 				B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */,
 				B2377151275EA64D00A48640 /* SceneDelegate.swift in Sources */,
-				B2377173275EAA4500A48640 /* InputFIMViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

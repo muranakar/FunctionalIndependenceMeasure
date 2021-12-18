@@ -8,8 +8,10 @@
 import UIKit
 
 class AssessmentViewController: UIViewController {
-    //　画面遷移での値の受け皿
+    //　画面遷移で値を受け取る変数
     var targetPersonUUID: UUID?
+    // 画面遷移先へ値を渡す変数
+    var fimUUID: UUID?
 
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var textView: UITextView!
@@ -28,6 +30,8 @@ class AssessmentViewController: UIViewController {
     private var dictionaryButtonAndString: [UIButton: String] = [:]
     private var dictionaryButtonAndNum: [UIButton: Int] = [:]
     private var assessmentResultFIM: [Int] = []
+
+    let fimRepository = FIMRepository()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +63,17 @@ class AssessmentViewController: UIViewController {
         assessmentResultFIM.append(num)
 
         if fimItemCount == 18 {
-            createFimFromTheArray()
-        }
+            let fim = createFimFromArrayAssessmentResult()
+            fimUUID = fim.uuid
+            guard let targetPersonUUID = targetPersonUUID else {
+                fatalError("targetPersonUUIDの中身がない。")
+            }
+            fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
+            
+            performSegue(withIdentifier: "fim", sender: nil)
+        } else {
         updateScreenAndUIButtonIsSelectedFalse()
+        }
     }
 
     private func updateDictionary() {
@@ -84,7 +96,7 @@ class AssessmentViewController: UIViewController {
         dictionaryButtonAndNum = {[UIButton: Int](uniqueKeysWithValues: zip(buttons,fimNum))}()
     }
 
-    private func createFimFromTheArray() {
+    private func createFimFromArrayAssessmentResult() -> FIM {
         //creatAt updateAtをどのタイミングでいれるか。
         let fim =
         FIM(
@@ -107,6 +119,7 @@ class AssessmentViewController: UIViewController {
             problemSolving: assessmentResultFIM[16],
             memory: assessmentResultFIM[17]
         )
+        return fim
     }
 
     private func updateScreenAndUIButtonIsSelectedFalse() {
@@ -115,12 +128,21 @@ class AssessmentViewController: UIViewController {
             button.isSelected = false
         }
     }
-
-
+    //MARK: - Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nav = segue.destination as? UINavigationController else { return }
+        if let fimVC = nav.topViewController as? FIMViewController {
+            switch segue.identifier ?? "" {
+            case "fim":
+                fimVC.fimUUID = fimUUID
+            default:
+                break
+            }
+        }
+    }
 
     //MARK: - JSONファイルのデコーダー
-    var FimData:[FimItem] = []
-    var count: Int = 0
+    private var FimData:[FimItem] = []
 
     struct FimItem: Codable {
         var fimItem: String
@@ -134,7 +156,7 @@ class AssessmentViewController: UIViewController {
         var attention: String
     }
 
-    func decoderFimJsonFile() {
+    private func decoderFimJsonFile() {
         let data:Data?
         guard let file = Bundle.main.url(forResource: "FIM", withExtension: "json") else {
             fatalError("ファイルが見つかりません")
