@@ -9,6 +9,10 @@ import UIKit
 
 class FunctionSelectionViewController: UIViewController {
 
+
+    var targetPersonUUID: UUID?
+
+    // MARK: - ここまで　コード入力
     override func viewDidLoad() {
         super.viewDidLoad()
 

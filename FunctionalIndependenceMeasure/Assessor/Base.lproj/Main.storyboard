@@ -51,7 +51,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="7QI-UF-DLp" kind="presentation" identifier="input" modalPresentationStyle="fullScreen" id="VfS-hB-2Oz"/>
-                        <segue destination="7QI-UF-DLp" kind="presentation" identifier="edit" id="yVg-SC-W4M"/>
+                        <segue destination="7QI-UF-DLp" kind="presentation" identifier="edit" modalPresentationStyle="fullScreen" id="yVg-SC-W4M"/>
                         <segue destination="yAT-iW-dMb" kind="presentation" identifier="next" modalPresentationStyle="fullScreen" id="5R0-0E-WvE"/>
                     </connections>
                 </tableViewController>
@@ -95,7 +95,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VfS-hB-2Oz"/>
+        <segue reference="yVg-SC-W4M"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

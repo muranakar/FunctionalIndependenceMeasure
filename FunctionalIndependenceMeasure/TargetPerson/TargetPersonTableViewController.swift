@@ -18,31 +18,34 @@ class TargetPersonTableViewController: UITableViewController {
     override func viewDidLoad() {
         tableView.reloadData()
     }
-    // MARK: - ここまで　コード入力
 
     // MARK: - Segue- TargetPersonTableViewController →　InputTargetPersonViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
-        guard let inputVC = nav.topViewController as? InputAssessorViewController else { return }
-//        guard let nextVC = nav.topViewController as? TargetPersonTableViewController else { return }
-
-        switch segue.identifier ?? "" {
-//        case "next":
-//            nextVC.assessorUUID = selectedAssessorUUID
-
-        case "input":
-            inputVC.mode = .input
-        case "edit":
-            guard let editingAssessorUUID = editingAssessorUUID else {
-                return
+        if let inputVC = nav.topViewController as? InputTargetPersonViewController {
+            switch segue.identifier ?? "" {
+            case "input":
+                inputVC.mode = .input
+                inputVC.assessorUUID = assessorUUID
+            case "edit":
+                guard let editingTargetPersonUUID = editingTargetPersonUUID else {
+                    return
+                }
+                inputVC.mode = .edit(editingTargetPersonUUID)
+                inputVC.assessorUUID = assessorUUID
+            default:
+                break
             }
-            inputVC.mode = .edit(editingAssessorUUID)
-
-        default:
-            break
+        }
+        if let nextVC = nav.topViewController as? FunctionSelectionViewController {
+            switch segue.identifier ?? "" {
+            case "next":
+                nextVC.targetPersonUUID = selectedTargetPersonUUID
+            default:
+                break
+            }
         }
     }
-
 
     @IBAction func input(_ sender: Any) {
         performSegue(withIdentifier: "input", sender: nil)
@@ -91,5 +94,4 @@ class TargetPersonTableViewController: UITableViewController {
         fimRepository.removeTargetPerson(targetPersonUUID: uuid)
         tableView.reloadData()
     }
-
 }

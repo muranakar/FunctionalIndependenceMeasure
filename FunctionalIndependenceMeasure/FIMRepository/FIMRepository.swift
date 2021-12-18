@@ -38,6 +38,11 @@ final class FIMRepository {
         return assessor
     }
 
+    func loadAssessor(targetPersonUUID: UUID) -> Assessor? {
+        guard let fetchedTargetPerson = realm.object(ofType: TargetPerson.self, forPrimaryKey: targetPersonUUID.uuidString) else { return nil }
+        return fetchedTargetPerson.Assessors.first
+    }
+
 
     func apppendAssessor(assesor: Assessor){
         try! realm.write{
@@ -61,7 +66,7 @@ final class FIMRepository {
     // MARK: - TargetPersonRepository
     func loadTargetPerson(AssessorUUID: UUID) -> [TargetPerson] {
         let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: AssessorUUID.uuidString)
-        guard let targetPerson = assessor?.tagetPersons else { return [] }
+        guard let targetPerson = assessor?.targetPersons else { return [] }
         return Array<TargetPerson>(targetPerson)
     }
 
@@ -70,16 +75,22 @@ final class FIMRepository {
         return targetPerson
     }
 
+    func loadTargetPerson(fimUUID: UUID) -> TargetPerson? {
+        guard let fetchedFIM = realm.object(ofType: FIM.self, forPrimaryKey: fimUUID.uuidString) else { return nil }
+        return fetchedFIM.targetPersons.first
+    }
+
     func appendTargetPerson(assessorUUID: UUID, targetPerson: TargetPerson) {
-        guard let list = realm.object(ofType: Assessor.self, forPrimaryKey: assessorUUID.uuidString)?.tagetPersons else { return }
+        guard let list = realm.object(ofType: Assessor.self, forPrimaryKey: assessorUUID.uuidString)?.targetPersons else { return }
         try! realm.write {
             list.append(targetPerson)
         }
     }
-    // ↓編集していない。
-    func updateTargetPerson(targetPerson: TargetPerson) {
+
+    func updateTargetPerson(uuid: UUID,name: String) {
         try! realm.write {
-            realm.add(targetPerson, update: .modified)
+            let targetPerson = realm.object(ofType: TargetPerson.self, forPrimaryKey: uuid.uuidString)
+            targetPerson?.name = name
         }
     }
 
@@ -136,7 +147,6 @@ final class FIMRepository {
         try! realm.write {
             realm.delete(fetchedFIM)
         }
-
     }
 }
 

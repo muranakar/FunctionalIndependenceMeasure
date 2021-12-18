@@ -20,26 +20,28 @@ class AssessorTableViewController: UITableViewController {
     // MARK: - Segue- AssessorTableViewController →　inputAccessoryViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
-        guard let inputVC = nav.topViewController as? InputAssessorViewController else { return }
-        guard let nextVC = nav.topViewController as? TargetPersonTableViewController else { return }
-
-        switch segue.identifier ?? "" {
-        case "next":
-            nextVC.assessorUUID = selectedAssessorUUID
-
-        case "input":
-            inputVC.mode = .input
-        case "edit":
-            guard let editingAssessorUUID = editingAssessorUUID else {
-                return
+        if let inputVC = nav.topViewController as? InputAssessorViewController {
+            switch segue.identifier ?? "" {
+            case "input":
+                inputVC.mode = .input
+            case "edit":
+                guard let editingAssessorUUID = editingAssessorUUID else {
+                    return
+                }
+                inputVC.mode = .edit(editingAssessorUUID)
+            default:
+                break
             }
-            inputVC.mode = .edit(editingAssessorUUID)
-            
-        default:
-            break
+        }
+        if let nextVC = nav.topViewController as? TargetPersonTableViewController {
+            switch segue.identifier ?? "" {
+            case "next":
+                nextVC.assessorUUID = selectedAssessorUUID
+            default:
+                break
+            }
         }
     }
-
 
     @IBAction func input(_ sender: Any) {
         performSegue(withIdentifier: "input", sender: nil)
@@ -53,7 +55,6 @@ class AssessorTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }

@@ -30,6 +30,7 @@
 		B2377181275EACD200A48640 /* FIM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377180275EACD200A48640 /* FIM.swift */; };
 		B2377183275EACE400A48640 /* FIMRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377182275EACE400A48640 /* FIMRepository.swift */; };
 		B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */; };
+		B23EA88B27614BC2000B64C7 /* FunctionSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		B2377180275EACD200A48640 /* FIM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIM.swift; sourceTree = "<group>"; };
 		B2377182275EACE400A48640 /* FIMRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMRepository.swift; sourceTree = "<group>"; };
 		B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTargetPersonViewController.swift; sourceTree = "<group>"; };
+		B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FunctionSelection.storyboard; sourceTree = "<group>"; };
 		B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunctionalIndependenceMeasure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B651F3ECDBB9AA1F5A0B30F6 /* Pods-FunctionalIndependenceMeasure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.release.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,8 +122,8 @@
 		B2377176275EAAD400A48640 /* Assessor */ = {
 			isa = PBXGroup;
 			children = (
-				B2377162275EA67A00A48640 /* AssessorTableViewController.swift */,
 				B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */,
+				B2377162275EA67A00A48640 /* AssessorTableViewController.swift */,
 				B2377166275EA6E200A48640 /* InputAssessorViewController.swift */,
 				B2377154275EA64D00A48640 /* Main.storyboard */,
 				B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */,
@@ -157,6 +159,7 @@
 			children = (
 				B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */,
 				B237716E275EAA0F00A48640 /* AssessmentViewController.swift */,
+				B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */,
 			);
 			path = Assessment;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				B2377158275EA64E00A48640 /* Assets.xcassets in Resources */,
 				B22FBF00275FFCB200DA71C8 /* TargetPerson.storyboard in Resources */,
 				B22FBEFE275FFA8600DA71C8 /* InputAssessor.storyboard in Resources */,
+				B23EA88B27614BC2000B64C7 /* FunctionSelection.storyboard in Resources */,
 				B2377156275EA64D00A48640 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

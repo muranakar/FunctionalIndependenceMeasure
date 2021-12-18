@@ -12,7 +12,7 @@ import RealmSwift
 class Assessor: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var name = ""
-    var tagetPersons = List<TargetPerson>()
+    var targetPersons = List<TargetPerson>()
     var uuid: UUID? {
         UUID(uuidString: uuidString)
     }
@@ -34,6 +34,8 @@ class TargetPerson: Object {
     var uuid: UUID? {
         UUID(uuidString: uuidString)
     }
+    let Assessors = LinkingObjects(fromType: Assessor.self, property: "targetPersons")
+
     override class func primaryKey() -> String? {
         "uuidString"
     }
@@ -68,6 +70,8 @@ class FIM: Object {
     @objc dynamic var createdAt: Date? = nil
     @objc dynamic var updatedAt: Date? = nil
 
+    let targetPersons = LinkingObjects(fromType: TargetPerson.self, property: "FIM")
+    
     var SumTheMotorSubscaleIncludes: Int {
         eating + grooming + bathing + dressingUpperBody + dressingLowerBody + toileting + bladderManagement + bowelManagement + transfersBedChairWheelchair + transfersToilet + transfersBathShower + walkWheelchair + stairs
     }

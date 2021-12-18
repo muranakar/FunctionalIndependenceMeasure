@@ -51,13 +51,17 @@ class InputTargetPersonViewController: UIViewController {
             let newTargetPerson = TargetPerson()
             newTargetPerson.name = targetPersonNameTextField.text ?? ""
             fimRepository.appendTargetPerson(assessorUUID: assessorUUID!, targetPerson: newTargetPerson)
-            // MARK: - ここまで　コード入力
-        case let .edit(editingAssessorUUID):
-            guard let editingAssessorUUID = editingAssessorUUID else {
+            
+        case let .edit(editingTargetPersonUUID):
+            guard let editingTargetPersonUUID = editingTargetPersonUUID else {
                 return
             }
-            let editAssessorName = assessorNameTextField.text ?? ""
-            fimRepository.updateAssessor(uuid: editingAssessorUUID , name: editAssessorName)
+
+            let editingTargetPersonName = targetPersonNameTextField.text ?? ""
+            fimRepository.updateTargetPerson(
+                uuid: editingTargetPersonUUID,
+                name: editingTargetPersonName
+            )
         }
 
         performSegue(
@@ -65,6 +69,4 @@ class InputTargetPersonViewController: UIViewController {
             sender: sender
         )
     }
-
-
 }

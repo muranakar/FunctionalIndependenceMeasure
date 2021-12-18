@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Ps-jr-ZIw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BM5-7r-1DX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Target Person Table View Controller-->
+        <!--対象者-->
         <scene sceneID="iMP-mT-JYj">
             <objects>
                 <tableViewController id="1Ps-jr-ZIw" customClass="TargetPersonTableViewController" customModule="FunctionalIndependenceMeasure" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,12 +42,67 @@
                             <outlet property="delegate" destination="1Ps-jr-ZIw" id="ij6-zI-8Od"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="対象者" id="ghh-Zg-uWz">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="YaJ-gi-g2V">
+                            <connections>
+                                <segue destination="E1c-kA-N5D" kind="unwind" unwindAction="cancelWithSegue:" id="PgD-J7-rXP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LVD-LH-w0i">
+                            <connections>
+                                <action selector="input:" destination="1Ps-jr-ZIw" id="l8b-D1-Wx0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="8XL-25-veN" kind="presentation" identifier="input" modalPresentationStyle="fullScreen" id="SLn-bg-Pb5"/>
+                        <segue destination="8XL-25-veN" kind="presentation" identifier="edit" modalPresentationStyle="fullScreen" id="grC-dq-zYS"/>
+                        <segue destination="au8-MM-zzM" kind="presentation" identifier="next" modalPresentationStyle="fullScreen" id="F38-eB-2QE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIs-ZH-asx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="E1c-kA-N5D" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="886.95652173913049" y="90.401785714285708"/>
+        </scene>
+        <!--InputTargetPerson-->
+        <scene sceneID="N2j-3c-ylZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="InputTargetPerson" id="8XL-25-veN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXc-Wr-T9n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1615" y="8"/>
+        </scene>
+        <!--FunctionSelection-->
+        <scene sceneID="QWT-ql-lIw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FunctionSelection" id="au8-MM-zzM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5a6-3F-zkz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1615" y="185"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4dd-ks-Sbc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BM5-7r-1DX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="759-UN-pwm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1Ps-jr-ZIw" kind="relationship" relationship="rootViewController" id="plW-Gp-QeT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iL9-nk-R0S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="90.401785714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SLn-bg-Pb5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
