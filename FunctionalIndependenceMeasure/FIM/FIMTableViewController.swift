@@ -9,6 +9,8 @@ import UIKit
 
 class FIMTableViewController: UITableViewController {
 
+    var targetPersonUUID: UUID?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

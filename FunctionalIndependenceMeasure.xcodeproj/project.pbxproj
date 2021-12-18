@@ -11,6 +11,7 @@
 		B20E68DB276DB6C1008CD04E /* Assessment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E68DA276DB6C1008CD04E /* Assessment.storyboard */; };
 		B20E68DD276DB723008CD04E /* FIMTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E68DC276DB723008CD04E /* FIMTable.storyboard */; };
 		B20E68E0276DB74E008CD04E /* InputFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E68DF276DB74D008CD04E /* InputFIM.storyboard */; };
+		B20E68E2276DBDEA008CD04E /* FIM.json in Resources */ = {isa = PBXBuildFile; fileRef = B20E68E1276DBDE9008CD04E /* FIM.json */; };
 		B22FBEFE275FFA8600DA71C8 /* InputAssessor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */; };
 		B22FBF00275FFCB200DA71C8 /* TargetPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */; };
 		B22FBF02275FFCC900DA71C8 /* InputTargetPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FBF01275FFCC900DA71C8 /* InputTargetPerson.storyboard */; };
@@ -42,6 +43,7 @@
 		B20E68DC276DB723008CD04E /* FIMTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FIMTable.storyboard; sourceTree = "<group>"; };
 		B20E68DE276DB740008CD04E /* FIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = FIM.storyboard; path = /Users/muranakaryo/SwiftProject/FunctionalIndependenceMeasure/FunctionalIndependenceMeasure/FIM/FIM.storyboard; sourceTree = "<absolute>"; };
 		B20E68DF276DB74D008CD04E /* InputFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputFIM.storyboard; sourceTree = "<group>"; };
+		B20E68E1276DBDE9008CD04E /* FIM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FIM.json; sourceTree = "<group>"; };
 		B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputAssessor.storyboard; sourceTree = "<group>"; };
 		B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TargetPerson.storyboard; sourceTree = "<group>"; };
 		B22FBF01275FFCC900DA71C8 /* InputTargetPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputTargetPerson.storyboard; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */,
 				B237716E275EAA0F00A48640 /* AssessmentViewController.swift */,
+				B20E68E1276DBDE9008CD04E /* FIM.json */,
 				B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */,
 				B20E68DA276DB6C1008CD04E /* Assessment.storyboard */,
 			);
@@ -257,6 +260,7 @@
 				B22FBF02275FFCC900DA71C8 /* InputTargetPerson.storyboard in Resources */,
 				B20E68DB276DB6C1008CD04E /* Assessment.storyboard in Resources */,
 				B2377158275EA64E00A48640 /* Assets.xcassets in Resources */,
+				B20E68E2276DBDEA008CD04E /* FIM.json in Resources */,
 				B20E68E0276DB74E008CD04E /* InputFIM.storyboard in Resources */,
 				B20E68DD276DB723008CD04E /* FIMTable.storyboard in Resources */,
 				B22FBF00275FFCB200DA71C8 /* TargetPerson.storyboard in Resources */,

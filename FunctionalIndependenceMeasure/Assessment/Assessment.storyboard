@@ -15,10 +15,120 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39M-TS-qVh">
+                                <rect key="frame" x="94" y="545" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="1"/>
+                                <connections>
+                                    <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SPc-s3-BXd"/>
+                                    <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WyT-Gp-rah"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4U0-yP-wPY">
+                                <rect key="frame" x="170" y="545" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="2"/>
+                                <connections>
+                                    <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Tc2-xp-aJp"/>
+                                    <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wkC-jd-Ckv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bN5-bW-S0D">
+                                <rect key="frame" x="251" y="545" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="3"/>
+                                <connections>
+                                    <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kNj-3V-bWA"/>
+                                    <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="56S-Io-iLi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4p-hv-97Y">
+                                <rect key="frame" x="56" y="621" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="4"/>
+                                <connections>
+                                    <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Mzw-5R-0rc"/>
+                                    <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HcQ-GG-Fny"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cr-1c-SXi">
+                                <rect key="frame" x="142" y="621" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="5"/>
+                                <connections>
+                                    <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="K30-Pb-gU1"/>
+                                    <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bs0-0a-xjM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-hL-lmh">
+                                <rect key="frame" x="219" y="621" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="6"/>
+                                <connections>
+                                    <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NzY-GB-itA"/>
+                                    <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rbB-jV-qCK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haN-vn-iq9">
+                                <rect key="frame" x="304" y="621" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="7"/>
+                                <connections>
+                                    <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sFl-Z1-B5R"/>
+                                    <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AhU-Cw-UU8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baQ-79-6VF">
+                                <rect key="frame" x="139" y="759" width="127" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="決定"/>
+                                <connections>
+                                    <action selector="decide:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CDE-hV-cJL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWV-hI-SCE">
+                                <rect key="frame" x="20" y="107" width="374" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jmw-OI-sZn">
+                                <rect key="frame" x="20" y="210" width="374" height="275"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZhD-R1-kUd"/>
+                    <navigationItem key="navigationItem" id="ZhD-R1-kUd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="huX-tc-Azz"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="button1" destination="39M-TS-qVh" id="0Kg-4W-ULu"/>
+                        <outlet property="button2" destination="4U0-yP-wPY" id="6Fq-Al-Dvd"/>
+                        <outlet property="button3" destination="bN5-bW-S0D" id="Hdw-r2-C6g"/>
+                        <outlet property="button4" destination="A4p-hv-97Y" id="ByH-RX-DJn"/>
+                        <outlet property="button5" destination="1cr-1c-SXi" id="br9-ew-ghH"/>
+                        <outlet property="button6" destination="Xtl-hL-lmh" id="5kf-Yu-umG"/>
+                        <outlet property="button7" destination="haN-vn-iq9" id="w9N-li-jXY"/>
+                        <outlet property="label" destination="LWV-hI-SCE" id="Wjl-FM-xur"/>
+                        <outlet property="textView" destination="Jmw-OI-sZn" id="Wes-Za-k0v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,6 +154,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

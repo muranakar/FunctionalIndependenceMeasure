@@ -9,25 +9,26 @@ import UIKit
 
 class FunctionSelectionViewController: UIViewController {
 
-
     var targetPersonUUID: UUID?
 
-    // MARK: - ここまで　コード入力
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        guard let nav = segue.destination as? UINavigationController else { return }
+        if let assessmentVC = nav.topViewController as? AssessmentViewController {
+            switch segue.identifier ?? "" {
+            case "assessment":
+                assessmentVC.targetPersonUUID = targetPersonUUID
+            default:
+                break
+            }
+        }
 
+        if let FIMTableVC = nav.topViewController as? FIMTableViewController {
+            switch segue.identifier ?? "" {
+            case "fimTabel":
+                FIMTableVC.targetPersonUUID = targetPersonUUID
+            default:
+                break
+            }
+        }
+    }
 }

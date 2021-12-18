@@ -22,7 +22,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="評価開始"/>
                                 <connections>
-                                    <segue destination="Hpu-I5-G1I" kind="presentation" modalPresentationStyle="fullScreen" id="KEA-nY-PbS"/>
+                                    <segue destination="Hpu-I5-G1I" kind="presentation" identifier="assessment" modalPresentationStyle="fullScreen" id="KEA-nY-PbS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMl-xO-IGR">
@@ -31,7 +31,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="過去評価一覧"/>
                                 <connections>
-                                    <segue destination="xag-u6-nJF" kind="presentation" modalPresentationStyle="fullScreen" id="2PH-1L-YZt"/>
+                                    <segue destination="xag-u6-nJF" kind="presentation" identifier="fimTabel" modalPresentationStyle="fullScreen" id="2PH-1L-YZt"/>
                                 </connections>
                             </button>
                         </subviews>
