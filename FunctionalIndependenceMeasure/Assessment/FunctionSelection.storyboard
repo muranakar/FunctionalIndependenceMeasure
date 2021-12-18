@@ -17,16 +17,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTL-pl-bow">
-                                <rect key="frame" x="115" y="411" width="185" height="74"/>
+                                <rect key="frame" x="115" y="321" width="185" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="評価開始"/>
+                                <connections>
+                                    <segue destination="Hpu-I5-G1I" kind="presentation" modalPresentationStyle="fullScreen" id="KEA-nY-PbS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMl-xO-IGR">
-                                <rect key="frame" x="115" y="552" width="185" height="74"/>
+                                <rect key="frame" x="115" y="465" width="185" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="過去評価一覧"/>
+                                <connections>
+                                    <segue destination="xag-u6-nJF" kind="presentation" modalPresentationStyle="fullScreen" id="2PH-1L-YZt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -44,6 +50,22 @@
                 <exit id="GT0-R2-xlt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="79.6875"/>
+        </scene>
+        <!--Assessment-->
+        <scene sceneID="reS-Cb-6cG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Assessment" id="Hpu-I5-G1I" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wYL-v7-iO8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1615" y="-38"/>
+        </scene>
+        <!--FIMTable-->
+        <scene sceneID="Blb-mO-gBT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FIMTable" id="xag-u6-nJF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gkm-TI-MH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1615" y="145"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v4i-L6-VNd">
