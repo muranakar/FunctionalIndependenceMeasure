@@ -35,13 +35,13 @@
 		B2377183275EACE400A48640 /* FIMRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377182275EACE400A48640 /* FIMRepository.swift */; };
 		B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */; };
 		B23EA88B27614BC2000B64C7 /* FunctionSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */; };
+		B2549E40276E84760026127D /* FIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2549E3F276E84760026127D /* FIM.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4D8B94B1CE89B91CB532BA3A /* Pods-FunctionalIndependenceMeasure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.debug.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.debug.xcconfig"; sourceTree = "<group>"; };
 		B20E68DA276DB6C1008CD04E /* Assessment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assessment.storyboard; sourceTree = "<group>"; };
 		B20E68DC276DB723008CD04E /* FIMTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FIMTable.storyboard; sourceTree = "<group>"; };
-		B20E68DE276DB740008CD04E /* FIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = FIM.storyboard; path = /Users/muranakaryo/SwiftProject/FunctionalIndependenceMeasure/FunctionalIndependenceMeasure/FIM/FIM.storyboard; sourceTree = "<absolute>"; };
 		B20E68DF276DB74D008CD04E /* InputFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputFIM.storyboard; sourceTree = "<group>"; };
 		B20E68E1276DBDE9008CD04E /* FIM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FIM.json; sourceTree = "<group>"; };
 		B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputAssessor.storyboard; sourceTree = "<group>"; };
@@ -69,6 +69,7 @@
 		B2377182275EACE400A48640 /* FIMRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMRepository.swift; sourceTree = "<group>"; };
 		B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTargetPersonViewController.swift; sourceTree = "<group>"; };
 		B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FunctionSelection.storyboard; sourceTree = "<group>"; };
+		B2549E3F276E84760026127D /* FIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FIM.storyboard; sourceTree = "<group>"; };
 		B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunctionalIndependenceMeasure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B651F3ECDBB9AA1F5A0B30F6 /* Pods-FunctionalIndependenceMeasure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.release.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,8 +161,8 @@
 				B2377170275EAA2F00A48640 /* FIMViewController.swift */,
 				B2377172275EAA4500A48640 /* InputFIMViewController.swift */,
 				B20E68DC276DB723008CD04E /* FIMTable.storyboard */,
-				B20E68DE276DB740008CD04E /* FIM.storyboard */,
 				B20E68DF276DB74D008CD04E /* InputFIM.storyboard */,
+				B2549E3F276E84760026127D /* FIM.storyboard */,
 			);
 			path = FIM;
 			sourceTree = "<group>";
@@ -257,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B237715B275EA64E00A48640 /* LaunchScreen.storyboard in Resources */,
+				B2549E40276E84760026127D /* FIM.storyboard in Resources */,
 				B22FBF02275FFCC900DA71C8 /* InputTargetPerson.storyboard in Resources */,
 				B20E68DB276DB6C1008CD04E /* Assessment.storyboard in Resources */,
 				B2377158275EA64E00A48640 /* Assets.xcassets in Resources */,
