@@ -8,13 +8,10 @@
 import UIKit
 
 class TargetPersonTableViewController: UITableViewController {
-
     var assessorUUID: UUID?
     var selectedTargetPersonUUID: UUID?
     var editingTargetPersonUUID: UUID?
     let fimRepository = FIMRepository()
-    
-    
     override func viewDidLoad() {
         tableView.reloadData()
     }
@@ -47,7 +44,7 @@ class TargetPersonTableViewController: UITableViewController {
         }
     }
 
-    @IBAction func input(_ sender: Any) {
+    @IBAction private func input(_ sender: Any) {
         performSegue(withIdentifier: "input", sender: nil)
     }
 
@@ -67,7 +64,6 @@ class TargetPersonTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         fimRepository.loadTargetPerson(AssessorUUID: assessorUUID!).count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TargetPersonTableViewCell

@@ -8,25 +8,21 @@
 import UIKit
 
 class InputAssessorViewController: UIViewController {
-    
     enum Mode {
         case input
         case edit(UUID?)
     }
-    
     var mode: Mode?
     let fimRepository = FIMRepository()
     private (set) var editingAssessorUUID: UUID?
     private (set) var assessor: Assessor?
     @IBOutlet weak private var assessorNameTextField: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let mode = mode else {
             fatalError("mode is nil.")
         }
-        
-        // MARK: -テキストフィールドに名前を設定
+        // MARK: - テキストフィールドに名前を設定
         assessorNameTextField.text = {
             switch mode {
             case .input:
@@ -41,10 +37,9 @@ class InputAssessorViewController: UIViewController {
             }
         }()
     }
-    
     @IBAction private func saveAction(_ sender: Any) {
         guard let mode = mode else { return }
-        
+
         switch mode {
         case .input:
             let newAssessor = Assessor()
@@ -59,7 +54,7 @@ class InputAssessorViewController: UIViewController {
                 uuid: editingAssessorUUID,
                 name: editAssessorName)
         }
-        
+
         performSegue(
             withIdentifier: "save",
             sender: sender

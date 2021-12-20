@@ -26,7 +26,7 @@ class AssessmentViewController: UIViewController {
     private var fimItemCount = 0
     private var buttons: [UIButton] = []
     private var fimItemText: [String] = []
-    private var fimNum = [1,2,3,4,5,6,7]
+    private var fimNum = [1, 2, 3, 4, 5, 6, 7]
     private var dictionaryButtonAndString: [UIButton: String] = [:]
     private var dictionaryButtonAndNum: [UIButton: Int] = [:]
     private var assessmentResultFIM: [Int] = []
@@ -46,19 +46,19 @@ class AssessmentViewController: UIViewController {
     }
 
     //　ボタンが選択された際に、そのボタンと関連づけられた文字列を、テキストビューに反映させる。
-    @IBAction func update(sender: UIButton){
+    @IBAction private func update(sender: UIButton) {
         textView.text = dictionaryButtonAndString[sender]
     }
     //　一つのボタンが押された際、そのボタン以外は非選択状態にする
     @IBAction private func change(sender: UIButton) {
-        buttons.forEach{ (button: UIButton) in
+        buttons.forEach { (button: UIButton) in
             button.isSelected = (button === sender)
         }
     }
 
-    @IBAction func decide(_ sender: Any) {
+    @IBAction private func decide(_ sender: Any) {
         fimItemCount += 1
-        let button = buttons.filter{$0.isSelected == true}.first
+        let button = buttons.filter { $0.isSelected == true }.first
         guard let num = dictionaryButtonAndNum[button!] else { return }
         assessmentResultFIM.append(num)
 
@@ -69,7 +69,6 @@ class AssessmentViewController: UIViewController {
                 fatalError("targetPersonUUIDの中身がない。")
             }
             fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
-            
             performSegue(withIdentifier: "fim", sender: nil)
         } else {
         updateScreenAndUIButtonIsSelectedFalse()
@@ -90,14 +89,14 @@ class AssessmentViewController: UIViewController {
             return texts
         }()
         buttons = [
-            button1,button2,button3,button4,button5,button6,button7
+            button1, button2, button3, button4, button5, button6, button7
         ]
-        dictionaryButtonAndString = {[UIButton: String](uniqueKeysWithValues: zip(buttons, fimItemText)) }()
-        dictionaryButtonAndNum = {[UIButton: Int](uniqueKeysWithValues: zip(buttons,fimNum))}()
+        dictionaryButtonAndString = { [UIButton: String](uniqueKeysWithValues: zip(buttons, fimItemText)) }()
+        dictionaryButtonAndNum = { [UIButton: Int](uniqueKeysWithValues: zip(buttons, fimNum))}()
     }
 
     private func createFimFromArrayAssessmentResult() -> FIM {
-        //creatAt updateAtをどのタイミングでいれるか。
+        // creatAt updateAtをどのタイミングでいれるか。
         let fim =
         FIM(
             eating: assessmentResultFIM[0],
@@ -108,8 +107,8 @@ class AssessmentViewController: UIViewController {
             toileting: assessmentResultFIM[5],
             bladderManagement: assessmentResultFIM[6],
             bowelManagement: assessmentResultFIM[7],
-            transfersBedChairWheelchair:assessmentResultFIM[8],
-            transfersToilet:assessmentResultFIM[9],
+            transfersBedChairWheelchair: assessmentResultFIM[8],
+            transfersToilet: assessmentResultFIM[9],
             transfersBathShower: assessmentResultFIM[10],
             walkWheelchair: assessmentResultFIM[11],
             stairs: assessmentResultFIM[12],
@@ -124,11 +123,11 @@ class AssessmentViewController: UIViewController {
 
     private func updateScreenAndUIButtonIsSelectedFalse() {
         viewWillAppear(true)
-        buttons.forEach{ (button: UIButton) in
+        buttons.forEach { (button: UIButton) in
             button.isSelected = false
         }
     }
-    //MARK: - Segue
+    // MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
         if let fimVC = nav.topViewController as? FIMViewController {
@@ -141,7 +140,7 @@ class AssessmentViewController: UIViewController {
         }
     }
 
-    //MARK: - JSONファイルのデコーダー
+    // MARK: - JSONファイルのデコーダー
     private var FimData:[FimItem] = []
 
     struct FimItem: Codable {
@@ -157,18 +156,18 @@ class AssessmentViewController: UIViewController {
     }
 
     private func decoderFimJsonFile() {
-        let data:Data?
+        let data: Data?
         guard let file = Bundle.main.url(forResource: "FIM", withExtension: "json") else {
             fatalError("ファイルが見つかりません")
         }
 
-        do{
+        do {
             data  = try? Data(contentsOf: file)
         } catch {
             fatalError("ファイルをロード不可")
         }
 
-        do{
+        do {
             guard let data = data else {
                 print("アンラップ失敗")
                 return

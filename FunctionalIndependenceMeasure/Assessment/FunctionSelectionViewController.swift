@@ -31,8 +31,6 @@ class FunctionSelectionViewController: UIViewController {
             }
         }
     }
-    
     @IBAction private func cancel(segue: UIStoryboardSegue) {
-
     }
 }

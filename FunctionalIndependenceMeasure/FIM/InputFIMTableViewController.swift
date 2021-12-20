@@ -13,7 +13,6 @@ class InputFIMTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     // MARK: - Table view data source
@@ -82,5 +81,4 @@ class InputFIMTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

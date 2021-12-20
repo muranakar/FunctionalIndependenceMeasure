@@ -26,7 +26,7 @@ class Assessor: Object {
     }
 }
 
-// MARK: -TagetPerson
+// MARK: - TagetPerson
 class TargetPerson: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var name = ""
@@ -46,7 +46,7 @@ class TargetPerson: Object {
     }
 }
 
-// MARK: -FIM
+    // MARK: - FIM
 class FIM: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var eating = 0
@@ -67,11 +67,10 @@ class FIM: Object {
     @objc dynamic var socialInteraction = 0
     @objc dynamic var problemSolving = 0
     @objc dynamic var memory = 0
-    @objc dynamic var createdAt: Date? = nil
-    @objc dynamic var updatedAt: Date? = nil
+    @objc dynamic var createdAt: Date?
+    @objc dynamic var updatedAt: Date?
 
     let targetPersons = LinkingObjects(fromType: TargetPerson.self, property: "FIM")
-    
     var SumTheMotorSubscaleIncludes: Int {
         eating + grooming + bathing + dressingUpperBody + dressingLowerBody + toileting + bladderManagement + bowelManagement + transfersBedChairWheelchair + transfersToilet + transfersBathShower + walkWheelchair + stairs
     }
@@ -89,7 +88,24 @@ class FIM: Object {
     }
 
     convenience init(
-        eating: Int,grooming: Int,bathing: Int,dressingUpperBody: Int,dressingLowerBody: Int,toileting: Int,bladderManagement: Int,bowelManagement: Int,transfersBedChairWheelchair: Int,transfersToilet: Int,transfersBathShower: Int,walkWheelchair: Int,stairs: Int,comprehension: Int,expression: Int,socialInteraction: Int,problemSolving: Int,memory: Int) {
+        eating: Int,
+        grooming: Int,
+        bathing: Int,
+        dressingUpperBody: Int,
+        dressingLowerBody: Int,
+        toileting: Int,
+        bladderManagement: Int,
+        bowelManagement: Int,
+        transfersBedChairWheelchair: Int,
+        transfersToilet: Int,
+        transfersBathShower: Int,
+        walkWheelchair: Int,
+        stairs: Int,
+        comprehension: Int,
+        expression: Int,
+        socialInteraction: Int,
+        problemSolving: Int,
+        memory: Int) {
             self.init()
             self.eating = eating
             self.grooming = grooming
@@ -111,4 +127,3 @@ class FIM: Object {
             self.memory = memory
         }
 }
-

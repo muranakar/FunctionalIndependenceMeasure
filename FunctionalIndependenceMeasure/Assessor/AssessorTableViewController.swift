@@ -8,11 +8,10 @@
 import UIKit
 
 class AssessorTableViewController: UITableViewController {
-
     var selectedAssessorUUID: UUID?
     var editingAssessorUUID: UUID?
     let fimRepository = FIMRepository()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
@@ -43,7 +42,7 @@ class AssessorTableViewController: UITableViewController {
         }
     }
 
-    @IBAction func input(_ sender: Any) {
+    @IBAction private func input(_ sender: Any) {
         performSegue(withIdentifier: "input", sender: nil)
     }
 

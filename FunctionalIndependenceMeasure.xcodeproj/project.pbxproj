@@ -209,6 +209,7 @@
 				B2377148275EA64D00A48640 /* Frameworks */,
 				B2377149275EA64D00A48640 /* Resources */,
 				86C6F43E0D9FB8E1D8418381 /* [CP] Embed Pods Frameworks */,
+				B2AF7660277146C90091BEC5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -313,6 +314,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B2AF7660277146C90091BEC5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

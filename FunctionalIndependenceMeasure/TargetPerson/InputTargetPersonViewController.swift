@@ -8,7 +8,6 @@
 import UIKit
 
 class InputTargetPersonViewController: UIViewController {
-
     enum Mode {
         case input
         case edit(UUID?)
@@ -27,7 +26,7 @@ class InputTargetPersonViewController: UIViewController {
             fatalError("mode is nil.")
         }
 
-        // MARK: -テキストフィールドに名前を設定
+        // MARK: - テキストフィールドに名前を設定
         targetPersonNameTextField.text = {
             switch mode {
             case .input:
@@ -51,7 +50,6 @@ class InputTargetPersonViewController: UIViewController {
             let newTargetPerson = TargetPerson()
             newTargetPerson.name = targetPersonNameTextField.text ?? ""
             fimRepository.appendTargetPerson(assessorUUID: assessorUUID!, targetPerson: newTargetPerson)
-            
         case let .edit(editingTargetPersonUUID):
             guard let editingTargetPersonUUID = editingTargetPersonUUID else {
                 return

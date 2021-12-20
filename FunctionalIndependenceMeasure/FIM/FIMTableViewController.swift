@@ -49,7 +49,7 @@ class FIMTableViewController: UITableViewController {
 //
 //    }
 
-    @IBAction func input(_ sender: Any) {
+    @IBAction private func input(_ sender: Any) {
         performSegue(withIdentifier: "input", sender: nil)
     }
 
@@ -69,7 +69,6 @@ class FIMTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!).count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! FIMTableViewCell
@@ -99,5 +98,4 @@ class FIMTableViewController: UITableViewController {
         fimRepository.removeFIM(fimUUID: uuid)
         tableView.reloadData()
     }
-
 }

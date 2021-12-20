@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 final class FIMRepository {
-
     private let realm = try! Realm()
 
     private var notificationToken: NotificationToken?
@@ -26,25 +25,26 @@ final class FIMRepository {
         notificationToken = realm.objects(FIM.self).observe { _ in notifier() }
     }
 
-
     // MARK: - AssessorRepository
-    func loadAssessor() -> [Assessor]{
+    func loadAssessor() -> [Assessor] {
         let assessor = realm.objects(Assessor.self)
         return Array<Assessor>(assessor)
     }
 
-    func loadAssessor(assessorUUID: UUID) -> Assessor?{
+    func loadAssessor(assessorUUID: UUID) -> Assessor? {
         let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: assessorUUID.uuidString)
         return assessor
     }
 
     func loadAssessor(targetPersonUUID: UUID) -> Assessor? {
-        guard let fetchedTargetPerson = realm.object(ofType: TargetPerson.self, forPrimaryKey: targetPersonUUID.uuidString) else { return nil }
+        guard let fetchedTargetPerson = realm.object(
+            ofType: TargetPerson.self,
+            forPrimaryKey: targetPersonUUID.uuidString
+        ) else { return nil }
         return fetchedTargetPerson.Assessors.first
     }
 
-
-    func apppendAssessor(assesor: Assessor){
+    func apppendAssessor(assesor: Assessor) {
         try! realm.write{
             realm.add(assesor)
         }
@@ -70,7 +70,7 @@ final class FIMRepository {
         return Array<TargetPerson>(targetPerson)
     }
 
-    func loadTargetPerson(targetPersonUUID: UUID) -> TargetPerson?{
+    func loadTargetPerson(targetPersonUUID: UUID) -> TargetPerson? {
         let targetPerson = realm.object(ofType: TargetPerson.self, forPrimaryKey: targetPersonUUID.uuidString)
         return targetPerson
     }
@@ -87,7 +87,7 @@ final class FIMRepository {
         }
     }
 
-    func updateTargetPerson(uuid: UUID,name: String) {
+    func updateTargetPerson(uuid: UUID, name: String) {
         try! realm.write {
             let targetPerson = realm.object(ofType: TargetPerson.self, forPrimaryKey: uuid.uuidString)
             targetPerson?.name = name
@@ -95,11 +95,13 @@ final class FIMRepository {
     }
 
     func removeTargetPerson(targetPersonUUID: UUID) {
-        guard let fetchedTagetPerson = realm.object(ofType: TargetPerson.self, forPrimaryKey: targetPersonUUID.uuidString) else { return }
+        guard let fetchedTagetPerson = realm.object(
+            ofType: TargetPerson.self,
+            forPrimaryKey: targetPersonUUID.uuidString
+        ) else { return }
         try! realm.write {
             realm.delete(fetchedTagetPerson)
         }
-
     }
 
     // MARK: - FIMRepository
@@ -110,7 +112,10 @@ final class FIMRepository {
     }
 
     func appendFIM(targetPersonUUID: UUID, fim: FIM) {
-        guard let list = realm.object(ofType: TargetPerson.self, forPrimaryKey: targetPersonUUID.uuidString)?.FIM else { return }
+        guard let list = realm.object(
+            ofType: TargetPerson.self,
+            forPrimaryKey: targetPersonUUID.uuidString
+        )?.FIM else { return }
         try! realm.write {
             fim.createdAt = Date()
             list.append(fim)
@@ -149,4 +154,3 @@ final class FIMRepository {
         }
     }
 }
-
