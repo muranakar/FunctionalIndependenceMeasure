@@ -8,7 +8,6 @@
 import UIKit
 
 class FunctionSelectionViewController: UIViewController {
-
     var targetPersonUUID: UUID?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

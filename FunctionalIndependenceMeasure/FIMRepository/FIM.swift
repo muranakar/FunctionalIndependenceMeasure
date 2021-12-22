@@ -71,11 +71,11 @@ class FIM: Object {
     @objc dynamic var updatedAt: Date?
 
     let targetPersons = LinkingObjects(fromType: TargetPerson.self, property: "FIM")
-    var SumTheMotorSubscaleIncludes: Int {
+    var sumTheMotorSubscaleIncludes: Int {
         eating + grooming + bathing + dressingUpperBody + dressingLowerBody + toileting + bladderManagement + bowelManagement + transfersBedChairWheelchair + transfersToilet + transfersBathShower + walkWheelchair + stairs
     }
 
-    var SumTheCognitionSubscaleIncludes: Int {
+    var sumTheCognitionSubscaleIncludes: Int {
         comprehension + expression + socialInteraction + problemSolving + memory
     }
 
