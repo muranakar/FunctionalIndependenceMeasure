@@ -40,8 +40,8 @@ class AssessmentViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        label.text = FimData[fimItemCount].fimItem
-        textView.text = FimData[fimItemCount].attention
+        label.text = fimJSONDecoder[fimItemCount].fimItem
+        textView.text = fimJSONDecoder[fimItemCount].attention
         updateDictionary()
     }
 
@@ -78,13 +78,13 @@ class AssessmentViewController: UIViewController {
     private func updateDictionary() {
         fimItemText = { () -> [String] in
             let texts = [
-                FimData[fimItemCount].one,
-                FimData[fimItemCount].two,
-                FimData[fimItemCount].three,
-                FimData[fimItemCount].four,
-                FimData[fimItemCount].five,
-                FimData[fimItemCount].six,
-                FimData[fimItemCount].seven
+                fimJSONDecoder[fimItemCount].one,
+                fimJSONDecoder[fimItemCount].two,
+                fimJSONDecoder[fimItemCount].three,
+                fimJSONDecoder[fimItemCount].four,
+                fimJSONDecoder[fimItemCount].five,
+                fimJSONDecoder[fimItemCount].six,
+                fimJSONDecoder[fimItemCount].seven
             ]
             return texts
         }()
@@ -141,9 +141,9 @@ class AssessmentViewController: UIViewController {
     }
 
     // MARK: - JSONファイルのデコーダー
-    private var FimData:[FimItem] = []
+    private var fimJSONDecoder: [FimJSONDecoder] = []
 
-    struct FimItem: Codable {
+    struct FimJSONDecoder: Codable {
         var fimItem: String
         var seven: String
         var six: String
@@ -172,7 +172,7 @@ class AssessmentViewController: UIViewController {
                 fatalError("パース不可")
             }
             let decoder = JSONDecoder()
-            FimData = try decoder.decode([FimItem].self, from: data)
+            fimJSONDecoder = try decoder.decode([FimJSONDecoder].self, from: data)
         } catch {
             fatalError("パース不可")
         }

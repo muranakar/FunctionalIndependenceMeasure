@@ -47,30 +47,38 @@ class FIMViewController: UIViewController {
         ]
     }
 
-    private var fimItem: [String] {
+    private var fimItemTitle: [String] {
         [
-            "総合計","運動項目合計","","食事","整容","清拭","更衣上半身","更衣下半身","トイレ動作","排尿管理","排便管理","ベッド・椅子・車椅子移乗","トイレ移乗","浴槽・シャワー移乗","歩行・車椅子","階段","認知項目合計","理解","表出","社会的交流","問題解決","記憶"
+            "総合計", "運動項目合計", "食事", "整容", "清拭",
+            "更衣上半身", "更衣下半身", "トイレ動作", "排尿管理",
+            "排便管理", "ベッド・椅子・車椅子移乗", "トイレ移乗",
+            "浴槽・シャワー移乗", "歩行・車椅子", "階段",
+            "認知項目合計", "理解", "表出", "社会的交流", "問題解決", "記憶"
         ]
     }
-    private var dictionaryFIMItemAndNum: [String: Int]  { [String: Int](uniqueKeysWithValues: zip(fimItem, fimItemNum)) }
-
-
+    // なくても良い
+    private var dictionaryFIMItemAndNum: [String: Int] {
+        [String: Int](uniqueKeysWithValues: zip(fimItemTitle, fimItemNum))
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-
 }
 
-extension FIMViewController: UITableViewDelegate,UITableViewDataSource {
+extension FIMViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dictionaryFIMItemAndNum.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DetailFIMTableViewCell
+
+        cell.configure(
+            fimItemTitle: fimItemTitle[indexPath.row] ,
+            fimItemNum: String(fimItemNum[indexPath.row])
+        )
+
+        return cell
     }
-
-
 }

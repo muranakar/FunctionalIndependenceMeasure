@@ -8,6 +8,11 @@
 import UIKit
 
 class DetailFIMTableViewCell: UITableViewCell {
+    @IBOutlet private weak var fimItemTitleLabel: UILabel!
+    @IBOutlet private weak var fimItemNumLabel: UILabel!
 
-
+    func configure(fimItemTitle: String, fimItemNum: String) {
+        fimItemTitleLabel.text = fimItemTitle
+        fimItemNumLabel.text = fimItemNum
+    }
 }
