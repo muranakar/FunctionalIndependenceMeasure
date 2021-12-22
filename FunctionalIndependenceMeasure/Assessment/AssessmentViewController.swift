@@ -49,7 +49,7 @@ class AssessmentViewController: UIViewController {
     @IBAction private func update(sender: UIButton) {
         textView.text = dictionaryButtonAndString[sender]
     }
-    //　一つのボタンが押された際、そのボタン以外は非選択状態にする
+    //　一つのボタンが押された際、そのボタン以外は未選択状態にする
     @IBAction private func change(sender: UIButton) {
         buttons.forEach { (button: UIButton) in
             button.isSelected = (button === sender)
@@ -71,7 +71,7 @@ class AssessmentViewController: UIViewController {
             fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
             performSegue(withIdentifier: "fim", sender: nil)
         } else {
-        updateScreenAndUIButtonIsSelectedFalse()
+            updateScreenAndUIButtonIsSelectedFalse()
         }
     }
 
@@ -169,8 +169,7 @@ class AssessmentViewController: UIViewController {
 
         do {
             guard let data = data else {
-                print("アンラップ失敗")
-                return
+                fatalError("パース不可")
             }
             let decoder = JSONDecoder()
             FimData = try decoder.decode([FimItem].self, from: data)

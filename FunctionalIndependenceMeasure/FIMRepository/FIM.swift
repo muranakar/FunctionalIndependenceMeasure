@@ -79,6 +79,10 @@ class FIM: Object {
         comprehension + expression + socialInteraction + problemSolving + memory
     }
 
+    var sumAll: Int {
+        eating + grooming + bathing + dressingUpperBody + dressingLowerBody + toileting + bladderManagement + bowelManagement + transfersBedChairWheelchair + transfersToilet + transfersBathShower + walkWheelchair + stairs + comprehension + expression + socialInteraction + problemSolving + memory
+    }
+
     var uuid: UUID? {
         UUID(uuidString: uuidString)
     }
