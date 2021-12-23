@@ -8,7 +8,6 @@
 import UIKit
 
 class FIMTableViewCell: UITableViewCell {
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

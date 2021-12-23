@@ -13,6 +13,7 @@ class TargetPersonTableViewController: UITableViewController {
     var editingTargetPersonUUID: UUID?
     let fimRepository = FIMRepository()
     override func viewDidLoad() {
+        super.viewDidLoad()
         tableView.reloadData()
     }
 

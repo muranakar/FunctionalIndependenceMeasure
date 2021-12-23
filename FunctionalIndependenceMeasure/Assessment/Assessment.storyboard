@@ -86,15 +86,6 @@
                                     <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AhU-Cw-UU8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baQ-79-6VF">
-                                <rect key="frame" x="139" y="759" width="127" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="決定"/>
-                                <connections>
-                                    <action selector="decide:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CDE-hV-cJL"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWV-hI-SCE">
                                 <rect key="frame" x="20" y="107" width="374" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -111,6 +102,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baQ-79-6VF">
+                                <rect key="frame" x="142" y="703" width="127" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="決定"/>
+                                <connections>
+                                    <action selector="decide:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CDE-hV-cJL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -132,7 +132,7 @@
                         <outlet property="button7" destination="haN-vn-iq9" id="w9N-li-jXY"/>
                         <outlet property="label" destination="LWV-hI-SCE" id="Wjl-FM-xur"/>
                         <outlet property="textView" destination="Jmw-OI-sZn" id="Wes-Za-k0v"/>
-                        <segue destination="lpU-Ro-mFI" kind="presentation" identifier="fim" modalPresentationStyle="fullScreen" id="bbJ-Zr-fGO"/>
+                        <segue destination="lpU-Ro-mFI" kind="presentation" identifier="detailFIM" modalPresentationStyle="fullScreen" id="bbJ-Zr-fGO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -140,10 +140,10 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="79.6875"/>
         </scene>
-        <!--FIM-->
+        <!--DetailFIM-->
         <scene sceneID="Vtf-G4-lub">
             <objects>
-                <viewControllerPlaceholder storyboardName="FIM" id="lpU-Ro-mFI" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="DetailFIM" id="lpU-Ro-mFI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60t-DR-lTa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1795" y="83"/>

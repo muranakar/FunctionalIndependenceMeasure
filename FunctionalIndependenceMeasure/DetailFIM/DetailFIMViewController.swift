@@ -1,17 +1,16 @@
 //
-//  FIMViewController.swift
-//  Functional Independence Measure
+//  DetailFIMViewController.swift
+//  FunctionalIndependenceMeasure
 //
-//  Created by 村中令 on 2021/12/07.
+//  Created by 村中令 on 2021/12/24.
 //
 
 import UIKit
 
-class FIMViewController: UIViewController {
+class DetailFIMViewController: UIViewController {
     //　画面遷移で値を受け取る変数
     var fimUUID: UUID?
-// 試し↓　消すべき
-    @IBOutlet weak var label: UILabel!
+
     private let fimRepository = FIMRepository()
 
     private var fim: FIM {
@@ -61,14 +60,19 @@ class FIMViewController: UIViewController {
     private var dictionaryFIMItemAndNum: [String: Int] {
         [String: Int](uniqueKeysWithValues: zip(fimItemTitle, fimItemNum))
     }
+    @IBOutlet weak private var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = String(fim.sumAll)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 }
 
-extension FIMViewController: UITableViewDelegate, UITableViewDataSource {
+extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dictionaryFIMItemAndNum.count
     }
@@ -94,3 +98,6 @@ extension FIMViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+
+

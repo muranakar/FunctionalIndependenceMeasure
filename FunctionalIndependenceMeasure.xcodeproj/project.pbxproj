@@ -37,6 +37,8 @@
 		B2549E40276E84760026127D /* FIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2549E3F276E84760026127D /* FIM.storyboard */; };
 		B2549E42276E9E970026127D /* InputFIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2549E41276E9E970026127D /* InputFIMTableViewController.swift */; };
 		B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */; };
+		B2767C4B27750F15004E59C3 /* DetailFIMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2767C4A27750F15004E59C3 /* DetailFIMViewController.swift */; };
+		B2767C4D27750FCC004E59C3 /* DetailFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */; };
 		B2C301302773CE7C0051FC1A /* DetailFIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,8 @@
 		B2549E3F276E84760026127D /* FIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FIM.storyboard; sourceTree = "<group>"; };
 		B2549E41276E9E970026127D /* InputFIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFIMTableViewController.swift; sourceTree = "<group>"; };
 		B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextlBoldTableViewCell.swift; sourceTree = "<group>"; };
+		B2767C4A27750F15004E59C3 /* DetailFIMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFIMViewController.swift; sourceTree = "<group>"; };
+		B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailFIM.storyboard; sourceTree = "<group>"; };
 		B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFIMTableViewCell.swift; sourceTree = "<group>"; };
 		B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunctionalIndependenceMeasure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B651F3ECDBB9AA1F5A0B30F6 /* Pods-FunctionalIndependenceMeasure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.release.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 				B2377177275EAAFC00A48640 /* TargetPerson */,
 				B237717F275EAC0100A48640 /* Assessment */,
 				B2377178275EAB2100A48640 /* FIM */,
+				B2767C5127752BFE004E59C3 /* InputFIM */,
+				B2767C5027752BB3004E59C3 /* DetailFIM */,
 			);
 			path = FunctionalIndependenceMeasure;
 			sourceTree = "<group>";
@@ -163,12 +169,7 @@
 				B2377174275EAAB100A48640 /* FIMTableViewController.swift */,
 				B237717D275EABB600A48640 /* FIMTableViewCell.swift */,
 				B2377170275EAA2F00A48640 /* FIMViewController.swift */,
-				B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */,
-				B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */,
-				B2549E41276E9E970026127D /* InputFIMTableViewController.swift */,
 				B20E68DC276DB723008CD04E /* FIMTable.storyboard */,
-				B20E68DF276DB74D008CD04E /* InputFIM.storyboard */,
-				B2549E3F276E84760026127D /* FIM.storyboard */,
 			);
 			path = FIM;
 			sourceTree = "<group>";
@@ -192,6 +193,27 @@
 				B2377182275EACE400A48640 /* FIMRepository.swift */,
 			);
 			path = FIMRepository;
+			sourceTree = "<group>";
+		};
+		B2767C5027752BB3004E59C3 /* DetailFIM */ = {
+			isa = PBXGroup;
+			children = (
+				B2767C4A27750F15004E59C3 /* DetailFIMViewController.swift */,
+				B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */,
+				B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */,
+				B2549E3F276E84760026127D /* FIM.storyboard */,
+				B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */,
+			);
+			path = DetailFIM;
+			sourceTree = "<group>";
+		};
+		B2767C5127752BFE004E59C3 /* InputFIM */ = {
+			isa = PBXGroup;
+			children = (
+				B2549E41276E9E970026127D /* InputFIMTableViewController.swift */,
+				B20E68DF276DB74D008CD04E /* InputFIM.storyboard */,
+			);
+			path = InputFIM;
 			sourceTree = "<group>";
 		};
 		D903B93819F5545EF620C84B /* Pods */ = {
@@ -271,6 +293,7 @@
 				B2377158275EA64E00A48640 /* Assets.xcassets in Resources */,
 				B20E68E2276DBDEA008CD04E /* FIM.json in Resources */,
 				B20E68E0276DB74E008CD04E /* InputFIM.storyboard in Resources */,
+				B2767C4D27750FCC004E59C3 /* DetailFIM.storyboard in Resources */,
 				B20E68DD276DB723008CD04E /* FIMTable.storyboard in Resources */,
 				B22FBF00275FFCB200DA71C8 /* TargetPerson.storyboard in Resources */,
 				B22FBEFE275FFA8600DA71C8 /* InputAssessor.storyboard in Resources */,
@@ -363,6 +386,7 @@
 				B2549E42276E9E970026127D /* InputFIMTableViewController.swift in Sources */,
 				B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */,
 				B2377151275EA64D00A48640 /* SceneDelegate.swift in Sources */,
+				B2767C4B27750F15004E59C3 /* DetailFIMViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

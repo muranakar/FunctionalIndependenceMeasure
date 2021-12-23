@@ -12,6 +12,7 @@ class AssessmentViewController: UIViewController {
     var targetPersonUUID: UUID?
     // 画面遷移先へ値を渡す変数
     var fimUUID: UUID?
+    var fim: FIM?
 
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var textView: UITextView!
@@ -57,19 +58,52 @@ class AssessmentViewController: UIViewController {
     }
 
     @IBAction private func decide(_ sender: Any) {
-        fimItemCount += 1
-        let button = buttons.filter { $0.isSelected == true }.first
-        guard let num = dictionaryButtonAndNum[button!] else { return }
+// fimItemCountの位置を十分に考えずに配置。
+        guard let button = buttons.filter { $0.isSelected == true }.first else {
+            //アラートの設定は不十分。未設定
+            // actionを追加
+            alertController.addAction(cancelAction)
+            alertController.addAction(defaultAction)
+            alertController.addAction(destructiveAction)
+
+            // UIAlertControllerの起動
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        guard let num = dictionaryButtonAndNum[button] else { return }
         assessmentResultFIM.append(num)
+        fimItemCount += 1
 
         if fimItemCount == 18 {
-            let fim = createFimFromArrayAssessmentResult()
-            fimUUID = fim.uuid
+            fim = FIM(
+                eating: assessmentResultFIM[0],
+                grooming: assessmentResultFIM[1],
+                bathing: assessmentResultFIM[2],
+                dressingUpperBody: assessmentResultFIM[3],
+                dressingLowerBody: assessmentResultFIM[4],
+                toileting: assessmentResultFIM[5],
+                bladderManagement: assessmentResultFIM[6],
+                bowelManagement: assessmentResultFIM[7],
+                transfersBedChairWheelchair: assessmentResultFIM[8],
+                transfersToilet: assessmentResultFIM[9],
+                transfersBathShower: assessmentResultFIM[10],
+                walkWheelchair: assessmentResultFIM[11],
+                stairs: assessmentResultFIM[12],
+                comprehension: assessmentResultFIM[13],
+                expression: assessmentResultFIM[14],
+                socialInteraction: assessmentResultFIM[15],
+                problemSolving: assessmentResultFIM[16],
+                memory: assessmentResultFIM[17]
+            )
+//            fimUUID = fim.uuid
             guard let targetPersonUUID = targetPersonUUID else {
                 fatalError("targetPersonUUIDの中身がない。")
             }
+            guard let fim = fim else {
+                fatalError("FIMの中身がない。")
+            }
             fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
-            performSegue(withIdentifier: "fim", sender: nil)
+            performSegue(withIdentifier: "detailFIM", sender: nil)
         } else {
             updateScreenAndUIButtonIsSelectedFalse()
         }
@@ -130,15 +164,47 @@ class AssessmentViewController: UIViewController {
     // MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
-        if let fimVC = nav.topViewController as? FIMViewController {
+        if let detailFIMVC = nav.topViewController as? DetailFIMViewController {
             switch segue.identifier ?? "" {
-            case "fim":
-                fimVC.fimUUID = fimUUID
+            case "detailFIM":
+                detailFIMVC.fimUUID = fim?.uuid
             default:
                 break
             }
         }
     }
+    // MARK: - UIAlert
+    let alertController: UIAlertController =
+                UIAlertController(title: "alert",
+                          message: "yes or no",
+                          preferredStyle: .alert)
+
+    // Default のaction
+    let defaultAction: UIAlertAction =
+                UIAlertAction(title: "Default",
+                      style: .default,
+                      handler: {
+                        (action: UIAlertAction!) -> Void in
+                        // 処理
+            })
+
+    // Destructive のaction
+    let destructiveAction: UIAlertAction =
+                UIAlertAction(title: "Destructive",
+                      style: .destructive,
+                      handler: {
+                        (action: UIAlertAction!) -> Void in
+                        // 処理
+                })
+
+    // Cancel のaction
+    let cancelAction: UIAlertAction =
+                UIAlertAction(title: "Cancel",
+                      style: .cancel,
+                      handler: {
+                        (action: UIAlertAction!) -> Void in
+                        // 処理
+                })
 
     // MARK: - JSONファイルのデコーダー
     private var fimJSONDecoder: [FimJSONDecoder] = []
