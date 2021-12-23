@@ -62,23 +62,24 @@ class TargetPersonTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        fimRepository.loadTargetPerson(AssessorUUID: assessorUUID!).count
+        fimRepository.loadTargetPerson(assessorUUID: assessorUUID!).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TargetPersonTableViewCell
-        let tagetPerson = fimRepository.loadTargetPerson(AssessorUUID: assessorUUID!)[indexPath.row]
+        let tagetPerson = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row]
         cell.configue(name: tagetPerson.name)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedTargetPersonUUID = fimRepository.loadTargetPerson(AssessorUUID: assessorUUID!)[indexPath.row].uuid
+        selectedTargetPersonUUID = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid
         performSegue(withIdentifier: "next", sender: nil)
     }
 
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        editingTargetPersonUUID = fimRepository.loadTargetPerson(AssessorUUID: assessorUUID!)[indexPath.row].uuid
+        editingTargetPersonUUID = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid
         performSegue(withIdentifier: "edit", sender: nil)
     }
 
@@ -86,7 +87,7 @@ class TargetPersonTableViewController: UITableViewController {
                             commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        guard let uuid = fimRepository.loadTargetPerson(AssessorUUID: assessorUUID!)[indexPath.row].uuid else { return }
+        guard let uuid = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid else { return }
         fimRepository.removeTargetPerson(targetPersonUUID: uuid)
         tableView.reloadData()
     }

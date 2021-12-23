@@ -34,7 +34,7 @@ class TargetPerson: Object {
     var uuid: UUID? {
         UUID(uuidString: uuidString)
     }
-    let Assessors = LinkingObjects(fromType: Assessor.self, property: "targetPersons")
+    let assessors = LinkingObjects(fromType: Assessor.self, property: "targetPersons")
 
     override class func primaryKey() -> String? {
         "uuidString"
@@ -72,7 +72,11 @@ class FIM: Object {
 
     let targetPersons = LinkingObjects(fromType: TargetPerson.self, property: "FIM")
     var sumTheMotorSubscaleIncludes: Int {
-        eating + grooming + bathing + dressingUpperBody + dressingLowerBody + toileting + bladderManagement + bowelManagement + transfersBedChairWheelchair + transfersToilet + transfersBathShower + walkWheelchair + stairs
+        eating + grooming + bathing + dressingUpperBody +
+        dressingLowerBody + toileting + bladderManagement +
+        bowelManagement + transfersBedChairWheelchair +
+        transfersToilet + transfersBathShower +
+        walkWheelchair + stairs
     }
 
     var sumTheCognitionSubscaleIncludes: Int {
@@ -80,7 +84,12 @@ class FIM: Object {
     }
 
     var sumAll: Int {
-        eating + grooming + bathing + dressingUpperBody + dressingLowerBody + toileting + bladderManagement + bowelManagement + transfersBedChairWheelchair + transfersToilet + transfersBathShower + walkWheelchair + stairs + comprehension + expression + socialInteraction + problemSolving + memory
+        eating + grooming + bathing + dressingUpperBody + dressingLowerBody
+        + toileting + bladderManagement + bowelManagement
+        + transfersBedChairWheelchair + transfersToilet
+        + transfersBathShower + walkWheelchair
+        + stairs + comprehension + expression
+        + socialInteraction + problemSolving + memory
     }
 
     var uuid: UUID? {

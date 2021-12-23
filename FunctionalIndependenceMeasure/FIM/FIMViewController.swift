@@ -72,13 +72,23 @@ extension FIMViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DetailFIMTableViewCell
+        // swiftlint:disable:next force_cast
+        let boldTextcell = tableView.dequeueReusableCell(withIdentifier: "cellBold") as! DetailTextBoldFIMTableViewCell
 
+        if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 15 {
+            boldTextcell.configure(
+                fimItemTitle: fimItemTitle[indexPath.row],
+                fimItemNum: String(fimItemNum[indexPath.row])
+            )
+            return boldTextcell
+        } else {
         cell.configure(
             fimItemTitle: fimItemTitle[indexPath.row] ,
             fimItemNum: String(fimItemNum[indexPath.row])
         )
-
-        return cell
+            return cell
+        }
     }
 }

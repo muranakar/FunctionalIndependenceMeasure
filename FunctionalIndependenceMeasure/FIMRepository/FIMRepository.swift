@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 final class FIMRepository {
+    // swiftlint:disable:next force_cast
     private let realm = try! Realm()
 
     private var notificationToken: NotificationToken?
@@ -41,15 +42,18 @@ final class FIMRepository {
             ofType: TargetPerson.self,
             forPrimaryKey: targetPersonUUID.uuidString
         ) else { return nil }
-        return fetchedTargetPerson.Assessors.first
+        return fetchedTargetPerson.assessors.first
     }
 
     func apppendAssessor(assesor: Assessor) {
+        // swiftlint:disable:next force_cast
         try! realm.write{
             realm.add(assesor)
         }
     }
     func updateAssessor(uuid: UUID, name: String) {
+        // swiftlint:disable:next force_cast
+// swiftlint:disable:next force_cast
         try! realm.write() {
             let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: uuid.uuidString)
             assessor?.name = name
@@ -58,14 +62,15 @@ final class FIMRepository {
 
     func removeAssessor(uuid: UUID) {
         guard let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: uuid.uuidString) else { return }
+        // swiftlint:disable:next force_cast
         try! realm.write() {
             realm.delete(assessor)
         }
     }
 
     // MARK: - TargetPersonRepository
-    func loadTargetPerson(AssessorUUID: UUID) -> [TargetPerson] {
-        let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: AssessorUUID.uuidString)
+    func loadTargetPerson(assessorUUID: UUID) -> [TargetPerson] {
+        let assessor = realm.object(ofType: Assessor.self, forPrimaryKey: assessorUUID.uuidString)
         guard let targetPerson = assessor?.targetPersons else { return [] }
         return Array<TargetPerson>(targetPerson)
     }
@@ -81,7 +86,11 @@ final class FIMRepository {
     }
 
     func appendTargetPerson(assessorUUID: UUID, targetPerson: TargetPerson) {
-        guard let list = realm.object(ofType: Assessor.self, forPrimaryKey: assessorUUID.uuidString)?.targetPersons else { return }
+        guard let list = realm.object(
+            ofType: Assessor.self,
+            forPrimaryKey: assessorUUID.uuidString
+        )?.targetPersons else { return }
+        // swiftlint:disable:next force_cast
         try! realm.write {
             list.append(targetPerson)
         }
@@ -98,7 +107,8 @@ final class FIMRepository {
         guard let fetchedTagetPerson = realm.object(
             ofType: TargetPerson.self,
             forPrimaryKey: targetPersonUUID.uuidString
-        ) else { return }
+        ) else { return }// swiftlint:disable:next force_cast
+        // swiftlint:disable:next force_cast
         try! realm.write {
             realm.delete(fetchedTagetPerson)
         }
@@ -121,6 +131,7 @@ final class FIMRepository {
             ofType: TargetPerson.self,
             forPrimaryKey: targetPersonUUID.uuidString
         )?.FIM else { return }
+        // swiftlint:disable:next force_cast
         try! realm.write {
             fim.createdAt = Date()
             list.append(fim)
@@ -128,6 +139,7 @@ final class FIMRepository {
     }
 
     func updateFIM(fim: FIM) {
+        // swiftlint:disable:next force_cast
         try! realm.write {
             fim.updatedAt = Date()
             realm.add(fim, update: .modified)
@@ -154,6 +166,7 @@ final class FIMRepository {
 
     func removeFIM(fimUUID: UUID) {
         guard let fetchedFIM = realm.object(ofType: FIM.self, forPrimaryKey: fimUUID.uuidString) else { return }
+        // swiftlint:disable:next force_cast
         try! realm.write {
             realm.delete(fetchedFIM)
         }

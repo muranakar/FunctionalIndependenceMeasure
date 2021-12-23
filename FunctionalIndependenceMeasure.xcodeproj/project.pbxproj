@@ -36,6 +36,7 @@
 		B23EA88B27614BC2000B64C7 /* FunctionSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */; };
 		B2549E40276E84760026127D /* FIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2549E3F276E84760026127D /* FIM.storyboard */; };
 		B2549E42276E9E970026127D /* InputFIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2549E41276E9E970026127D /* InputFIMTableViewController.swift */; };
+		B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */; };
 		B2C301302773CE7C0051FC1A /* DetailFIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FunctionSelection.storyboard; sourceTree = "<group>"; };
 		B2549E3F276E84760026127D /* FIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FIM.storyboard; sourceTree = "<group>"; };
 		B2549E41276E9E970026127D /* InputFIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFIMTableViewController.swift; sourceTree = "<group>"; };
+		B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextlBoldTableViewCell.swift; sourceTree = "<group>"; };
 		B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFIMTableViewCell.swift; sourceTree = "<group>"; };
 		B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunctionalIndependenceMeasure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B651F3ECDBB9AA1F5A0B30F6 /* Pods-FunctionalIndependenceMeasure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.release.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				B237717D275EABB600A48640 /* FIMTableViewCell.swift */,
 				B2377170275EAA2F00A48640 /* FIMViewController.swift */,
 				B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */,
+				B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */,
 				B2549E41276E9E970026127D /* InputFIMTableViewController.swift */,
 				B20E68DC276DB723008CD04E /* FIMTable.storyboard */,
 				B20E68DF276DB74D008CD04E /* InputFIM.storyboard */,
@@ -347,6 +350,7 @@
 				B237717A275EAB8F00A48640 /* AssessorTableViewCell.swift in Sources */,
 				B2377175275EAAB100A48640 /* FIMTableViewController.swift in Sources */,
 				B237716F275EAA0F00A48640 /* AssessmentViewController.swift in Sources */,
+				B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */,
 				B2377171275EAA2F00A48640 /* FIMViewController.swift in Sources */,
 				B2377165275EA6BC00A48640 /* TargetPersonTableViewController.swift in Sources */,
 				B2C301302773CE7C0051FC1A /* DetailFIMTableViewCell.swift in Sources */,

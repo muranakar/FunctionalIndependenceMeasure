@@ -65,6 +65,7 @@ class AssessorTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AssessorTableViewCell
         let assessor = fimRepository.loadAssessor()[indexPath.row]
         cell.configue(assessor: assessor)

@@ -71,6 +71,7 @@ class FIMTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! FIMTableViewCell
         let fim = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row]
         // 詳細の設定を入れていく。
