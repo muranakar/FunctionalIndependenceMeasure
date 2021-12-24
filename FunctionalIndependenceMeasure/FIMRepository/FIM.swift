@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-// MARK: - Assessor
+// MARK: - Assessor 評価者
 class Assessor: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var name = ""
@@ -26,7 +26,7 @@ class Assessor: Object {
     }
 }
 
-// MARK: - TagetPerson
+// MARK: - TagetPerson　対象者
 class TargetPerson: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var name = ""
@@ -46,7 +46,7 @@ class TargetPerson: Object {
     }
 }
 
-    // MARK: - FIM
+    // MARK: - FIM　評価指標
 class FIM: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var eating = 0
@@ -71,6 +71,7 @@ class FIM: Object {
     @objc dynamic var updatedAt: Date?
 
     let targetPersons = LinkingObjects(fromType: TargetPerson.self, property: "FIM")
+    ///　運動項目合計値
     var sumTheMotorSubscaleIncludes: Int {
         eating + grooming + bathing + dressingUpperBody +
         dressingLowerBody + toileting + bladderManagement +
@@ -78,11 +79,11 @@ class FIM: Object {
         transfersToilet + transfersBathShower +
         walkWheelchair + stairs
     }
-
+    ///　認知項目合計値
     var sumTheCognitionSubscaleIncludes: Int {
         comprehension + expression + socialInteraction + problemSolving + memory
     }
-
+    ///　全合計値
     var sumAll: Int {
         eating + grooming + bathing + dressingUpperBody + dressingLowerBody
         + toileting + bladderManagement + bowelManagement
