@@ -31,7 +31,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="過去評価一覧"/>
                                 <connections>
-                                    <segue destination="xag-u6-nJF" kind="presentation" identifier="fimTabel" modalPresentationStyle="fullScreen" id="2PH-1L-YZt"/>
+                                    <segue destination="xag-u6-nJF" kind="presentation" identifier="fimTable" modalPresentationStyle="fullScreen" id="2PH-1L-YZt"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -46,7 +46,7 @@ class TargetPerson: Object {
     }
 }
 
-    // MARK: - FIM　評価指標
+// MARK: - FIM　評価指標
 class FIM: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var eating = 0
@@ -119,25 +119,34 @@ class FIM: Object {
         expression: Int,
         socialInteraction: Int,
         problemSolving: Int,
-        memory: Int) {
-            self.init()
-            self.eating = eating
-            self.grooming = grooming
-            self.bathing = bathing
-            self.dressingUpperBody = dressingUpperBody
-            self.dressingLowerBody = dressingLowerBody
-            self.toileting = toileting
-            self.bladderManagement = bladderManagement
-            self.bowelManagement = bowelManagement
-            self.transfersBedChairWheelchair = transfersBedChairWheelchair
-            self.transfersToilet = transfersToilet
-            self.transfersBathShower = transfersBathShower
-            self.walkWheelchair = walkWheelchair
-            self.stairs = stairs
-            self.comprehension = comprehension
-            self.expression = expression
-            self.socialInteraction = socialInteraction
-            self.problemSolving = problemSolving
-            self.memory = memory
+        memory: Int,
+        createdAt: Date? = nil,
+        updatedAt: Date? = nil
+    ) {
+        self.init()
+        self.eating = eating
+        self.grooming = grooming
+        self.bathing = bathing
+        self.dressingUpperBody = dressingUpperBody
+        self.dressingLowerBody = dressingLowerBody
+        self.toileting = toileting
+        self.bladderManagement = bladderManagement
+        self.bowelManagement = bowelManagement
+        self.transfersBedChairWheelchair = transfersBedChairWheelchair
+        self.transfersToilet = transfersToilet
+        self.transfersBathShower = transfersBathShower
+        self.walkWheelchair = walkWheelchair
+        self.stairs = stairs
+        self.comprehension = comprehension
+        self.expression = expression
+        self.socialInteraction = socialInteraction
+        self.problemSolving = problemSolving
+        self.memory = memory
+        if let createdAt = createdAt {
+             self.createdAt = createdAt
         }
+        if let updatedAt = updatedAt {
+            self.updatedAt = updatedAt
+        }
+    }
 }

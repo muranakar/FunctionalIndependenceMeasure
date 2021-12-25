@@ -131,6 +131,7 @@
 				B2377184275EACF100A48640 /* FIMRepository */,
 				B2377176275EAAD400A48640 /* Assessor */,
 				B2377177275EAAFC00A48640 /* TargetPerson */,
+				B29FFC3D27766BF200DD0865 /* FunctionSelectionViewController */,
 				B237717F275EAC0100A48640 /* Assessment */,
 				B2377178275EAB2100A48640 /* FIM */,
 				B2767C5127752BFE004E59C3 /* InputFIM */,
@@ -177,10 +178,8 @@
 		B237717F275EAC0100A48640 /* Assessment */ = {
 			isa = PBXGroup;
 			children = (
-				B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */,
 				B237716E275EAA0F00A48640 /* AssessmentViewController.swift */,
 				B20E68E1276DBDE9008CD04E /* FIM.json */,
-				B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */,
 				B20E68DA276DB6C1008CD04E /* Assessment.storyboard */,
 			);
 			path = Assessment;
@@ -214,6 +213,15 @@
 				B20E68DF276DB74D008CD04E /* InputFIM.storyboard */,
 			);
 			path = InputFIM;
+			sourceTree = "<group>";
+		};
+		B29FFC3D27766BF200DD0865 /* FunctionSelectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */,
+				B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */,
+			);
+			path = FunctionSelectionViewController;
 			sourceTree = "<group>";
 		};
 		D903B93819F5545EF620C84B /* Pods */ = {

@@ -9,13 +9,9 @@ import UIKit
 
 class TargetPersonTableViewController: UITableViewController {
     var assessorUUID: UUID?
-    var selectedTargetPersonUUID: UUID?
-    var editingTargetPersonUUID: UUID?
-    let fimRepository = FIMRepository()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.reloadData()
-    }
+    private var selectedTargetPersonUUID: UUID?
+    private var editingTargetPersonUUID: UUID?
+    private let fimRepository = FIMRepository()
 
     // MARK: - Segue- TargetPersonTableViewController →　InputTargetPersonViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

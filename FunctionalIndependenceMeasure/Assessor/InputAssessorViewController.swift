@@ -13,30 +13,32 @@ class InputAssessorViewController: UIViewController {
         case edit(UUID?)
     }
     var mode: Mode?
-    let fimRepository = FIMRepository()
+    private let fimRepository = FIMRepository()
     private (set) var editingAssessorUUID: UUID?
     private (set) var assessor: Assessor?
     @IBOutlet weak private var assessorNameTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let mode = mode else {
-            fatalError("mode is nil.")
+            fatalError("mode の中身が入っていない")
         }
-        // MARK: - テキストフィールドに名前を設定
         assessorNameTextField.text = {
             switch mode {
             case .input:
                 return ""
             case let .edit(editingAssessorUUID):
                 guard let editingAssessorUUID = editingAssessorUUID else {
-                    fatalError("editingAssessorUUID is nil")
-                    return nil
+                    fatalError("editingAssessorUUID の中身が入っていない")
                 }
-                let assesorName = fimRepository.loadAssessor(assessorUUID: editingAssessorUUID)?.name
+                let assesorName =
+                fimRepository.loadAssessor(assessorUUID: editingAssessorUUID)?.name
                 return assesorName
             }
         }()
     }
+
+// MARK: - 評価者データを保存するUIButtonのIBAction
     @IBAction private func saveAction(_ sender: Any) {
         guard let mode = mode else { return }
 

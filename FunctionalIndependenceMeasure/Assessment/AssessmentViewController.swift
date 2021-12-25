@@ -12,7 +12,8 @@ class AssessmentViewController: UIViewController {
     var targetPersonUUID: UUID?
     // 画面遷移先へ値を渡す変数
     var fimUUID: UUID?
-    var fim: FIM?
+    //　FIMの評価結果を入れて、Repositoryのメソッドに代入するための変数
+    private var fim: FIM?
 
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var textView: UITextView!
@@ -24,33 +25,66 @@ class AssessmentViewController: UIViewController {
     @IBOutlet private weak var button6: UIButton!
     @IBOutlet private weak var button7: UIButton!
 
+    private let fimRepository = FIMRepository()
+
+    // FIMの項目を回答した回数のcountする変数
     private var fimItemCount = 0
-    private var buttons: [UIButton] = []
-    private var fimItemText: [String] = []
+    private var buttons: [UIButton] {
+        [
+            button1, button2, button3, button4, button5, button6, button7
+        ]
+    }
+
+    // 各ボタンと関連付ける際に、用いる文字列の配列。
+    // この配列は、FIMの項目ごとに、配列の文字列が変化する。
+    private var fimItemText: [String] {
+        [
+            fimScoringCriteria[fimItemCount].one,
+            fimScoringCriteria[fimItemCount].two,
+            fimScoringCriteria[fimItemCount].three,
+            fimScoringCriteria[fimItemCount].four,
+            fimScoringCriteria[fimItemCount].five,
+            fimScoringCriteria[fimItemCount].six,
+            fimScoringCriteria[fimItemCount].seven
+        ]
+    }
+    //　UIButtonのTag管理を避けるために、ボタンと数字を関連付けるために、用いる数字の配列
     private var fimNum = [1, 2, 3, 4, 5, 6, 7]
-    private var dictionaryButtonAndString: [UIButton: String] = [:]
-    private var dictionaryButtonAndNum: [UIButton: Int] = [:]
+
+    //　UIButtonが押された際に、そのボタンに合った文章を管理するため、辞書型で関連付けた。
+    private var dictionaryButtonAndString: [UIButton: String] {
+        [UIButton: String](uniqueKeysWithValues: zip(buttons, fimItemText))
+    }
+
+    //　UIButtonが押された際に、そのボタンに合った数字（評価結果）を管理するため、辞書型で関連付けた。
+    private var dictionaryButtonAndNum: [UIButton: Int] {
+        [UIButton: Int](uniqueKeysWithValues: zip(buttons, fimNum))
+    }
+
+    //  FIM項目の結果の数値を、配列で管理。→　WHY：最後にまとめて、FIMのモデルオブジェクトに代入するため。
     private var assessmentResultFIM: [Int] = []
 
-    let fimRepository = FIMRepository()
+    // JSONファイルから、デコードされた構造体を、配列で管理。
+    private var fimScoringCriteria: [FimScoringCriteria] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        decoderFimJsonFile()
+        decodeFimJsonFile()
+        alertController.addAction(defaultAction)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        label.text = fimJSONDecoder[fimItemCount].fimItem
-        textView.text = fimJSONDecoder[fimItemCount].attention
-        updateDictionary()
+        label.text = fimScoringCriteria[fimItemCount].fimItem
+        textView.text = fimScoringCriteria[fimItemCount].attention
     }
 
     //　ボタンが選択された際に、そのボタンと関連づけられた文字列を、テキストビューに反映させる。
     @IBAction private func update(sender: UIButton) {
         textView.text = dictionaryButtonAndString[sender]
     }
-    //　一つのボタンが押された際、そのボタン以外は未選択状態にする
+
+    //　一つのボタンが押された際、そのボタン以外は未選択状態にする。
     @IBAction private func change(sender: UIButton) {
         buttons.forEach { (button: UIButton) in
             button.isSelected = (button === sender)
@@ -58,19 +92,15 @@ class AssessmentViewController: UIViewController {
     }
 
     @IBAction private func decide(_ sender: Any) {
-// fimItemCountの位置を十分に考えずに配置。
-        guard let button = buttons.filter { $0.isSelected == true }.first else {
-            //アラートの設定は不十分。未設定
-            // actionを追加
-            alertController.addAction(cancelAction)
-            alertController.addAction(defaultAction)
-            alertController.addAction(destructiveAction)
-
+        // fimItemCountの位置を十分に考慮せずに配置。
+        // 選択状態であるボタンを、フィルタリングして、一つだけ取り出す。（一つしか選択状態でないから、firstを使用）
+        guard let button = buttons.filter({ $0.isSelected == true }).first else {
             // UIAlertControllerの起動
             present(alertController, animated: true, completion: nil)
             return
         }
         guard let num = dictionaryButtonAndNum[button] else { return }
+        //　結果の配列に選択されたボタンと関連した数字を加える。
         assessmentResultFIM.append(num)
         fimItemCount += 1
 
@@ -93,75 +123,29 @@ class AssessmentViewController: UIViewController {
                 expression: assessmentResultFIM[14],
                 socialInteraction: assessmentResultFIM[15],
                 problemSolving: assessmentResultFIM[16],
-                memory: assessmentResultFIM[17]
+                memory: assessmentResultFIM[17],
+                createdAt: Date()
             )
-//            fimUUID = fim.uuid
             guard let targetPersonUUID = targetPersonUUID else {
-                fatalError("targetPersonUUIDの中身がない。")
+                fatalError("targetPersonUUIDの中身がない。メソッド名：[\(#function)]")
             }
             guard let fim = fim else {
-                fatalError("FIMの中身がない。")
+                fatalError("FIMの中身がない。メソッド名：[\(#function)]")
             }
             fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
             performSegue(withIdentifier: "detailFIM", sender: nil)
         } else {
-            updateScreenAndUIButtonIsSelectedFalse()
+            updateScreenAndAllUIButtonIsSelectedFalse()
         }
     }
 
-    private func updateDictionary() {
-        fimItemText = { () -> [String] in
-            let texts = [
-                fimJSONDecoder[fimItemCount].one,
-                fimJSONDecoder[fimItemCount].two,
-                fimJSONDecoder[fimItemCount].three,
-                fimJSONDecoder[fimItemCount].four,
-                fimJSONDecoder[fimItemCount].five,
-                fimJSONDecoder[fimItemCount].six,
-                fimJSONDecoder[fimItemCount].seven
-            ]
-            return texts
-        }()
-        buttons = [
-            button1, button2, button3, button4, button5, button6, button7
-        ]
-        dictionaryButtonAndString = { [UIButton: String](uniqueKeysWithValues: zip(buttons, fimItemText)) }()
-        dictionaryButtonAndNum = { [UIButton: Int](uniqueKeysWithValues: zip(buttons, fimNum))}()
-    }
-
-    private func createFimFromArrayAssessmentResult() -> FIM {
-        // creatAt updateAtをどのタイミングでいれるか。
-        let fim =
-        FIM(
-            eating: assessmentResultFIM[0],
-            grooming: assessmentResultFIM[1],
-            bathing: assessmentResultFIM[2],
-            dressingUpperBody: assessmentResultFIM[3],
-            dressingLowerBody: assessmentResultFIM[4],
-            toileting: assessmentResultFIM[5],
-            bladderManagement: assessmentResultFIM[6],
-            bowelManagement: assessmentResultFIM[7],
-            transfersBedChairWheelchair: assessmentResultFIM[8],
-            transfersToilet: assessmentResultFIM[9],
-            transfersBathShower: assessmentResultFIM[10],
-            walkWheelchair: assessmentResultFIM[11],
-            stairs: assessmentResultFIM[12],
-            comprehension: assessmentResultFIM[13],
-            expression: assessmentResultFIM[14],
-            socialInteraction: assessmentResultFIM[15],
-            problemSolving: assessmentResultFIM[16],
-            memory: assessmentResultFIM[17]
-        )
-        return fim
-    }
-
-    private func updateScreenAndUIButtonIsSelectedFalse() {
+    private func updateScreenAndAllUIButtonIsSelectedFalse() {
         viewWillAppear(true)
         buttons.forEach { (button: UIButton) in
             button.isSelected = false
         }
     }
-    // MARK: - Segue
+    // MARK: - Segue AssessmentViewController　→　DetailFIMViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
         if let detailFIMVC = nav.topViewController as? DetailFIMViewController {
@@ -175,41 +159,21 @@ class AssessmentViewController: UIViewController {
     }
     // MARK: - UIAlert
     let alertController: UIAlertController =
-                UIAlertController(title: "alert",
-                          message: "yes or no",
-                          preferredStyle: .alert)
+    UIAlertController(
+        title: "未選択",
+        message: "いずれかのボタンを選択してから、\n決定ボタンを押してください",
+        preferredStyle: .alert
+    )
 
-    // Default のaction
+    // UIAlertのOKボタンのaction
     let defaultAction: UIAlertAction =
-                UIAlertAction(title: "Default",
-                      style: .default,
-                      handler: {
-                        (action: UIAlertAction!) -> Void in
-                        // 処理
-            })
-
-    // Destructive のaction
-    let destructiveAction: UIAlertAction =
-                UIAlertAction(title: "Destructive",
-                      style: .destructive,
-                      handler: {
-                        (action: UIAlertAction!) -> Void in
-                        // 処理
-                })
-
-    // Cancel のaction
-    let cancelAction: UIAlertAction =
-                UIAlertAction(title: "Cancel",
-                      style: .cancel,
-                      handler: {
-                        (action: UIAlertAction!) -> Void in
-                        // 処理
-                })
-
+    UIAlertAction(
+        title: "OK",
+        style: .default
+    )
     // MARK: - JSONファイルのデコーダー
-    private var fimJSONDecoder: [FimJSONDecoder] = []
-
-    struct FimJSONDecoder: Codable {
+    ///　FIMの採点基準
+    struct FimScoringCriteria: Decodable {
         var fimItem: String
         var seven: String
         var six: String
@@ -221,26 +185,25 @@ class AssessmentViewController: UIViewController {
         var attention: String
     }
 
-    private func decoderFimJsonFile() {
+    private func decodeFimJsonFile() {
         let data: Data?
         guard let file = Bundle.main.url(forResource: "FIM", withExtension: "json") else {
-            fatalError("ファイルが見つかりません")
+            fatalError("ファイルが見つかりません。メソッド名：[\(#function)]")
         }
-
         do {
-            data  = try? Data(contentsOf: file)
+            data  = try Data(contentsOf: file)
         } catch {
-            fatalError("ファイルをロード不可")
+            fatalError("ファイルをロード不可。メソッド名：[\(#function)]")
         }
 
         do {
             guard let data = data else {
-                fatalError("パース不可")
+                fatalError("dataの中身が入っていない。メソッド名：[\(#function)]")
             }
             let decoder = JSONDecoder()
-            fimJSONDecoder = try decoder.decode([FimJSONDecoder].self, from: data)
+            fimScoringCriteria = try decoder.decode([FimScoringCriteria].self, from: data)
         } catch {
-            fatalError("パース不可")
+            fatalError("パース不可。メソッド名：[\(#function)]")
         }
     }
 }

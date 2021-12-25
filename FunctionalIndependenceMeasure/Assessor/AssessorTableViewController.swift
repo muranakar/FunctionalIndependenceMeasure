@@ -12,12 +12,11 @@ class AssessorTableViewController: UITableViewController {
     var editingAssessorUUID: UUID?
     let fimRepository = FIMRepository()
 
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+    // MARK: - Segue-　AssessorTableViewController →　inputAccessoryViewController
+    @IBAction private func input(_ sender: Any) {
+        performSegue(withIdentifier: "input", sender: nil)
     }
 
-    // MARK: - Segue-
-    // AssessorTableViewController →　inputAccessoryViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
         if let inputVC = nav.topViewController as? InputAssessorViewController {
@@ -43,12 +42,7 @@ class AssessorTableViewController: UITableViewController {
         }
     }
 
-    @IBAction private func input(_ sender: Any) {
-        performSegue(withIdentifier: "input", sender: nil)
-    }
-
-    // MARK: - Segue-
-    // AssessorTableViewController ←　inputAccessoryViewController
+    // MARK: - Segue- AssessorTableViewController ←　inputAccessoryViewController
     @IBAction private func cancel(segue: UIStoryboardSegue) { }
 
     @IBAction private func save(segue: UIStoryboardSegue) {
