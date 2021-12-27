@@ -1,21 +1,30 @@
 //
 //  FIMTableViewCell.swift
-//  Functional Independence Measure
+//  FunctionalIndependenceMeasure
 //
-//  Created by 村中令 on 2021/12/07.
+//  Created by 村中令 on 2021/12/27.
 //
 
 import UIKit
 
 class FIMTableViewCell: UITableViewCell {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    @IBOutlet weak private var sumAllLabel: UILabel!
+    @IBOutlet weak private var sumTheMotorSubscaleIncludesLabel: UILabel!
+    @IBOutlet weak private var sumTheCognitionSubscaleIncludesLabel: UILabel!
+    @IBOutlet weak private var createdAtLabel: UILabel!
+    @IBOutlet weak private var updatedAtLabel: UILabel!
 
-        // Configure the view for the selected state
+    func configure(
+        sumAll: String,
+        sumMotor: String,
+        sumCongnition: String,
+        createdAt: String,
+        updatedAt: String ) {
+        sumAllLabel.text = sumAll
+        sumTheMotorSubscaleIncludesLabel.text = sumMotor
+        sumTheCognitionSubscaleIncludesLabel.text = sumCongnition
+        createdAtLabel.text = createdAt
+        updatedAtLabel.text = updatedAt
     }
 }

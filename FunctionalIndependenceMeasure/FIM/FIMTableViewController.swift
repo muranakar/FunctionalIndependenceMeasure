@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class FIMTableViewController: UITableViewController {
     //　画面遷移で値を受け取る変数
@@ -17,37 +18,40 @@ class FIMTableViewController: UITableViewController {
     let fimRepository = FIMRepository()
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: "FIMTableViewCell", bundle: nil), forCellReuseIdentifier: "FIMTableViewCell")
+        tableView.rowHeight = 180
         tableView.reloadData()
     }
 
-    // MARK: - Segue- TargetPersonTableViewController →　InputTargetPersonViewController
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let nav = segue.destination as? UINavigationController else { return }
-//        if let inputVC = nav.topViewController as? InputFIMViewController {
-//            switch segue.identifier ?? "" {
-//            case "input":
-//                inputVC.mode = .input
-//                inputVC.assessorUUID = assessorUUID
-//            case "edit":
-//                guard let editingTargetPersonUUID = editingTargetPersonUUID else {
-//                    return
-//                }
-//                inputVC.mode = .edit(editingTargetPersonUUID)
-//                inputVC.assessorUUID = assessorUUID
-//            default:
-//                break
-//            }
-//        }
-//        if let nextVC = nav.topViewController as? FIMViewController {
-//            switch segue.identifier ?? "" {
-//            case "next":
-//                nextVC.targetPersonUUID = selectedTargetPersonUUID
-//            default:
-//                break
-//            }
-//        }
-//
-//    }
+    // MARK: - Segue- FIMTableViewController →　InputTargetPersonViewController
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        guard let nav = segue.destination as? UINavigationController else { return }
+    //        if let inputVC = nav.topViewController as? InputFIMViewController {
+    //            switch segue.identifier ?? "" {
+    //            case "input":
+    //                inputVC.mode = .input
+    //                inputVC.assessorUUID = assessorUUID
+    //            case "edit":
+    //                guard let editingTargetPersonUUID = editingTargetPersonUUID else {
+    //                    return
+    //                }
+    //                inputVC.mode = .edit(editingTargetPersonUUID)
+    //                inputVC.assessorUUID = assessorUUID
+    //            default:
+    //                break
+    //            }
+    //        }
+    //        if let nextVC = nav.topViewController as? FIMViewController {
+    //            switch segue.identifier ?? "" {
+    //            case "next":
+    //                nextVC.targetPersonUUID = selectedTargetPersonUUID
+    //            default:
+    //                break
+    //            }
+    //        }
+    //
+    //    }
 
     @IBAction private func input(_ sender: Any) {
         performSegue(withIdentifier: "input", sender: nil)
@@ -72,10 +76,23 @@ class FIMTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! FIMTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FIMTableViewCell") as! FIMTableViewCell
         let fim = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row]
-        // 詳細の設定を入れていく。
-        // cell.configue(name: tagetPerson.name)
+        var createdAtString = "--"
+        var updateAtString = "--"
+        if let createdAt = fim.createdAt {
+            createdAtString  = dateFormatter(date: createdAt)
+        }
+        if let updateAt = fim.updatedAt {
+            updateAtString = dateFormatter(date: updateAt)
+        }
+
+        cell.configure(
+            sumAll: String(fim.sumAll),
+            sumMotor: String(fim.sumTheMotorSubscaleIncludes),
+            sumCongnition: String(fim.sumTheCognitionSubscaleIncludes),
+            createdAt: createdAtString,
+            updatedAt: updateAtString)
         return cell
     }
 
@@ -98,5 +115,15 @@ class FIMTableViewController: UITableViewController {
         guard let uuid = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row].uuid else { return }
         fimRepository.removeFIM(fimUUID: uuid)
         tableView.reloadData()
+    }
+
+    // MARK: - DateFormatter　Date型→String型へ変更
+    func dateFormatter(date: Date) -> String {
+        let dateFormatter = Foundation.DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
     }
 }

@@ -49,6 +49,8 @@ class TargetPerson: Object {
 // MARK: - FIM　評価指標
 class FIM: Object {
     @objc dynamic var uuidString = UUID().uuidString
+    // RealmOptionalを用いて、nullを許容したほうが良いか？理解できていない。
+    // RealmOptionalの場合、let （定数）で定義する必要があるため、数値の編集ができないか？
     @objc dynamic var eating = 0
     @objc dynamic var grooming = 0
     @objc dynamic var bathing = 0

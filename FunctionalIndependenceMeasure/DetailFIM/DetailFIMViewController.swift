@@ -15,9 +15,7 @@ class DetailFIMViewController: UIViewController {
 
     private var fim: FIM {
         let fim = fimRepository.loadFIM(fimUUID: fimUUID!)
-        guard let fim = fim else {
-            fatalError("fimの値が入っていない")
-        }
+        guard let fim = fim else { fatalError("fimの値が入っていない。メソッド名：[\(#function)]")}
         return fim
     }
 
@@ -56,10 +54,7 @@ class DetailFIMViewController: UIViewController {
             "認知項目合計", "理解", "表出", "社会的交流", "問題解決", "記憶"
         ]
     }
-    // なくても良い
-    private var dictionaryFIMItemAndNum: [String: Int] {
-        [String: Int](uniqueKeysWithValues: zip(fimItemTitle, fimItemNum))
-    }
+
     @IBOutlet weak private var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -67,14 +62,11 @@ class DetailFIMViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
 }
 
 extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dictionaryFIMItemAndNum.count
+        fimItemTitle.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,6 +90,3 @@ extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
-
-

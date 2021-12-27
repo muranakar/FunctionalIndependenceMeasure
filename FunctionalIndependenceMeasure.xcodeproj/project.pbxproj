@@ -10,7 +10,6 @@
 		4F5D4E73540AFA0564D74F4A /* Pods_FunctionalIndependenceMeasure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */; };
 		B20E68DB276DB6C1008CD04E /* Assessment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E68DA276DB6C1008CD04E /* Assessment.storyboard */; };
 		B20E68DD276DB723008CD04E /* FIMTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E68DC276DB723008CD04E /* FIMTable.storyboard */; };
-		B20E68E0276DB74E008CD04E /* InputFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E68DF276DB74D008CD04E /* InputFIM.storyboard */; };
 		B20E68E2276DBDEA008CD04E /* FIM.json in Resources */ = {isa = PBXBuildFile; fileRef = B20E68E1276DBDE9008CD04E /* FIM.json */; };
 		B22FBEFE275FFA8600DA71C8 /* InputAssessor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */; };
 		B22FBF00275FFCB200DA71C8 /* TargetPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */; };
@@ -28,15 +27,17 @@
 		B2377175275EAAB100A48640 /* FIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377174275EAAB100A48640 /* FIMTableViewController.swift */; };
 		B237717A275EAB8F00A48640 /* AssessorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */; };
 		B237717C275EABA300A48640 /* TargetPersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237717B275EABA300A48640 /* TargetPersonTableViewCell.swift */; };
-		B237717E275EABB600A48640 /* FIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237717D275EABB600A48640 /* FIMTableViewCell.swift */; };
 		B2377181275EACD200A48640 /* FIM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377180275EACD200A48640 /* FIM.swift */; };
 		B2377183275EACE400A48640 /* FIMRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377182275EACE400A48640 /* FIMRepository.swift */; };
 		B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */; };
 		B23EA88B27614BC2000B64C7 /* FunctionSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */; };
-		B2549E42276E9E970026127D /* InputFIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2549E41276E9E970026127D /* InputFIMTableViewController.swift */; };
 		B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */; };
 		B2767C4B27750F15004E59C3 /* DetailFIMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2767C4A27750F15004E59C3 /* DetailFIMViewController.swift */; };
 		B2767C4D27750FCC004E59C3 /* DetailFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */; };
+		B27A1F2227790FAA00ECBA0F /* FIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */; };
+		B27A1F2327790FAA00ECBA0F /* FIMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */; };
+		B27A1F2527792A5B00ECBA0F /* InputFIMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A1F2427792A5B00ECBA0F /* InputFIMViewController.swift */; };
+		B27A1F2727792B0300ECBA0F /* InputFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27A1F2627792B0300ECBA0F /* InputFIM.storyboard */; };
 		B2C301302773CE7C0051FC1A /* DetailFIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,6 @@
 		4D8B94B1CE89B91CB532BA3A /* Pods-FunctionalIndependenceMeasure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.debug.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.debug.xcconfig"; sourceTree = "<group>"; };
 		B20E68DA276DB6C1008CD04E /* Assessment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assessment.storyboard; sourceTree = "<group>"; };
 		B20E68DC276DB723008CD04E /* FIMTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FIMTable.storyboard; sourceTree = "<group>"; };
-		B20E68DF276DB74D008CD04E /* InputFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputFIM.storyboard; sourceTree = "<group>"; };
 		B20E68E1276DBDE9008CD04E /* FIM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FIM.json; sourceTree = "<group>"; };
 		B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputAssessor.storyboard; sourceTree = "<group>"; };
 		B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TargetPerson.storyboard; sourceTree = "<group>"; };
@@ -64,15 +64,17 @@
 		B2377174275EAAB100A48640 /* FIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMTableViewController.swift; sourceTree = "<group>"; };
 		B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessorTableViewCell.swift; sourceTree = "<group>"; };
 		B237717B275EABA300A48640 /* TargetPersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetPersonTableViewCell.swift; sourceTree = "<group>"; };
-		B237717D275EABB600A48640 /* FIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMTableViewCell.swift; sourceTree = "<group>"; };
 		B2377180275EACD200A48640 /* FIM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIM.swift; sourceTree = "<group>"; };
 		B2377182275EACE400A48640 /* FIMRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMRepository.swift; sourceTree = "<group>"; };
 		B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTargetPersonViewController.swift; sourceTree = "<group>"; };
 		B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FunctionSelection.storyboard; sourceTree = "<group>"; };
-		B2549E41276E9E970026127D /* InputFIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFIMTableViewController.swift; sourceTree = "<group>"; };
 		B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextlBoldTableViewCell.swift; sourceTree = "<group>"; };
 		B2767C4A27750F15004E59C3 /* DetailFIMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFIMViewController.swift; sourceTree = "<group>"; };
 		B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailFIM.storyboard; sourceTree = "<group>"; };
+		B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMTableViewCell.swift; sourceTree = "<group>"; };
+		B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FIMTableViewCell.xib; sourceTree = "<group>"; };
+		B27A1F2427792A5B00ECBA0F /* InputFIMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFIMViewController.swift; sourceTree = "<group>"; };
+		B27A1F2627792B0300ECBA0F /* InputFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputFIM.storyboard; sourceTree = "<group>"; };
 		B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFIMTableViewCell.swift; sourceTree = "<group>"; };
 		B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunctionalIndependenceMeasure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B651F3ECDBB9AA1F5A0B30F6 /* Pods-FunctionalIndependenceMeasure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.release.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,7 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				B2377174275EAAB100A48640 /* FIMTableViewController.swift */,
-				B237717D275EABB600A48640 /* FIMTableViewCell.swift */,
+				B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */,
+				B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */,
 				B20E68DC276DB723008CD04E /* FIMTable.storyboard */,
 			);
 			path = FIM;
@@ -203,8 +206,8 @@
 		B2767C5127752BFE004E59C3 /* InputFIM */ = {
 			isa = PBXGroup;
 			children = (
-				B2549E41276E9E970026127D /* InputFIMTableViewController.swift */,
-				B20E68DF276DB74D008CD04E /* InputFIM.storyboard */,
+				B27A1F2427792A5B00ECBA0F /* InputFIMViewController.swift */,
+				B27A1F2627792B0300ECBA0F /* InputFIM.storyboard */,
 			);
 			path = InputFIM;
 			sourceTree = "<group>";
@@ -293,12 +296,13 @@
 				B20E68DB276DB6C1008CD04E /* Assessment.storyboard in Resources */,
 				B2377158275EA64E00A48640 /* Assets.xcassets in Resources */,
 				B20E68E2276DBDEA008CD04E /* FIM.json in Resources */,
-				B20E68E0276DB74E008CD04E /* InputFIM.storyboard in Resources */,
 				B2767C4D27750FCC004E59C3 /* DetailFIM.storyboard in Resources */,
 				B20E68DD276DB723008CD04E /* FIMTable.storyboard in Resources */,
 				B22FBF00275FFCB200DA71C8 /* TargetPerson.storyboard in Resources */,
 				B22FBEFE275FFA8600DA71C8 /* InputAssessor.storyboard in Resources */,
 				B23EA88B27614BC2000B64C7 /* FunctionSelection.storyboard in Resources */,
+				B27A1F2327790FAA00ECBA0F /* FIMTableViewCell.xib in Resources */,
+				B27A1F2727792B0300ECBA0F /* InputFIM.storyboard in Resources */,
 				B2377156275EA64D00A48640 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,7 +375,9 @@
 			files = (
 				B2377167275EA6E300A48640 /* InputAssessorViewController.swift in Sources */,
 				B237717C275EABA300A48640 /* TargetPersonTableViewCell.swift in Sources */,
+				B27A1F2227790FAA00ECBA0F /* FIMTableViewCell.swift in Sources */,
 				B237717A275EAB8F00A48640 /* AssessorTableViewCell.swift in Sources */,
+				B27A1F2527792A5B00ECBA0F /* InputFIMViewController.swift in Sources */,
 				B2377175275EAAB100A48640 /* FIMTableViewController.swift in Sources */,
 				B237716F275EAA0F00A48640 /* AssessmentViewController.swift in Sources */,
 				B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */,
@@ -381,9 +387,7 @@
 				B2377181275EACD200A48640 /* FIM.swift in Sources */,
 				B2377183275EACE400A48640 /* FIMRepository.swift in Sources */,
 				B237714F275EA64D00A48640 /* AppDelegate.swift in Sources */,
-				B237717E275EABB600A48640 /* FIMTableViewCell.swift in Sources */,
 				B2377163275EA67A00A48640 /* AssessorTableViewController.swift in Sources */,
-				B2549E42276E9E970026127D /* InputFIMTableViewController.swift in Sources */,
 				B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */,
 				B2377151275EA64D00A48640 /* SceneDelegate.swift in Sources */,
 				B2767C4B27750F15004E59C3 /* DetailFIMViewController.swift in Sources */,
