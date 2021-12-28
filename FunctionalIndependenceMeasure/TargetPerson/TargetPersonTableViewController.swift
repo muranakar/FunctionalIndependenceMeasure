@@ -13,6 +13,13 @@ class TargetPersonTableViewController: UITableViewController {
     private var editingTargetPersonUUID: UUID?
     private let fimRepository = FIMRepository()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let assessorName = fimRepository.loadAssessor(assessorUUID: assessorUUID!)?.name else {
+            return
+        }
+        navigationItem.title = "評価者【\(assessorName)】対象者リスト"
+    }
     // MARK: - Segue- TargetPersonTableViewController →　InputTargetPersonViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
@@ -46,7 +53,7 @@ class TargetPersonTableViewController: UITableViewController {
     }
 
     // MARK: - Segue- TargetPersonTableViewController ←　InputTargetPersonViewController
-    @IBAction private func cancel(segue: UIStoryboardSegue) { }
+    @IBAction private func backToTargetPersonTableViewController(segue: UIStoryboardSegue) { }
 
     @IBAction private func save(segue: UIStoryboardSegue) {
         tableView.reloadData()

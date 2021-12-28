@@ -86,17 +86,18 @@
                     <navigationItem key="navigationItem" id="Lxf-XJ-auk">
                         <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="API-U0-AFX">
                             <connections>
-                                <segue destination="Mxc-Yt-9df" kind="unwind" unwindAction="cancelWithSegue:" id="2k8-23-lTW"/>
+                                <segue destination="Mxc-Yt-9df" kind="unwind" unwindAction="backToFunctionSelectionTableViewControllerWithSegue:" id="NY6-LO-0sJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="FIM一覧" id="35H-To-Xk7">
+                        <barButtonItem key="rightBarButtonItem" title="編集" id="4xY-4M-NkJ">
                             <connections>
-                                <segue destination="Vhv-V1-eAf" kind="presentation" identifier="fimList" modalPresentationStyle="fullScreen" id="Ymd-zr-OaG"/>
+                                <action selector="editFIM:" destination="GEZ-ud-6UE" id="gAk-hR-pZv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="MCt-9N-e0t" id="oOV-3Z-Gog"/>
+                        <segue destination="m39-Qu-UJP" kind="presentation" identifier="editFIM" modalPresentationStyle="fullScreen" id="pL0-af-FoU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuW-Xy-d2Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -104,13 +105,13 @@
             </objects>
             <point key="canvasLocation" x="1239.1304347826087" y="107.8125"/>
         </scene>
-        <!--FIMTable-->
-        <scene sceneID="twI-aX-VT3">
+        <!--EditFIM-->
+        <scene sceneID="Qro-PY-GMq">
             <objects>
-                <viewControllerPlaceholder storyboardName="FIMTable" id="Vhv-V1-eAf" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hV2-rk-mtF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="EditFIM" id="m39-Qu-UJP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7qJ-pm-iyn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1949" y="96"/>
+            <point key="canvasLocation" x="1864" y="99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="auJ-LA-Ca7">

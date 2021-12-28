@@ -43,9 +43,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="対象者" id="ghh-Zg-uWz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="YaJ-gi-g2V">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="YaJ-gi-g2V">
                             <connections>
-                                <segue destination="E1c-kA-N5D" kind="unwind" unwindAction="cancelWithSegue:" id="PgD-J7-rXP"/>
+                                <segue destination="E1c-kA-N5D" kind="unwind" unwindAction="backToAssessorTableViewControllerWithSegue:" id="gJe-rL-nV5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LVD-LH-w0i">
@@ -104,6 +104,7 @@
         <segue reference="SLn-bg-Pb5"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

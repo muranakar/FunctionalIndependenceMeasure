@@ -43,7 +43,7 @@
                     <navigationItem key="navigationItem" id="1Fh-0y-DqW">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="l3K-or-oYp">
                             <connections>
-                                <segue destination="EbA-nm-pu9" kind="unwind" identifier="cancel" unwindAction="cancelWithSegue:" id="wSI-pr-4qm"/>
+                                <segue destination="EbA-nm-pu9" kind="unwind" unwindAction="backToTargetPersonTableViewControllerWithSegue:" id="7ct-QS-Hc1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="XKf-pa-g93">

@@ -9,7 +9,15 @@ import UIKit
 
 class FunctionSelectionViewController: UIViewController {
     var targetPersonUUID: UUID?
+    let fimRepository = FIMRepository()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let targetPersonName =  fimRepository.loadTargetPerson(targetPersonUUID: targetPersonUUID!)?.name else {
+            return
+        }
+        navigationItem.title = "対象者:\(targetPersonName)様"
+    }
     // MARK: - Segue- FunctionSelectionTableViewController → AssessmentViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
@@ -33,6 +41,6 @@ class FunctionSelectionViewController: UIViewController {
     }
 
     // MARK: - Segue- FunctionSelectionTableViewController ← AssessmentViewController
-    @IBAction private func cancel(segue: UIStoryboardSegue) {
+    @IBAction private func backToFunctionSelectionTableViewController(segue: UIStoryboardSegue) {
     }
 }

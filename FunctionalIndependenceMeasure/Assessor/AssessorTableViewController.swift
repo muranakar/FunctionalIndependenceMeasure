@@ -43,7 +43,7 @@ class AssessorTableViewController: UITableViewController {
     }
 
     // MARK: - Segue- AssessorTableViewController ←　inputAccessoryViewController
-    @IBAction private func cancel(segue: UIStoryboardSegue) { }
+    @IBAction private func backToAssessorTableViewController(segue: UIStoryboardSegue) { }
 
     @IBAction private func save(segue: UIStoryboardSegue) {
         tableView.reloadData()

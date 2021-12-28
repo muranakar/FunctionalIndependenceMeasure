@@ -36,8 +36,9 @@
 		B2767C4D27750FCC004E59C3 /* DetailFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */; };
 		B27A1F2227790FAA00ECBA0F /* FIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */; };
 		B27A1F2327790FAA00ECBA0F /* FIMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */; };
-		B27A1F2527792A5B00ECBA0F /* InputFIMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A1F2427792A5B00ECBA0F /* InputFIMViewController.swift */; };
-		B27A1F2727792B0300ECBA0F /* InputFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27A1F2627792B0300ECBA0F /* InputFIM.storyboard */; };
+		B2AF2576277BB26100F40DC9 /* EditFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2AF2575277BB26100F40DC9 /* EditFIM.storyboard */; };
+		B2AF2578277BB29300F40DC9 /* EditFIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF2577277BB29300F40DC9 /* EditFIMTableViewController.swift */; };
+		B2AF257A277BB42C00F40DC9 /* EditFIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF2579277BB42C00F40DC9 /* EditFIMTableViewCell.swift */; };
 		B2C301302773CE7C0051FC1A /* DetailFIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,8 +74,9 @@
 		B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailFIM.storyboard; sourceTree = "<group>"; };
 		B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMTableViewCell.swift; sourceTree = "<group>"; };
 		B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FIMTableViewCell.xib; sourceTree = "<group>"; };
-		B27A1F2427792A5B00ECBA0F /* InputFIMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFIMViewController.swift; sourceTree = "<group>"; };
-		B27A1F2627792B0300ECBA0F /* InputFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputFIM.storyboard; sourceTree = "<group>"; };
+		B2AF2575277BB26100F40DC9 /* EditFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFIM.storyboard; sourceTree = "<group>"; };
+		B2AF2577277BB29300F40DC9 /* EditFIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFIMTableViewController.swift; sourceTree = "<group>"; };
+		B2AF2579277BB42C00F40DC9 /* EditFIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFIMTableViewCell.swift; sourceTree = "<group>"; };
 		B2C3012F2773CE7C0051FC1A /* DetailFIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFIMTableViewCell.swift; sourceTree = "<group>"; };
 		B5D873669A06498340DC49B0 /* Pods_FunctionalIndependenceMeasure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunctionalIndependenceMeasure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B651F3ECDBB9AA1F5A0B30F6 /* Pods-FunctionalIndependenceMeasure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunctionalIndependenceMeasure.release.xcconfig"; path = "Target Support Files/Pods-FunctionalIndependenceMeasure/Pods-FunctionalIndependenceMeasure.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,8 +134,8 @@
 				B29FFC3D27766BF200DD0865 /* FunctionSelectionViewController */,
 				B237717F275EAC0100A48640 /* Assessment */,
 				B2377178275EAB2100A48640 /* FIM */,
-				B2767C5127752BFE004E59C3 /* InputFIM */,
 				B2767C5027752BB3004E59C3 /* DetailFIM */,
+				B2767C5127752BFE004E59C3 /* EditFIM */,
 			);
 			path = FunctionalIndependenceMeasure;
 			sourceTree = "<group>";
@@ -203,13 +205,14 @@
 			path = DetailFIM;
 			sourceTree = "<group>";
 		};
-		B2767C5127752BFE004E59C3 /* InputFIM */ = {
+		B2767C5127752BFE004E59C3 /* EditFIM */ = {
 			isa = PBXGroup;
 			children = (
-				B27A1F2427792A5B00ECBA0F /* InputFIMViewController.swift */,
-				B27A1F2627792B0300ECBA0F /* InputFIM.storyboard */,
+				B2AF2577277BB29300F40DC9 /* EditFIMTableViewController.swift */,
+				B2AF2579277BB42C00F40DC9 /* EditFIMTableViewCell.swift */,
+				B2AF2575277BB26100F40DC9 /* EditFIM.storyboard */,
 			);
-			path = InputFIM;
+			path = EditFIM;
 			sourceTree = "<group>";
 		};
 		B29FFC3D27766BF200DD0865 /* FunctionSelectionViewController */ = {
@@ -302,7 +305,7 @@
 				B22FBEFE275FFA8600DA71C8 /* InputAssessor.storyboard in Resources */,
 				B23EA88B27614BC2000B64C7 /* FunctionSelection.storyboard in Resources */,
 				B27A1F2327790FAA00ECBA0F /* FIMTableViewCell.xib in Resources */,
-				B27A1F2727792B0300ECBA0F /* InputFIM.storyboard in Resources */,
+				B2AF2576277BB26100F40DC9 /* EditFIM.storyboard in Resources */,
 				B2377156275EA64D00A48640 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,8 +379,8 @@
 				B2377167275EA6E300A48640 /* InputAssessorViewController.swift in Sources */,
 				B237717C275EABA300A48640 /* TargetPersonTableViewCell.swift in Sources */,
 				B27A1F2227790FAA00ECBA0F /* FIMTableViewCell.swift in Sources */,
+				B2AF2578277BB29300F40DC9 /* EditFIMTableViewController.swift in Sources */,
 				B237717A275EAB8F00A48640 /* AssessorTableViewCell.swift in Sources */,
-				B27A1F2527792A5B00ECBA0F /* InputFIMViewController.swift in Sources */,
 				B2377175275EAAB100A48640 /* FIMTableViewController.swift in Sources */,
 				B237716F275EAA0F00A48640 /* AssessmentViewController.swift in Sources */,
 				B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */,
@@ -386,6 +389,7 @@
 				B237716D275EA97000A48640 /* FunctionSelectionViewController.swift in Sources */,
 				B2377181275EACD200A48640 /* FIM.swift in Sources */,
 				B2377183275EACE400A48640 /* FIMRepository.swift in Sources */,
+				B2AF257A277BB42C00F40DC9 /* EditFIMTableViewCell.swift in Sources */,
 				B237714F275EA64D00A48640 /* AppDelegate.swift in Sources */,
 				B2377163275EA67A00A48640 /* AssessorTableViewController.swift in Sources */,
 				B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */,

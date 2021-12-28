@@ -41,7 +41,7 @@
                     <navigationItem key="navigationItem" id="a1K-dN-NNX">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gSu-6s-fuu">
                             <connections>
-                                <segue destination="prU-gm-LJ6" kind="unwind" identifier="cancel" unwindAction="cancelWithSegue:" id="Sy5-27-Ugg"/>
+                                <segue destination="prU-gm-LJ6" kind="unwind" unwindAction="backToAssessorTableViewControllerWithSegue:" id="ZZe-ax-x6I"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="VVO-0C-SdL">

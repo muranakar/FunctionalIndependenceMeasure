@@ -43,9 +43,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6yf-FX-wgh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="84e-EZ-p09">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="84e-EZ-p09">
                             <connections>
-                                <segue destination="GT0-R2-xlt" kind="unwind" unwindAction="cancelWithSegue:" id="INa-e2-GYb"/>
+                                <segue destination="GT0-R2-xlt" kind="unwind" unwindAction="backToTargetPersonTableViewControllerWithSegue:" id="aFl-lZ-n98"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -91,6 +91,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

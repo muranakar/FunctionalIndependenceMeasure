@@ -21,29 +21,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="vhz-Ib-nnh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6zC-ta-mf9">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="6zC-ta-mf9">
                             <connections>
-                                <segue destination="NmZ-dF-Q3b" kind="unwind" unwindAction="cancelWithSegue:" id="R7y-Af-urV"/>
+                                <segue destination="NmZ-dF-Q3b" kind="unwind" unwindAction="backToFunctionSelectionTableViewControllerWithSegue:" id="qSj-sr-W5I"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="aJw-fb-ODG" kind="presentation" identifier="detailFIM" modalPresentationStyle="fullScreen" id="wQD-id-okw"/>
-                        <segue destination="wbF-QI-MfX" kind="presentation" identifier="edit" modalPresentationStyle="fullScreen" id="8Nf-F8-1zR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yw-ME-7fx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="NmZ-dF-Q3b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1140.5797101449277" y="23.4375"/>
-        </scene>
-        <!--InputFIM-->
-        <scene sceneID="yzi-8J-gW9">
-            <objects>
-                <viewControllerPlaceholder storyboardName="InputFIM" id="wbF-QI-MfX" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZEs-jl-dWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1819" y="-67"/>
         </scene>
         <!--DetailFIM-->
         <scene sceneID="D4A-9R-Zof">
@@ -73,6 +64,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

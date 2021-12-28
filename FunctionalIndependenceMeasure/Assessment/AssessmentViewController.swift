@@ -71,12 +71,7 @@ class AssessmentViewController: UIViewController {
         super.viewDidLoad()
         decodeFimJsonFile()
         alertController.addAction(defaultAction)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        label.text = fimScoringCriteria[fimItemCount].fimItem
-        textView.text = fimScoringCriteria[fimItemCount].attention
+        updateLabel()
     }
 
     //　ボタンが選択された際に、そのボタンと関連づけられた文字列を、テキストビューに反映させる。
@@ -140,10 +135,15 @@ class AssessmentViewController: UIViewController {
     }
 
     private func updateScreenAndAllUIButtonIsSelectedFalse() {
-        viewWillAppear(true)
         buttons.forEach { (button: UIButton) in
             button.isSelected = false
         }
+        updateLabel()
+    }
+
+    private func updateLabel() {
+        label.text = fimScoringCriteria[fimItemCount].fimItem
+        textView.text = fimScoringCriteria[fimItemCount].attention
     }
     // MARK: - Segue AssessmentViewController　→　DetailFIMViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -151,7 +151,6 @@ class AssessmentViewController: UIViewController {
         if let detailFIMVC = nav.topViewController as? DetailFIMViewController {
             switch segue.identifier ?? "" {
             case "detailFIM":
-                detailFIMVC.mode = .afterAssessment
                 detailFIMVC.fimUUID = fim?.uuid
             default:
                 break
