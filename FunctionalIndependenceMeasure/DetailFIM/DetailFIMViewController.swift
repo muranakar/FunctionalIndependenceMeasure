@@ -10,6 +10,14 @@ import UIKit
 class DetailFIMViewController: UIViewController {
     //　画面遷移で値を受け取る変数
     var fimUUID: UUID?
+    //　画面遷移時に、評価の画面からか、FIMの一覧からの遷移かを、判断するため、
+    //　なぜなら、評価の画面からの遷移であれば、unwindSegueを行えず、エラー生じる。
+    //　評価画面からのときは、unwindSegueを用いずに、FIM一覧に、遷移する。
+    enum Mode {
+        case afterAssessment
+        case fromList
+    }
+    var mode: Mode?
 
     private let fimRepository = FIMRepository()
 
@@ -61,6 +69,34 @@ class DetailFIMViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 画面遷移　別のボタン表示　【一覧画面　or　評価画面】
+        switch mode {
+        case .afterAssessment:
+            navigationItem.leftBarButtonItem = nil
+        case .fromList:
+            navigationItem.rightBarButtonItem = nil
+            // nilを許容しているため、default必要
+        default:
+            break
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nav = segue.destination as? UINavigationController else { return }
+        if let  fimListVC = nav.topViewController as? FIMTableViewController {
+            switch segue.identifier ?? "" {
+            case "fimList":
+                let targetPerson = fimRepository.loadTargetPerson(fimUUID: fimUUID!)
+                fimListVC.targetPersonUUID = targetPerson?.uuid
+                fimListVC.navigationItem.hidesBackButton = true
+            default:
+                break
+            }
+        }
     }
 }
 

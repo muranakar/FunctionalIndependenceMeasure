@@ -8,7 +8,6 @@
 import UIKit
 
 class FIMTableViewCell: UITableViewCell {
-
     @IBOutlet weak private var sumAllLabel: UILabel!
     @IBOutlet weak private var sumTheMotorSubscaleIncludesLabel: UILabel!
     @IBOutlet weak private var sumTheCognitionSubscaleIncludesLabel: UILabel!

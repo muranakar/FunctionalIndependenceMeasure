@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTL-pl-bow">
-                                <rect key="frame" x="166.5" y="352.5" width="81.5" height="31"/>
+                                <rect key="frame" x="166.5" y="362.5" width="81.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="評価開始"/>
                                 <connections>
@@ -25,7 +25,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMl-xO-IGR">
-                                <rect key="frame" x="152" y="512.5" width="110" height="31"/>
+                                <rect key="frame" x="152" y="502.5" width="110" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="過去評価一覧"/>
                                 <connections>
@@ -37,8 +37,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NMl-xO-IGR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="5wE-D7-qtW"/>
-                            <constraint firstItem="NMl-xO-IGR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="80" id="LRt-ri-oZb"/>
-                            <constraint firstItem="FTL-pl-bow" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-80" id="Pfl-Xg-it9"/>
+                            <constraint firstItem="NMl-xO-IGR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="70" id="LRt-ri-oZb"/>
+                            <constraint firstItem="FTL-pl-bow" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-70" id="Pfl-Xg-it9"/>
                             <constraint firstItem="FTL-pl-bow" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="upQ-go-9H1"/>
                         </constraints>
                     </view>

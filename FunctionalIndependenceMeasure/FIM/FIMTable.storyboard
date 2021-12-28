@@ -21,12 +21,37 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="vhz-Ib-nnh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6zC-ta-mf9"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6zC-ta-mf9">
+                            <connections>
+                                <segue destination="NmZ-dF-Q3b" kind="unwind" unwindAction="cancelWithSegue:" id="R7y-Af-urV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="aJw-fb-ODG" kind="presentation" identifier="detailFIM" modalPresentationStyle="fullScreen" id="wQD-id-okw"/>
+                        <segue destination="wbF-QI-MfX" kind="presentation" identifier="edit" modalPresentationStyle="fullScreen" id="8Nf-F8-1zR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yw-ME-7fx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="NmZ-dF-Q3b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1140.5797101449277" y="23.4375"/>
+        </scene>
+        <!--InputFIM-->
+        <scene sceneID="yzi-8J-gW9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="InputFIM" id="wbF-QI-MfX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZEs-jl-dWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1819" y="-67"/>
+        </scene>
+        <!--DetailFIM-->
+        <scene sceneID="D4A-9R-Zof">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailFIM" id="aJw-fb-ODG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H76-Nu-qo2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1829" y="54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="68D-FL-ddN">

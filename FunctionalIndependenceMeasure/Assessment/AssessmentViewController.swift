@@ -151,6 +151,7 @@ class AssessmentViewController: UIViewController {
         if let detailFIMVC = nav.topViewController as? DetailFIMViewController {
             switch segue.identifier ?? "" {
             case "detailFIM":
+                detailFIMVC.mode = .afterAssessment
                 detailFIMVC.fimUUID = fim?.uuid
             default:
                 break

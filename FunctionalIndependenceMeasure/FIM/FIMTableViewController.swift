@@ -20,42 +20,30 @@ class FIMTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "FIMTableViewCell", bundle: nil), forCellReuseIdentifier: "FIMTableViewCell")
-        tableView.rowHeight = 180
         tableView.reloadData()
     }
 
-    // MARK: - Segue- FIMTableViewController →　InputTargetPersonViewController
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        guard let nav = segue.destination as? UINavigationController else { return }
-    //        if let inputVC = nav.topViewController as? InputFIMViewController {
-    //            switch segue.identifier ?? "" {
-    //            case "input":
-    //                inputVC.mode = .input
-    //                inputVC.assessorUUID = assessorUUID
-    //            case "edit":
-    //                guard let editingTargetPersonUUID = editingTargetPersonUUID else {
-    //                    return
-    //                }
-    //                inputVC.mode = .edit(editingTargetPersonUUID)
-    //                inputVC.assessorUUID = assessorUUID
-    //            default:
-    //                break
-    //            }
-    //        }
-    //        if let nextVC = nav.topViewController as? FIMViewController {
-    //            switch segue.identifier ?? "" {
-    //            case "next":
-    //                nextVC.targetPersonUUID = selectedTargetPersonUUID
-    //            default:
-    //                break
-    //            }
-    //        }
-    //
-    //    }
-
-    @IBAction private func input(_ sender: Any) {
-        performSegue(withIdentifier: "input", sender: nil)
-    }
+// MARK: - Segue- FIMTableViewController →　InputTargetPersonViewController
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            guard let nav = segue.destination as? UINavigationController else { return }
+            if let editVC = nav.topViewController as? InputFIMViewController {
+                switch segue.identifier ?? "" {
+                case "edit":
+                    editVC.fimUUID = editingFIMUUID
+                default:
+                    break
+                }
+            }
+            if let detailFIMVC = nav.topViewController as? DetailFIMViewController {
+                switch segue.identifier ?? "" {
+                case "detailFIM":
+                    detailFIMVC.mode = .fromList
+                    detailFIMVC.fimUUID = selectedFIMUUID
+                default:
+                    break
+                }
+            }
+        }
 
     // MARK: - Segue- FIMTableViewController ←　InputFIMViewController
     @IBAction private func cancel(segue: UIStoryboardSegue) { }
@@ -98,14 +86,15 @@ class FIMTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedFIMUUID = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row].uuid
-        //        segueを設定する。
-        //        performSegue(withIdentifier: "next", sender: nil)
+        performSegue(withIdentifier: "detailFIM", sender: nil)
     }
 
+
+    //　navのボタンへの変更必要か。
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         editingFIMUUID = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row].uuid
-        //        segueを設定する。
-        //        performSegue(withIdentifier: "edit", sender: nil)
+
+        performSegue(withIdentifier: "edit", sender: nil)
     }
 
     override func tableView(_ tableView: UITableView,
