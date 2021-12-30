@@ -8,7 +8,6 @@
 import UIKit
 
 class EditFIMTableViewCell: UITableViewCell {
-
     @IBOutlet weak private var label: UILabel!
     @IBOutlet weak private var textField: UITextField! {
         didSet {

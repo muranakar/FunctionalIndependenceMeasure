@@ -92,7 +92,6 @@ class FIMTableViewController: UITableViewController {
         performSegue(withIdentifier: "detailFIM", sender: nil)
     }
 
-
     //　navのボタンへの変更必要か。
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         editingFIMUUID = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row].uuid
