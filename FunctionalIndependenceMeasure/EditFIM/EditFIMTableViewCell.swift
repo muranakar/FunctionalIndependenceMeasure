@@ -13,7 +13,6 @@ class EditFIMTableViewCell: UITableViewCell {
     @IBOutlet weak private var textField: UITextField! {
         didSet {
             textField.inputView = pickerView
-
         }
     }
 
@@ -24,16 +23,13 @@ class EditFIMTableViewCell: UITableViewCell {
          super.init(coder: coder)
          pickerView.delegate = self
          pickerView.dataSource = self
-
      }
 
-    func configue(labelText: String, textFieldText: String){
+    func configue(labelText: String, textFieldText: String) {
         label.text = labelText
         textField.text = textFieldText
     }
-
 }
-
 
 extension EditFIMTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -55,5 +51,4 @@ extension EditFIMTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
         let string = fimNumber.map { String($0) }[row]
         return string
     }
-
 }
