@@ -18,15 +18,18 @@ class EditFIMTableViewCell: UITableViewCell {
     let pickerView = UIPickerView()
     private let fimNumber = [Int](1...7)
 
+    private var updateFIMNumHandler: (_ index: Int, _ element: Int) -> Void = { _, _  in }
+
     required init?(coder: NSCoder) {
          super.init(coder: coder)
          pickerView.delegate = self
          pickerView.dataSource = self
      }
 
-    func configue(labelText: String, textFieldText: String) {
+    func configue(labelText: String, textFieldText: String, updateFIMNumHandler: @escaping(Int, Int) -> Void) {
         label.text = labelText
         textField.text = textFieldText
+        self.updateFIMNumHandler = updateFIMNumHandler
     }
 }
 
@@ -34,6 +37,8 @@ extension EditFIMTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerView {
             textField.text = fimNumber.map { String($0) }[row]
+            updateFIMNumHandler(row, fimNumber[row])
+            
         }
 
         textField.resignFirstResponder()

@@ -140,29 +140,53 @@ final class FIMRepository {
     // 私の方法・・・項目ごとの結果を引数に渡して、realm.write内で、更新データを取り出して、代入する。
     //　→私の方法であれば、項目数が増えてしまい、今後コードを修正に困る、というデメリットがあります。
 
-    func updateFIM(fim: FIM) {
+    func updateFIM(fimItemNumArray: [Int], fimUUID: UUID) {
         // swiftlint:disable:next force_cast
         try! realm.write {
-            fim.updatedAt = Date()
-            realm.add(fim, update: .modified)
-            //            loadedFIM.eating = fim.eating
-            //            loadedFIM.grooming = fim.grooming
-            //            loadedFIM.bathing = fim.bathing
-            //            loadedFIM.dressingUpperBody = fim.dressingUpperBody
-            //            loadedFIM.dressingLowerBody = fim.dressingLowerBody
-            //            loadedFIM.toileting = fim.toileting
-            //            loadedFIM.bladderManagement = fim.bladderManagement
-            //            loadedFIM.bowelManagement = fim.bowelManagement
-            //            loadedFIM.transfersBedChairWheelchair = fim.transfersBedChairWheelchair
-            //            loadedFIM.transfersToilet = fim.transfersToilet
-            //            loadedFIM.transfersBathShower = fim.transfersBathShower
-            //            loadedFIM.walkWheelchair = fim.walkWheelchair
-            //            loadedFIM.stairs = fim.stairs
-            //            loadedFIM.comprehension = fim.comprehension
-            //            loadedFIM.expression = fim.expression
-            //            loadedFIM.socialInteraction = fim.socialInteraction
-            //            loadedFIM.problemSolving = fim.problemSolving
-            //            loadedFIM.memory = fim.memory
+            let loadedFIM = realm.object(ofType: FIM.self, forPrimaryKey: fimUUID.uuidString)
+            guard let loadedFIM = loadedFIM else {
+                return
+            }
+            loadedFIM.eating = fimItemNumArray[0]
+            loadedFIM.grooming = fimItemNumArray[1]
+            loadedFIM.bathing = fimItemNumArray[2]
+            loadedFIM.dressingUpperBody = fimItemNumArray[3]
+            loadedFIM.dressingLowerBody = fimItemNumArray[4]
+            loadedFIM.toileting = fimItemNumArray[5]
+            loadedFIM.bladderManagement = fimItemNumArray[6]
+            loadedFIM.bowelManagement = fimItemNumArray[7]
+            loadedFIM.transfersBedChairWheelchair = fimItemNumArray[8]
+            loadedFIM.transfersToilet = fimItemNumArray[9]
+            loadedFIM.transfersBathShower = fimItemNumArray[10]
+            loadedFIM.walkWheelchair = fimItemNumArray[11]
+            loadedFIM.stairs = fimItemNumArray[12]
+            loadedFIM.comprehension = fimItemNumArray[13]
+            loadedFIM.expression = fimItemNumArray[14]
+            loadedFIM.socialInteraction = fimItemNumArray[15]
+            loadedFIM.problemSolving = fimItemNumArray[16]
+            loadedFIM.memory = fimItemNumArray[17]
+
+            //            loadedFIM.eating = fimItemNumArray.eating
+            //            loadedFIM.grooming = fimItemNumArray.grooming
+            //            loadedFIM.bathing = fimItemNumArray.bathing
+            //            loadedFIM.dressingUpperBody = fimItemNumArray.dressingUpperBody
+            //            loadedFIM.dressingLowerBody = fimItemNumArray.dressingLowerBody
+            //            loadedFIM.toileting = fimItemNumArray.toileting
+            //            loadedFIM.bladderManagement = fimItemNumArray.bladderManagement
+            //            loadedFIM.bowelManagement = fimItemNumArray.bowelManagement
+            //            loadedFIM.transfersBedChairWheelchair = fimItemNumArray.transfersBedChairWheelchair
+            //            loadedFIM.transfersToilet = fimItemNumArray.transfersToilet
+            //            loadedFIM.transfersBathShower = fimItemNumArray.transfersBathShower
+            //            loadedFIM.walkWheelchair = fimItemNumArray.walkWheelchair
+            //            loadedFIM.stairs = fimItemNumArray.stairs
+            //            loadedFIM.comprehension = fimItemNumArray.comprehension
+            //            loadedFIM.expression = fimItemNumArray.expression
+            //            loadedFIM.socialInteraction = fimItemNumArray.socialInteraction
+            //            loadedFIM.problemSolving = fimItemNumArray.problemSolving
+            //            loadedFIM.memory = fimItemNumArray.memory
+
+            //            realm.add(fimItemNumArray, update: .modified)
+            //            fimItemNumArray.updatedAt = Date()
         }
     }
     // FIMデータの削除

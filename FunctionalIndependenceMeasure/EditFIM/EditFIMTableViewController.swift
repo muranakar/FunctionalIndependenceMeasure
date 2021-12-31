@@ -9,7 +9,7 @@ import UIKit
 
 class EditFIMTableViewController: UITableViewController {
     //　画面遷移で値を受け取る変数
-    var fimUUID: UUID?
+    var fimUUID: UUID!
     let fimRepository = FIMRepository()
 
     private var fim: FIM {
@@ -18,38 +18,36 @@ class EditFIMTableViewController: UITableViewController {
         return fim
     }
 
-    private var fimItemTitle: [String] {
+    private lazy var fimItemTitle: [String] =
         [
             "食事", "整容", "清拭",
             "更衣上半身", "更衣下半身", "トイレ動作", "排尿管理",
             "排便管理", "ベッド・椅子・車椅子移乗", "トイレ移乗",
             "浴槽・シャワー移乗", "歩行・車椅子", "階段",
-             "理解", "表出", "社会的交流", "問題解決", "記憶"
+            "理解", "表出", "社会的交流", "問題解決", "記憶"
         ]
-    }
-
-    private var fimItemNum: [Int] {
-        [
-            fim.eating,
-            fim.grooming,
-            fim.bathing,
-            fim.dressingUpperBody,
-            fim.dressingLowerBody,
-            fim.toileting,
-            fim.bladderManagement,
-            fim.bowelManagement,
-            fim.transfersBedChairWheelchair,
-            fim.transfersToilet,
-            fim.transfersBathShower,
-            fim.walkWheelchair,
-            fim.stairs,
-            fim.comprehension,
-            fim.expression,
-            fim.socialInteraction,
-            fim.problemSolving,
-            fim.memory
-        ]
-    }
+    // TableViewCellに表示するためだけの配列
+    private lazy var fimItemNum: [Int] =
+    [
+        fim.eating,
+        fim.grooming,
+        fim.bathing,
+        fim.dressingUpperBody,
+        fim.dressingLowerBody,
+        fim.toileting,
+        fim.bladderManagement,
+        fim.bowelManagement,
+        fim.transfersBedChairWheelchair,
+        fim.transfersToilet,
+        fim.transfersBathShower,
+        fim.walkWheelchair,
+        fim.stairs,
+        fim.comprehension,
+        fim.expression,
+        fim.socialInteraction,
+        fim.problemSolving,
+        fim.memory
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +55,9 @@ class EditFIMTableViewController: UITableViewController {
             return
         }
         navigationItem.title = "対象者:\(targetPersonName)様"
+    }
+    @IBAction private func save(_ sender: Any) {
+        fimRepository.updateFIM(fimItemNumArray: fimItemNum, fimUUID: fimUUID!)
     }
 
     // MARK: - Table view data source
@@ -71,7 +72,12 @@ class EditFIMTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EditFIMTableViewCell
-        cell.configue(labelText: fimItemTitle[indexPath.row], textFieldText: String(fimItemNum[indexPath.row]))
+        cell.configue(labelText: fimItemTitle[indexPath.row],
+                      textFieldText: String(fimItemNum[indexPath.row]),
+                      updateFIMNumHandler: { [weak self] index, element in
+                    self?.fimItemNum[index] = element
+                    print("\(self?.fimItemNum)")
+        })
         return cell
     }
 }

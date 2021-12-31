@@ -66,7 +66,12 @@
                                 <segue destination="0x5-Cy-Vg2" kind="unwind" unwindAction="backToDetailFIMViewControllerWithSegue:" id="Tii-CM-xxl"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="EOs-ak-GpU"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="EOs-ak-GpU">
+                            <connections>
+                                <action selector="save:" destination="Iph-WI-NKn" id="Hjo-q0-Age"/>
+                                <segue destination="0x5-Cy-Vg2" kind="unwind" unwindAction="backToDetailFIMViewControllerWithSegue:" id="IcI-RR-q7x"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCK-dg-IJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

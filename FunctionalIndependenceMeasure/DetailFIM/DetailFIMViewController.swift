@@ -83,7 +83,9 @@ class DetailFIMViewController: UIViewController {
         }
     }
 
-    @IBAction private func backToDetailFIMViewController(segue: UIStoryboardSegue) { }
+    @IBAction private func backToDetailFIMViewController(segue: UIStoryboardSegue) {
+        tableView.reloadData()
+    }
 }
 
 extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
