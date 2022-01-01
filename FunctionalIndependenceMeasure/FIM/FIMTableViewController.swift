@@ -11,6 +11,7 @@ import Foundation
 class FIMTableViewController: UITableViewController {
     //　画面遷移で値を受け取る変数
     var targetPersonUUID: UUID?
+
     // 画面遷移先へ値を渡す変数
     var selectedFIMUUID: UUID?
     var editingFIMUUID: UUID?
@@ -61,6 +62,10 @@ class FIMTableViewController: UITableViewController {
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "FIMTableViewCell") as! FIMTableViewCell
         let fim = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row]
+        guard let targetPerson = fimRepository.loadTargetPerson(fimUUID: fim.uuid!) else {
+            fatalError()
+        }
+        guard let assessor = fimRepository.loadAssessor(targetPersonUUID: targetPerson.uuid!) else { fatalError()}
         var createdAtString = "--"
         var updateAtString = "--"
         if let createdAt = fim.createdAt {
@@ -71,11 +76,14 @@ class FIMTableViewController: UITableViewController {
         }
 
         cell.configure(
-            sumAll: String(fim.sumAll),
-            sumMotor: String(fim.sumTheMotorSubscaleIncludes),
-            sumCongnition: String(fim.sumTheCognitionSubscaleIncludes),
+            fim: fim,
             createdAt: createdAtString,
-            updatedAt: updateAtString)
+            updatedAt: updateAtString,
+            copyFIMTextHandler: {
+                UIPasteboard.general.string =
+                // swiftlint:disable:next line_length
+                "FIM評価結果\n評価日\(createdAtString)\n評価者:\(assessor.name)\n対象者:\(targetPerson.name)\n合計値\(fim.sumAll)\n食事:\(fim.eating)\n整容:\(fim.grooming)\n清拭:\(fim.bathing)\n更衣上半身:\(fim.dressingUpperBody)\n更衣下半身:\(fim.dressingLowerBody)\nトイレ動作:\(fim.toileting)\n排尿管理:\(fim.bladderManagement)\n排便管理:\(fim.bowelManagement)\nベッド・椅子・車椅子移乗:\(fim.transfersBedChairWheelchair)\nトイレ移乗:\(fim.transfersToilet)\n浴槽・シャワー移乗:\(fim.transfersBathShower)\n歩行・車椅子:\(fim.walkWheelchair)\n階段:\(fim.stairs)\n理解:\(fim.comprehension)\n表出:\(fim.expression)\n社会的交流:\(fim.socialInteraction)\n問題解決:\(fim.problemSolving)\n記憶:\(fim.memory)"
+            })
         return cell
     }
 

@@ -21,16 +21,14 @@ class FIMTableViewCell: UITableViewCell {
     }
 
     func configure(
-        sumAll: String,
-        sumMotor: String,
-        sumCongnition: String,
+        fim: FIM,
         createdAt: String,
         updatedAt: String,
         copyFIMTextHandler: @escaping() -> Void
     ) {
-        sumAllLabel.text = sumAll
-        sumTheMotorSubscaleIncludesLabel.text = sumMotor
-        sumTheCognitionSubscaleIncludesLabel.text = sumCongnition
+        sumAllLabel.text = String(fim.sumAll)
+        sumTheMotorSubscaleIncludesLabel.text = String(fim.sumTheMotorSubscaleIncludes)
+        sumTheCognitionSubscaleIncludesLabel.text = String(fim.sumTheCognitionSubscaleIncludes)
         createdAtLabel.text = createdAt
         updatedAtLabel.text = updatedAt
         self.copyFIMTextHandler = copyFIMTextHandler
