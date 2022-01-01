@@ -152,6 +152,8 @@ class AssessmentViewController: UIViewController {
             switch segue.identifier ?? "" {
             case "detailFIM":
                 detailFIMVC.fimUUID = fim?.uuid
+                // このmodeによって、画面遷移先の次の画面遷移先を決めている。
+                detailFIMVC.mode = .assessment
             default:
                 break
             }

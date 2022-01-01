@@ -86,7 +86,7 @@
                     <navigationItem key="navigationItem" id="Lxf-XJ-auk">
                         <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="API-U0-AFX">
                             <connections>
-                                <segue destination="Mxc-Yt-9df" kind="unwind" unwindAction="backToFunctionSelectionTableViewControllerWithSegue:" id="NY6-LO-0sJ"/>
+                                <action selector="back:" destination="GEZ-ud-6UE" id="378-1B-SLg"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="編集" id="4xY-4M-NkJ">
@@ -98,6 +98,8 @@
                     <connections>
                         <outlet property="tableView" destination="MCt-9N-e0t" id="oOV-3Z-Gog"/>
                         <segue destination="m39-Qu-UJP" kind="presentation" identifier="editFIM" modalPresentationStyle="fullScreen" id="pL0-af-FoU"/>
+                        <segue destination="Mxc-Yt-9df" kind="unwind" identifier="functionSelection" unwindAction="backToFunctionSelectionTableViewControllerWithSegue:" id="l7F-qi-7my"/>
+                        <segue destination="Mxc-Yt-9df" kind="unwind" identifier="fim" unwindAction="backToFIMTableViewControllerWithSegue:" id="7eP-V7-W7z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuW-Xy-d2Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

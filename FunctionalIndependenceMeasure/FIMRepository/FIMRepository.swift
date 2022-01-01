@@ -144,28 +144,25 @@ final class FIMRepository {
         // swiftlint:disable:next force_cast
         try! realm.write {
             let loadedFIM = realm.object(ofType: FIM.self, forPrimaryKey: fimUUID.uuidString)
-            guard let loadedFIM = loadedFIM else {
-                return
-            }
-            loadedFIM.eating = fimItemNumArray[0]
-            loadedFIM.grooming = fimItemNumArray[1]
-            loadedFIM.bathing = fimItemNumArray[2]
-            loadedFIM.dressingUpperBody = fimItemNumArray[3]
-            loadedFIM.dressingLowerBody = fimItemNumArray[4]
-            loadedFIM.toileting = fimItemNumArray[5]
-            loadedFIM.bladderManagement = fimItemNumArray[6]
-            loadedFIM.bowelManagement = fimItemNumArray[7]
-            loadedFIM.transfersBedChairWheelchair = fimItemNumArray[8]
-            loadedFIM.transfersToilet = fimItemNumArray[9]
-            loadedFIM.transfersBathShower = fimItemNumArray[10]
-            loadedFIM.walkWheelchair = fimItemNumArray[11]
-            loadedFIM.stairs = fimItemNumArray[12]
-            loadedFIM.comprehension = fimItemNumArray[13]
-            loadedFIM.expression = fimItemNumArray[14]
-            loadedFIM.socialInteraction = fimItemNumArray[15]
-            loadedFIM.problemSolving = fimItemNumArray[16]
-            loadedFIM.memory = fimItemNumArray[17]
-
+            loadedFIM?.eating = fimItemNumArray[0]
+            loadedFIM?.grooming = fimItemNumArray[1]
+            loadedFIM?.bathing = fimItemNumArray[2]
+            loadedFIM?.dressingUpperBody = fimItemNumArray[3]
+            loadedFIM?.dressingLowerBody = fimItemNumArray[4]
+            loadedFIM?.toileting = fimItemNumArray[5]
+            loadedFIM?.bladderManagement = fimItemNumArray[6]
+            loadedFIM?.bowelManagement = fimItemNumArray[7]
+            loadedFIM?.transfersBedChairWheelchair = fimItemNumArray[8]
+            loadedFIM?.transfersToilet = fimItemNumArray[9]
+            loadedFIM?.transfersBathShower = fimItemNumArray[10]
+            loadedFIM?.walkWheelchair = fimItemNumArray[11]
+            loadedFIM?.stairs = fimItemNumArray[12]
+            loadedFIM?.comprehension = fimItemNumArray[13]
+            loadedFIM?.expression = fimItemNumArray[14]
+            loadedFIM?.socialInteraction = fimItemNumArray[15]
+            loadedFIM?.problemSolving = fimItemNumArray[16]
+            loadedFIM?.memory = fimItemNumArray[17]
+            loadedFIM?.updatedAt = Date()
             //            loadedFIM.eating = fimItemNumArray.eating
             //            loadedFIM.grooming = fimItemNumArray.grooming
             //            loadedFIM.bathing = fimItemNumArray.bathing

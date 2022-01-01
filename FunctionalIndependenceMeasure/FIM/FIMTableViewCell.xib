@@ -126,13 +126,27 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvY-a1-z8K">
+                        <rect key="frame" x="606" y="20" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="3TT-tL-YGu"/>
+                            <constraint firstAttribute="height" constant="50" id="9nB-Nk-EYY"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="lanyardcard" catalog="system" title=""/>
+                        <connections>
+                            <action selector="copyFIMText:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4ge-nD-5VB"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="brE-lu-dLH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="C3E-iy-r3D"/>
                     <constraint firstAttribute="bottom" secondItem="QQb-rX-IDm" secondAttribute="bottom" constant="10" id="Pa3-Vx-qco"/>
                     <constraint firstAttribute="trailing" secondItem="QQb-rX-IDm" secondAttribute="trailing" constant="10" id="TkZ-tZ-kia"/>
+                    <constraint firstAttribute="trailing" secondItem="uvY-a1-z8K" secondAttribute="trailing" constant="20" id="Ue4-0v-hQA"/>
                     <constraint firstAttribute="trailing" secondItem="brE-lu-dLH" secondAttribute="trailing" constant="20" id="WgY-MX-pi9"/>
                     <constraint firstItem="QQb-rX-IDm" firstAttribute="top" secondItem="brE-lu-dLH" secondAttribute="bottom" constant="20" id="eBZ-9U-hY0"/>
+                    <constraint firstItem="uvY-a1-z8K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="kBh-Lf-Paa"/>
                     <constraint firstItem="brE-lu-dLH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="usW-3H-QC1"/>
                 </constraints>
             </tableViewCellContentView>
@@ -147,4 +161,7 @@
             <point key="canvasLocation" x="256.52173913043481" y="128.23660714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="lanyardcard" catalog="system" width="108" height="128"/>
+    </resources>
 </document>

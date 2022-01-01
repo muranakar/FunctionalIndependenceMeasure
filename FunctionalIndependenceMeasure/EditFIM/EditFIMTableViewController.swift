@@ -57,7 +57,9 @@ class EditFIMTableViewController: UITableViewController {
         navigationItem.title = "対象者:\(targetPersonName)様"
     }
     @IBAction private func save(_ sender: Any) {
+        print("\(fimItemNum)")
         fimRepository.updateFIM(fimItemNumArray: fimItemNum, fimUUID: fimUUID!)
+        performSegue(withIdentifier: "save", sender: nil)
     }
 
     // MARK: - Table view data source
@@ -74,9 +76,8 @@ class EditFIMTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EditFIMTableViewCell
         cell.configue(labelText: fimItemTitle[indexPath.row],
                       textFieldText: String(fimItemNum[indexPath.row]),
-                      updateFIMNumHandler: { [weak self] index, element in
-                    self?.fimItemNum[index] = element
-                    print("\(self?.fimItemNum)")
+                      updateFIMNumHandler: { [weak self] element in
+            self?.fimItemNum[indexPath.row] = element
         })
         return cell
     }

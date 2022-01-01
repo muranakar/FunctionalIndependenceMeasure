@@ -63,16 +63,18 @@
                     <navigationItem key="navigationItem" id="Bix-v7-4N7">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tcb-KO-cQV">
                             <connections>
-                                <segue destination="0x5-Cy-Vg2" kind="unwind" unwindAction="backToDetailFIMViewControllerWithSegue:" id="Tii-CM-xxl"/>
+                                <segue destination="0x5-Cy-Vg2" kind="unwind" identifier="cancel" unwindAction="backToDetailFIMViewControllerWithSegue:" id="Tii-CM-xxl"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="保存" id="EOs-ak-GpU">
                             <connections>
-                                <action selector="save:" destination="Iph-WI-NKn" id="Hjo-q0-Age"/>
-                                <segue destination="0x5-Cy-Vg2" kind="unwind" unwindAction="backToDetailFIMViewControllerWithSegue:" id="IcI-RR-q7x"/>
+                                <action selector="save:" destination="Iph-WI-NKn" id="va6-Bu-IyE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="0x5-Cy-Vg2" kind="unwind" identifier="save" unwindAction="backToDetailFIMViewControllerWithSegue:" id="ukf-Li-WIS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCK-dg-IJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="0x5-Cy-Vg2" userLabel="Exit" sceneMemberID="exit"/>

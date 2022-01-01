@@ -11,6 +11,13 @@ class DetailFIMViewController: UIViewController {
     //　画面遷移で値を受け取る変数
     var fimUUID: UUID?
 
+    // unwindSegueの先を、どの画面から遷移したかによって、変更する。
+    enum Mode {
+        case assessment
+        case fim
+    }
+    var mode: Mode?
+
     private let fimRepository = FIMRepository()
 
     private var fim: FIM {
@@ -71,6 +78,16 @@ class DetailFIMViewController: UIViewController {
         performSegue(withIdentifier: "editFIM", sender: nil)
     }
 
+    @IBAction private func back(_ sender: Any) {
+        switch mode {
+        case .assessment:
+            performSegue(withIdentifier: "functionSelection", sender: nil)
+        case .fim:
+            performSegue(withIdentifier: "fim", sender: nil)
+        default:
+            break
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
         if let editVC = nav.topViewController as? EditFIMTableViewController {

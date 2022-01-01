@@ -30,18 +30,12 @@ class FIMTableViewController: UITableViewController {
 // MARK: - Segue- FIMTableViewController →　InputTargetPersonViewController
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             guard let nav = segue.destination as? UINavigationController else { return }
-//            if let editVC = nav.topViewController as? InputFIMViewController {
-//                switch segue.identifier ?? "" {
-//                case "edit":
-//                    editVC.fimUUID = editingFIMUUID
-//                default:
-//                    break
-//                }
-//            }
             if let detailFIMVC = nav.topViewController as? DetailFIMViewController {
                 switch segue.identifier ?? "" {
                 case "detailFIM":
                     detailFIMVC.fimUUID = selectedFIMUUID
+                    // このmodeによって、画面遷移先の次の画面遷移先を決めている。
+                    detailFIMVC.mode = .fim
                 default:
                     break
                 }
@@ -49,9 +43,7 @@ class FIMTableViewController: UITableViewController {
         }
 
     // MARK: - Segue- FIMTableViewController ←　InputFIMViewController
-    @IBAction private func backToFIMTableViewController(segue: UIStoryboardSegue) { }
-
-    @IBAction private func save(segue: UIStoryboardSegue) {
+    @IBAction private func backToFIMTableViewController(segue: UIStoryboardSegue) {
         tableView.reloadData()
     }
 
