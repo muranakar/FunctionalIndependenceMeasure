@@ -15,7 +15,7 @@ class AssessmentViewController: UIViewController {
     //　FIMの評価結果を入れて、Repositoryのメソッドに代入するための変数
     private var fim: FIM?
 
-    @IBOutlet private weak var label: UILabel!
+    @IBOutlet private weak var fimItemTitleLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var button1: UIButton!
     @IBOutlet private weak var button2: UIButton!
@@ -142,7 +142,7 @@ class AssessmentViewController: UIViewController {
     }
 
     private func updateLabel() {
-        label.text = fimScoringCriteria[fimItemCount].fimItem
+        fimItemTitleLabel.text = fimScoringCriteria[fimItemCount].fimItem
         textView.text = fimScoringCriteria[fimItemCount].attention
     }
     // MARK: - Segue AssessmentViewController　→　DetailFIMViewController
