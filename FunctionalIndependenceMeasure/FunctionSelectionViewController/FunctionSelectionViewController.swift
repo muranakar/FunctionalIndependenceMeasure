@@ -10,6 +10,8 @@ import UIKit
 class FunctionSelectionViewController: UIViewController {
     var targetPersonUUID: UUID?
     let fimRepository = FIMRepository()
+    @IBOutlet weak private var asssessmentButton: UIButton!
+    @IBOutlet weak private var fimListButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,8 @@ class FunctionSelectionViewController: UIViewController {
             return
         }
         navigationItem.title = "対象者:\(targetPersonName)様"
-        configueColor()
+        configueNavigationBarColor()
+        configueButtonStyle()
     }
     // MARK: - Segue- FunctionSelectionTableViewController → AssessmentViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -46,12 +49,21 @@ class FunctionSelectionViewController: UIViewController {
     }
 
     // MARK: - View Configue
-    private func configueColor() {
+    private func configueNavigationBarColor() {
         let appearance = UINavigationBarAppearance()
                appearance.configureWithOpaqueBackground()
                appearance.backgroundColor = Colors.base1Color
                navigationItem.standardAppearance = appearance
                navigationItem.scrollEdgeAppearance = appearance
                navigationItem.compactAppearance = appearance
+    }
+
+    private func configueButtonStyle() {
+        asssessmentButton.tintColor = Colors.base1Color
+        asssessmentButton.backgroundColor = Colors.main2Color
+        asssessmentButton.layer.cornerRadius = 10
+        fimListButton.tintColor = Colors.base1Color
+        fimListButton.backgroundColor = Colors.main2Color
+        fimListButton.layer.cornerRadius = 10
     }
 }

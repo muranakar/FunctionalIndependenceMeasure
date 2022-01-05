@@ -63,8 +63,8 @@
                                             <constraint firstAttribute="height" constant="50" id="MCX-ds-3TS"/>
                                             <constraint firstAttribute="width" constant="50" id="qEg-VA-vkV"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="1"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="1"/>
                                         <connections>
                                             <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SPc-s3-BXd"/>
                                             <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WyT-Gp-rah"/>
@@ -76,8 +76,8 @@
                                             <constraint firstAttribute="height" constant="50" id="MdX-C6-sk5"/>
                                             <constraint firstAttribute="width" constant="50" id="nt0-Lk-kgt"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="2"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="2"/>
                                         <connections>
                                             <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Tc2-xp-aJp"/>
                                             <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wkC-jd-Ckv"/>
@@ -89,8 +89,8 @@
                                             <constraint firstAttribute="width" constant="50" id="5Bn-cd-Mxn"/>
                                             <constraint firstAttribute="height" constant="50" id="nIW-Ww-VSn"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="3"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="3"/>
                                         <connections>
                                             <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kNj-3V-bWA"/>
                                             <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="56S-Io-iLi"/>
@@ -107,8 +107,8 @@
                                             <constraint firstAttribute="height" constant="50" id="059-Ms-j0b"/>
                                             <constraint firstAttribute="width" constant="50" id="bQJ-Ou-QZg"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="4"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="4"/>
                                         <connections>
                                             <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Mzw-5R-0rc"/>
                                             <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HcQ-GG-Fny"/>
@@ -120,8 +120,8 @@
                                             <constraint firstAttribute="height" constant="50" id="Amj-rD-a8y"/>
                                             <constraint firstAttribute="width" constant="50" id="Ghc-O9-8bN"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="5"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="5"/>
                                         <connections>
                                             <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="K30-Pb-gU1"/>
                                             <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bs0-0a-xjM"/>
@@ -133,8 +133,8 @@
                                             <constraint firstAttribute="width" constant="50" id="JYQ-OM-ryu"/>
                                             <constraint firstAttribute="height" constant="50" id="XhE-3Q-6fk"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="6"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="6"/>
                                         <connections>
                                             <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NzY-GB-itA"/>
                                             <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rbB-jV-qCK"/>
@@ -146,8 +146,8 @@
                                             <constraint firstAttribute="width" constant="50" id="1J0-M5-XJA"/>
                                             <constraint firstAttribute="height" constant="50" id="VRQ-Ne-3Uh"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="7"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="7"/>
                                         <connections>
                                             <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sFl-Z1-B5R"/>
                                             <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AhU-Cw-UU8"/>

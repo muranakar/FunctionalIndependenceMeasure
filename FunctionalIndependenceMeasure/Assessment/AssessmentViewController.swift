@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class AssessmentViewController: UIViewController {
     //　画面遷移で値を受け取る変数
@@ -74,6 +75,9 @@ class AssessmentViewController: UIViewController {
         decodeFimJsonFile()
         alertController.addAction(defaultAction)
         updateLabelAndProgressView()
+        configueProgressViewStyle()
+        configueButtonStyle()
+        configueLabelStyle()
     }
 
     //　ボタンが選択された際に、そのボタンと関連づけられた文字列を、テキストビューに反映させる。
@@ -212,5 +216,22 @@ class AssessmentViewController: UIViewController {
         } catch {
             fatalError("パース不可。メソッド名：[\(#function)]")
         }
+    }
+    // MARK: - View Configue
+    private func configueProgressViewStyle() {
+    }
+
+    private func configueButtonStyle() {
+        buttons.map() {
+            $0.backgroundColor = Colors.base1Color
+            $0.setTitleColor(Colors.main2Color, for: .normal)
+            $0.layer.cornerRadius = 25
+            $0.layer.borderWidth = 2
+            $0.layer.borderColor = Colors.main2Color.cgColor
+            $0.setTitleColor(Colors.base1Color, for: .selected)
+        }
+    }
+
+    private func configueLabelStyle() {
     }
 }

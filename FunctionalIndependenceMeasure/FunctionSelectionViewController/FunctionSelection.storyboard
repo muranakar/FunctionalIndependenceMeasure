@@ -17,17 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTL-pl-bow">
-                                <rect key="frame" x="166.5" y="362.5" width="81.5" height="31"/>
+                                <rect key="frame" x="117" y="353" width="180" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="9Tu-ET-OXt"/>
+                                    <constraint firstAttribute="height" constant="50" id="tbZ-L3-YVM"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="評価開始"/>
+                                <buttonConfiguration key="configuration" style="plain" image="applepencil" catalog="system" title="評価開始"/>
                                 <connections>
-                                    <segue destination="Hpu-I5-G1I" kind="presentation" identifier="assessment" modalPresentationStyle="fullScreen" id="KEA-nY-PbS"/>
+                                    <segue destination="Hpu-I5-G1I" kind="presentation" identifier="assessment" modalPresentationStyle="fullScreen" id="YfK-Ng-kgj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMl-xO-IGR">
-                                <rect key="frame" x="152" y="502.5" width="110" height="31"/>
+                                <rect key="frame" x="117" y="493" width="180" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="7IU-rJ-0VP"/>
+                                    <constraint firstAttribute="height" constant="50" id="rfi-23-olU"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="過去評価一覧"/>
+                                <buttonConfiguration key="configuration" style="plain" image="list.dash" catalog="system" title="過去評価一覧"/>
                                 <connections>
                                     <segue destination="xag-u6-nJF" kind="presentation" identifier="fimTable" modalPresentationStyle="fullScreen" id="2PH-1L-YZt"/>
                                 </connections>
@@ -49,6 +57,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="asssessmentButton" destination="FTL-pl-bow" id="91r-NR-XS1"/>
+                        <outlet property="fimListButton" destination="NMl-xO-IGR" id="x4C-Aq-haM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GT0-R2-xlt" userLabel="Exit" sceneMemberID="exit"/>
@@ -91,7 +103,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="applepencil" catalog="system" width="128" height="113"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
