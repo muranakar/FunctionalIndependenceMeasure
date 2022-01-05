@@ -26,6 +26,7 @@ class FIMTableViewController: UITableViewController {
         navigationItem.title = "対象者:\(targetPersonName)様"
         tableView.register(UINib(nibName: "FIMTableViewCell", bundle: nil), forCellReuseIdentifier: "FIMTableViewCell")
         tableView.reloadData()
+        configueColor()
     }
 
 // MARK: - Segue- FIMTableViewController →　InputTargetPersonViewController
@@ -107,7 +108,15 @@ class FIMTableViewController: UITableViewController {
         fimRepository.removeFIM(fimUUID: uuid)
         tableView.reloadData()
     }
-
+    // MARK: - View Configue
+    private func configueColor() {
+        let appearance = UINavigationBarAppearance()
+               appearance.configureWithOpaqueBackground()
+               appearance.backgroundColor = Colors.base1Color
+               navigationItem.standardAppearance = appearance
+               navigationItem.scrollEdgeAppearance = appearance
+               navigationItem.compactAppearance = appearance
+    }
     // MARK: - DateFormatter　Date型→String型へ変更
     func dateFormatter(date: Date) -> String {
         let dateFormatter = Foundation.DateFormatter()

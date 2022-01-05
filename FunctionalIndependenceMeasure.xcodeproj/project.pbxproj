@@ -36,6 +36,7 @@
 		B2767C4D27750FCC004E59C3 /* DetailFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */; };
 		B27A1F2227790FAA00ECBA0F /* FIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */; };
 		B27A1F2327790FAA00ECBA0F /* FIMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */; };
+		B2AEFF152784E9CA0010F539 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AEFF142784E9CA0010F539 /* Colors.swift */; };
 		B2AF2576277BB26100F40DC9 /* EditFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2AF2575277BB26100F40DC9 /* EditFIM.storyboard */; };
 		B2AF2578277BB29300F40DC9 /* EditFIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF2577277BB29300F40DC9 /* EditFIMTableViewController.swift */; };
 		B2AF257A277BB42C00F40DC9 /* EditFIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF2579277BB42C00F40DC9 /* EditFIMTableViewCell.swift */; };
@@ -74,6 +75,7 @@
 		B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailFIM.storyboard; sourceTree = "<group>"; };
 		B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMTableViewCell.swift; sourceTree = "<group>"; };
 		B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FIMTableViewCell.xib; sourceTree = "<group>"; };
+		B2AEFF142784E9CA0010F539 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B2AF2575277BB26100F40DC9 /* EditFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFIM.storyboard; sourceTree = "<group>"; };
 		B2AF2577277BB29300F40DC9 /* EditFIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFIMTableViewController.swift; sourceTree = "<group>"; };
 		B2AF2579277BB42C00F40DC9 /* EditFIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFIMTableViewCell.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				B237714E275EA64D00A48640 /* AppDelegate.swift */,
 				B2377150275EA64D00A48640 /* SceneDelegate.swift */,
+				B2AEFF132784E9B30010F539 /* Color */,
 				B2377184275EACF100A48640 /* FIMRepository */,
 				B2377176275EAAD400A48640 /* Assessor */,
 				B2377177275EAAFC00A48640 /* TargetPerson */,
@@ -222,6 +225,14 @@
 				B23EA88A27614BC2000B64C7 /* FunctionSelection.storyboard */,
 			);
 			path = FunctionSelectionViewController;
+			sourceTree = "<group>";
+		};
+		B2AEFF132784E9B30010F539 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				B2AEFF142784E9CA0010F539 /* Colors.swift */,
+			);
+			path = Color;
 			sourceTree = "<group>";
 		};
 		D903B93819F5545EF620C84B /* Pods */ = {
@@ -377,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2377167275EA6E300A48640 /* InputAssessorViewController.swift in Sources */,
+				B2AEFF152784E9CA0010F539 /* Colors.swift in Sources */,
 				B237717C275EABA300A48640 /* TargetPersonTableViewCell.swift in Sources */,
 				B27A1F2227790FAA00ECBA0F /* FIMTableViewCell.swift in Sources */,
 				B2AF2578277BB29300F40DC9 /* EditFIMTableViewController.swift in Sources */,

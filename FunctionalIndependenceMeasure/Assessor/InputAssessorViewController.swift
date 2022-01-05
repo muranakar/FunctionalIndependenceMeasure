@@ -36,6 +36,7 @@ class InputAssessorViewController: UIViewController {
                 return assesorName
             }
         }()
+        configueColor()
     }
 
 // MARK: - 評価者データを保存するUIButtonのIBAction
@@ -61,5 +62,14 @@ class InputAssessorViewController: UIViewController {
             withIdentifier: "save",
             sender: sender
         )
+    }
+    // MARK: - View Configue
+    private func configueColor() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Colors.base1Color
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
     }
 }

@@ -17,6 +17,7 @@ class FunctionSelectionViewController: UIViewController {
             return
         }
         navigationItem.title = "対象者:\(targetPersonName)様"
+        configueColor()
     }
     // MARK: - Segue- FunctionSelectionTableViewController → AssessmentViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,5 +43,15 @@ class FunctionSelectionViewController: UIViewController {
 
     // MARK: - Segue- FunctionSelectionTableViewController ← AssessmentViewController
     @IBAction private func backToFunctionSelectionTableViewController(segue: UIStoryboardSegue) {
+    }
+
+    // MARK: - View Configue
+    private func configueColor() {
+        let appearance = UINavigationBarAppearance()
+               appearance.configureWithOpaqueBackground()
+               appearance.backgroundColor = Colors.base1Color
+               navigationItem.standardAppearance = appearance
+               navigationItem.scrollEdgeAppearance = appearance
+               navigationItem.compactAppearance = appearance
     }
 }

@@ -12,6 +12,11 @@ class AssessorTableViewController: UITableViewController {
     var editingAssessorUUID: UUID?
     let fimRepository = FIMRepository()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configueColor()
+    }
+
     // MARK: - Segue-　AssessorTableViewController →　inputAccessoryViewController
     @IBAction private func input(_ sender: Any) {
         performSegue(withIdentifier: "input", sender: nil)
@@ -83,5 +88,15 @@ class AssessorTableViewController: UITableViewController {
         guard let uuid = fimRepository.loadAssessor()[indexPath.row].uuid else { return }
         fimRepository.removeAssessor(uuid: uuid)
         tableView.reloadData()
+    }
+
+    // MARK: - View Configue
+    private func configueColor() {
+        let appearance = UINavigationBarAppearance()
+               appearance.configureWithOpaqueBackground()
+               appearance.backgroundColor = Colors.base1Color
+               navigationItem.standardAppearance = appearance
+               navigationItem.scrollEdgeAppearance = appearance
+               navigationItem.compactAppearance = appearance
     }
 }

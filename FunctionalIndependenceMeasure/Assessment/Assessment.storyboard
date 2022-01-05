@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iFy-6q-vND">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -26,6 +26,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VJP-ba-8Gg">
+                                <rect key="frame" x="132" y="113" width="150" height="4"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.3" id="2mB-eH-8mW"/>
+                                </constraints>
+                            </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWV-hI-SCE">
                                 <rect key="frame" x="21" y="148" width="373" height="45"/>
                                 <constraints>
@@ -149,18 +155,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VJP-ba-8Gg">
-                                <rect key="frame" x="132" y="113" width="150" height="4"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.3" id="JIs-wK-Eop"/>
-                                </constraints>
-                            </progressView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jmw-OI-sZn">
                                 <rect key="frame" x="21" y="225" width="373" height="343"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="JMb-WL-7q4"/>
-                                    <constraint firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.5" id="uqT-tk-ZJU"/>
+                                    <constraint firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="uqT-tk-ZJU"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -202,7 +202,9 @@
                         <outlet property="button5" destination="1cr-1c-SXi" id="br9-ew-ghH"/>
                         <outlet property="button6" destination="Xtl-hL-lmh" id="5kf-Yu-umG"/>
                         <outlet property="button7" destination="haN-vn-iq9" id="w9N-li-jXY"/>
-                        <outlet property="label" destination="LWV-hI-SCE" id="Wjl-FM-xur"/>
+                        <outlet property="fimItemTitleLabel" destination="LWV-hI-SCE" id="sHs-0I-xae"/>
+                        <outlet property="progressTextLabel" destination="6FS-JV-M9w" id="qd4-Ml-hj1"/>
+                        <outlet property="progressView" destination="VJP-ba-8Gg" id="39D-I3-CZB"/>
                         <outlet property="textView" destination="Jmw-OI-sZn" id="Wes-Za-k0v"/>
                         <segue destination="lpU-Ro-mFI" kind="presentation" identifier="detailFIM" modalPresentationStyle="fullScreen" id="bbJ-Zr-fGO"/>
                     </connections>

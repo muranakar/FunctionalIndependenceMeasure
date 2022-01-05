@@ -41,6 +41,16 @@ class InputTargetPersonViewController: UIViewController {
                 return targetPersonName
             }
         }()
+        configueColor()
+    }
+    // MARK: - View Configue
+    private func configueColor() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Colors.base1Color
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
     }
 
     // MARK: - 対象者データを保存するUIButtonのIBAction

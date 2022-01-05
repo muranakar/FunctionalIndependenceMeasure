@@ -18,7 +18,8 @@ class TargetPersonTableViewController: UITableViewController {
         guard let assessorName = fimRepository.loadAssessor(assessorUUID: assessorUUID!)?.name else {
             return
         }
-        navigationItem.title = "評価者【\(assessorName)】対象者リスト"
+        navigationItem.title = "\(assessorName)様の対象者リスト"
+        configueColor()
     }
     // MARK: - Segue- TargetPersonTableViewController →　InputTargetPersonViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,5 +95,14 @@ class TargetPersonTableViewController: UITableViewController {
         guard let uuid = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid else { return }
         fimRepository.removeTargetPerson(targetPersonUUID: uuid)
         tableView.reloadData()
+    }
+    // MARK: - View Configue
+    private func configueColor() {
+        let appearance = UINavigationBarAppearance()
+               appearance.configureWithOpaqueBackground()
+               appearance.backgroundColor = Colors.base1Color
+               navigationItem.standardAppearance = appearance
+               navigationItem.scrollEdgeAppearance = appearance
+               navigationItem.compactAppearance = appearance
     }
 }

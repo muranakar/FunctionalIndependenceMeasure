@@ -55,6 +55,7 @@ class EditFIMTableViewController: UITableViewController {
             return
         }
         navigationItem.title = "対象者:\(targetPersonName)様"
+        configueColor()
     }
     @IBAction private func save(_ sender: Any) {
         print("\(fimItemNum)")
@@ -80,5 +81,14 @@ class EditFIMTableViewController: UITableViewController {
             self?.fimItemNum[indexPath.row] = element
         })
         return cell
+    }
+    // MARK: - View Configue
+    private func configueColor() {
+        let appearance = UINavigationBarAppearance()
+               appearance.configureWithOpaqueBackground()
+               appearance.backgroundColor = Colors.base1Color
+               navigationItem.standardAppearance = appearance
+               navigationItem.scrollEdgeAppearance = appearance
+               navigationItem.compactAppearance = appearance
     }
 }

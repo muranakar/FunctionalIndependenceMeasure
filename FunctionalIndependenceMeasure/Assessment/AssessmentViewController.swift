@@ -15,6 +15,8 @@ class AssessmentViewController: UIViewController {
     //　FIMの評価結果を入れて、Repositoryのメソッドに代入するための変数
     private var fim: FIM?
 
+    @IBOutlet private weak var progressTextLabel: UILabel!
+    @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var fimItemTitleLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var button1: UIButton!
@@ -71,7 +73,7 @@ class AssessmentViewController: UIViewController {
         super.viewDidLoad()
         decodeFimJsonFile()
         alertController.addAction(defaultAction)
-        updateLabel()
+        updateLabelAndProgressView()
     }
 
     //　ボタンが選択された際に、そのボタンと関連づけられた文字列を、テキストビューに反映させる。
@@ -138,12 +140,15 @@ class AssessmentViewController: UIViewController {
         buttons.forEach { (button: UIButton) in
             button.isSelected = false
         }
-        updateLabel()
+        updateLabelAndProgressView()
     }
 
-    private func updateLabel() {
+    private func updateLabelAndProgressView() {
+        progressTextLabel.text = "\(fimItemCount + 1)/18"
         fimItemTitleLabel.text = fimScoringCriteria[fimItemCount].fimItem
         textView.text = fimScoringCriteria[fimItemCount].attention
+        let progressFloat = Float(fimItemCount + 1) / 18
+        progressView.setProgress(progressFloat, animated: true)
     }
     // MARK: - Segue AssessmentViewController　→　DetailFIMViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

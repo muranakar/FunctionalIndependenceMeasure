@@ -72,6 +72,7 @@ class DetailFIMViewController: UIViewController {
         navigationItem.title = "対象者:\(targetPersonName)様"
         tableView.delegate = self
         tableView.dataSource = self
+        configueColor()
     }
 
     @IBAction private func editFIM(_ sender: Any) {
@@ -129,5 +130,14 @@ extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
             )
             return cell
         }
+    }
+    // MARK: - View Configue
+    private func configueColor() {
+        let appearance = UINavigationBarAppearance()
+               appearance.configureWithOpaqueBackground()
+               appearance.backgroundColor = Colors.base1Color
+               navigationItem.standardAppearance = appearance
+               navigationItem.scrollEdgeAppearance = appearance
+               navigationItem.compactAppearance = appearance
     }
 }
