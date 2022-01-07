@@ -86,7 +86,7 @@ class EditFIMTableViewController: UITableViewController {
     private func configueColor() {
         let appearance = UINavigationBarAppearance()
                appearance.configureWithOpaqueBackground()
-               appearance.backgroundColor = Colors.base1Color
+               appearance.backgroundColor = Colors.baseColor
                navigationItem.standardAppearance = appearance
                navigationItem.scrollEdgeAppearance = appearance
                navigationItem.compactAppearance = appearance

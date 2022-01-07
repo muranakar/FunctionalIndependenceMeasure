@@ -57,7 +57,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="mjx-2x-ySG">
                                 <rect key="frame" x="98" y="632" width="218" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39M-TS-qVh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39M-TS-qVh">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MCX-ds-3TS"/>
@@ -66,11 +66,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="1"/>
                                         <connections>
-                                            <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SPc-s3-BXd"/>
-                                            <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WyT-Gp-rah"/>
+                                            <action selector="selectedFIMNumWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jgo-Zr-YT6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4U0-yP-wPY">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4U0-yP-wPY">
                                         <rect key="frame" x="84" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MdX-C6-sk5"/>
@@ -79,11 +78,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="2"/>
                                         <connections>
-                                            <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Tc2-xp-aJp"/>
-                                            <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wkC-jd-Ckv"/>
+                                            <action selector="selectedFIMNumWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="i1B-gn-wTR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bN5-bW-S0D">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bN5-bW-S0D">
                                         <rect key="frame" x="168" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="5Bn-cd-Mxn"/>
@@ -92,8 +90,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="3"/>
                                         <connections>
-                                            <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kNj-3V-bWA"/>
-                                            <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="56S-Io-iLi"/>
+                                            <action selector="selectedFIMNumWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ql9-7v-9y2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -101,7 +98,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="ZNL-VE-Ilk">
                                 <rect key="frame" x="42.5" y="712" width="329" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4p-hv-97Y">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4p-hv-97Y">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="059-Ms-j0b"/>
@@ -110,11 +107,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="4"/>
                                         <connections>
-                                            <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Mzw-5R-0rc"/>
-                                            <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HcQ-GG-Fny"/>
+                                            <action selector="selectedFIMNumWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="92i-YG-L3v"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cr-1c-SXi">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cr-1c-SXi">
                                         <rect key="frame" x="93" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Amj-rD-a8y"/>
@@ -123,11 +119,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="5"/>
                                         <connections>
-                                            <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="K30-Pb-gU1"/>
-                                            <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bs0-0a-xjM"/>
+                                            <action selector="selectedFIMNumWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eqA-BX-SXU"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-hL-lmh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-hL-lmh">
                                         <rect key="frame" x="186" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="JYQ-OM-ryu"/>
@@ -136,11 +131,10 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="6"/>
                                         <connections>
-                                            <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NzY-GB-itA"/>
-                                            <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rbB-jV-qCK"/>
+                                            <action selector="selectedFIMNumWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CRH-X6-wGt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haN-vn-iq9">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haN-vn-iq9">
                                         <rect key="frame" x="279" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="1J0-M5-XJA"/>
@@ -149,8 +143,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="7"/>
                                         <connections>
-                                            <action selector="changeWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sFl-Z1-B5R"/>
-                                            <action selector="updateWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AhU-Cw-UU8"/>
+                                            <action selector="selectedFIMNumWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="z7D-jQ-TKR"/>
                                         </connections>
                                     </button>
                                 </subviews>

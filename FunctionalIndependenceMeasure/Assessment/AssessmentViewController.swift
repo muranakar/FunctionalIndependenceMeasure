@@ -75,20 +75,22 @@ class AssessmentViewController: UIViewController {
         decodeFimJsonFile()
         alertController.addAction(defaultAction)
         updateLabelAndProgressView()
-        configueProgressViewStyle()
-        configueButtonStyle()
-        configueLabelStyle()
+        configueViewProgressViewStyle()
+        configueViewButtonsStyle()
+        configueViewLabelStyle()
     }
 
-    //　ボタンが選択された際に、そのボタンと関連づけられた文字列を、テキストビューに反映させる。
-    @IBAction private func update(sender: UIButton) {
+    @IBAction private func selectedFIMNum(sender: UIButton) {
+        //　ボタンが選択された際に、そのボタンと関連づけられた文字列を、テキストビューに反映させる。
         textView.text = dictionaryButtonAndString[sender]
-    }
-
-    //　一つのボタンが押された際、そのボタン以外は未選択状態にする。
-    @IBAction private func change(sender: UIButton) {
+        configueViewTapButtonStyle(Colors.mainColor, button: sender)
+        //　一つのボタンが押された際、そのボタン以外は未選択状態にする。
         buttons.forEach { (button: UIButton) in
             button.isSelected = (button === sender)
+            guard button.isSelected else {
+                configueViewTapButtonStyle(Colors.baseColor, button: button)
+                return
+            }
         }
     }
 
@@ -137,6 +139,7 @@ class AssessmentViewController: UIViewController {
             performSegue(withIdentifier: "detailFIM", sender: nil)
         } else {
             updateScreenAndAllUIButtonIsSelectedFalse()
+            configueViewButtonsStyle()
         }
     }
 
@@ -218,20 +221,34 @@ class AssessmentViewController: UIViewController {
         }
     }
     // MARK: - View Configue
-    private func configueProgressViewStyle() {
+    private func configueViewProgressViewStyle() {
+        progressView.progressTintColor = Colors.mainColor
     }
 
-    private func configueButtonStyle() {
+    private func configueViewButtonsStyle() {
         buttons.map() {
-            $0.backgroundColor = Colors.base1Color
-            $0.setTitleColor(Colors.main2Color, for: .normal)
+            $0.backgroundColor = Colors.baseColor
+            $0.setTitleColor(Colors.mainColor, for: .normal)
             $0.layer.cornerRadius = 25
             $0.layer.borderWidth = 2
-            $0.layer.borderColor = Colors.main2Color.cgColor
-            $0.setTitleColor(Colors.base1Color, for: .selected)
+            $0.layer.borderColor = Colors.mainColor.cgColor
         }
     }
 
-    private func configueLabelStyle() {
+    private func configueViewTapButtonStyle(
+        _ color: UIColor,
+        button: UIButton
+    ) {
+        UIView.animate(withDuration: 0.5, delay: 0,
+                       options: [.transitionCrossDissolve],
+                       animations: {
+            [weak self] in
+            button.backgroundColor = color
+            button.setTitleColor(Colors.baseColor, for: .selected)
+        },
+                       completion: nil)
+    }
+
+    private func configueViewLabelStyle() {
     }
 }
