@@ -16,6 +16,9 @@ class FIMTableViewController: UITableViewController {
     var selectedFIMUUID: UUID?
     var editingFIMUUID: UUID?
 
+    //　並び替えのための変数
+    private var isSortedAscending = false
+
     let fimRepository = FIMRepository()
 
     override func viewDidLoad() {
@@ -29,23 +32,30 @@ class FIMTableViewController: UITableViewController {
         configueColor()
     }
 
-// MARK: - Segue- FIMTableViewController →　InputTargetPersonViewController
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            guard let nav = segue.destination as? UINavigationController else { return }
-            if let detailFIMVC = nav.topViewController as? DetailFIMViewController {
-                switch segue.identifier ?? "" {
-                case "detailFIM":
-                    detailFIMVC.fimUUID = selectedFIMUUID
-                    // このmodeによって、画面遷移先の次の画面遷移先を決めている。
-                    detailFIMVC.mode = .fim
-                default:
-                    break
-                }
+    // MARK: - Segue- FIMTableViewController →　InputTargetPersonViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nav = segue.destination as? UINavigationController else { return }
+        if let detailFIMVC = nav.topViewController as? DetailFIMViewController {
+            switch segue.identifier ?? "" {
+            case "detailFIM":
+                detailFIMVC.fimUUID = selectedFIMUUID
+                // このmodeによって、画面遷移先の次の画面遷移先を決めている。
+                detailFIMVC.mode = .fim
+            default:
+                break
             }
         }
+    }
 
     // MARK: - Segue- FIMTableViewController ←　InputFIMViewController
     @IBAction private func backToFIMTableViewController(segue: UIStoryboardSegue) {
+        tableView.reloadData()
+    }
+
+    // MARK: - Segue- SortTableView
+
+    @IBAction private func sortTableView(_ sender: Any) {
+        isSortedAscending.toggle()
         tableView.reloadData()
     }
 
@@ -56,13 +66,19 @@ class FIMTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!).count
+        fimRepository.loadFIM(
+            targetPersonUUID: targetPersonUUID!,
+            sortedAscending: isSortedAscending
+        ).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "FIMTableViewCell") as! FIMTableViewCell
-        let fim = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row]
+        let fim = fimRepository.loadFIM(
+            targetPersonUUID: targetPersonUUID!,
+            sortedAscending: isSortedAscending
+        )[indexPath.row]
         guard let targetPerson = fimRepository.loadTargetPerson(fimUUID: fim.uuid!) else {
             fatalError()
         }
@@ -85,17 +101,25 @@ class FIMTableViewController: UITableViewController {
                 // swiftlint:disable:next line_length
                 "FIM評価結果\n評価日\(createdAtString)\n評価者:\(assessor.name)\n対象者:\(targetPerson.name)\n合計値\(fim.sumAll)\n食事:\(fim.eating)\n整容:\(fim.grooming)\n清拭:\(fim.bathing)\n更衣上半身:\(fim.dressingUpperBody)\n更衣下半身:\(fim.dressingLowerBody)\nトイレ動作:\(fim.toileting)\n排尿管理:\(fim.bladderManagement)\n排便管理:\(fim.bowelManagement)\nベッド・椅子・車椅子移乗:\(fim.transfersBedChairWheelchair)\nトイレ移乗:\(fim.transfersToilet)\n浴槽・シャワー移乗:\(fim.transfersBathShower)\n歩行・車椅子:\(fim.walkWheelchair)\n階段:\(fim.stairs)\n理解:\(fim.comprehension)\n表出:\(fim.expression)\n社会的交流:\(fim.socialInteraction)\n問題解決:\(fim.problemSolving)\n記憶:\(fim.memory)"
             })
+        // View Configue
+        cell.copytextButton.tintColor = Colors.mainColor
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedFIMUUID = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row].uuid
+        selectedFIMUUID = fimRepository.loadFIM(
+            targetPersonUUID: targetPersonUUID!,
+            sortedAscending: isSortedAscending
+        )[indexPath.row].uuid
         performSegue(withIdentifier: "detailFIM", sender: nil)
     }
 
     //　navのボタンへの変更必要か。
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        editingFIMUUID = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row].uuid
+        editingFIMUUID = fimRepository.loadFIM(
+            targetPersonUUID: targetPersonUUID!,
+            sortedAscending: false
+        )[indexPath.row].uuid
 
         performSegue(withIdentifier: "edit", sender: nil)
     }
@@ -104,18 +128,21 @@ class FIMTableViewController: UITableViewController {
                             commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        guard let uuid = fimRepository.loadFIM(targetPersonUUID: targetPersonUUID!)[indexPath.row].uuid else { return }
+        guard let uuid = fimRepository.loadFIM(
+            targetPersonUUID: targetPersonUUID!,
+            sortedAscending: isSortedAscending
+        )[indexPath.row].uuid else { return }
         fimRepository.removeFIM(fimUUID: uuid)
         tableView.reloadData()
     }
     // MARK: - View Configue
     private func configueColor() {
         let appearance = UINavigationBarAppearance()
-               appearance.configureWithOpaqueBackground()
-               appearance.backgroundColor = Colors.baseColor
-               navigationItem.standardAppearance = appearance
-               navigationItem.scrollEdgeAppearance = appearance
-               navigationItem.compactAppearance = appearance
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Colors.baseColor
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
     }
     // MARK: - DateFormatter　Date型→String型へ変更
     func dateFormatter(date: Date) -> String {

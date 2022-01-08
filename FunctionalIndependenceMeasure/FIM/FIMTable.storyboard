@@ -26,6 +26,11 @@
                                 <segue destination="NmZ-dF-Q3b" kind="unwind" unwindAction="backToFunctionSelectionTableViewControllerWithSegue:" id="qSj-sr-W5I"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.up.arrow.down" catalog="system" id="eTX-sa-QRE">
+                            <connections>
+                                <action selector="sortTableView:" destination="rLZ-g0-WkT" id="Wve-aa-izm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="aJw-fb-ODG" kind="presentation" identifier="detailFIM" modalPresentationStyle="fullScreen" id="wQD-id-okw"/>
@@ -64,6 +69,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

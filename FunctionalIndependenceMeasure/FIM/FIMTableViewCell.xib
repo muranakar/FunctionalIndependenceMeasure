@@ -133,7 +133,7 @@
                             <constraint firstAttribute="height" constant="50" id="9nB-Nk-EYY"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="lanyardcard" catalog="system" title=""/>
+                        <buttonConfiguration key="configuration" style="plain" image="doc.on.doc" catalog="system" title=""/>
                         <connections>
                             <action selector="copyFIMText:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4ge-nD-5VB"/>
                         </connections>
@@ -152,6 +152,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="copytextButton" destination="uvY-a1-z8K" id="nUc-AR-tqk"/>
                 <outlet property="createdAtLabel" destination="rKu-Cz-h5K" id="C4p-WG-aWv"/>
                 <outlet property="sumAllLabel" destination="QxD-zT-Jn6" id="gjG-oI-RZC"/>
                 <outlet property="sumTheCognitionSubscaleIncludesLabel" destination="5zA-zz-p7t" id="vt0-ju-S3L"/>
@@ -162,6 +163,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="lanyardcard" catalog="system" width="108" height="128"/>
+        <image name="doc.on.doc" catalog="system" width="116" height="128"/>
     </resources>
 </document>

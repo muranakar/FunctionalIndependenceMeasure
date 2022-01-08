@@ -13,7 +13,7 @@ class FIMTableViewCell: UITableViewCell {
     @IBOutlet weak private var sumTheCognitionSubscaleIncludesLabel: UILabel!
     @IBOutlet weak private var createdAtLabel: UILabel!
     @IBOutlet weak private var updatedAtLabel: UILabel!
-
+    @IBOutlet weak var copytextButton: UIButton!
     private var copyFIMTextHandler: () -> Void = {  }
 
     @IBAction private func copyFIMText(_ sender: Any) {

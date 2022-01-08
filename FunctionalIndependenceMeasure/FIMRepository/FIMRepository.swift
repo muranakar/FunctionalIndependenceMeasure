@@ -112,8 +112,17 @@ final class FIMRepository {
         return fim
     }
     //　一人の対象者のUUIDから、複数のFIMのデータの呼び出し
-    func loadFIM(targetPersonUUID: UUID) -> [FIM] {
-        let fimList = realm.object(ofType: TargetPerson.self, forPrimaryKey: targetPersonUUID.uuidString)?.FIM
+    func loadFIM(
+        targetPersonUUID: UUID,
+        sortedAscending: Bool
+    ) -> [FIM] {
+        let fimList = realm.object(
+            ofType: TargetPerson.self,
+            forPrimaryKey: targetPersonUUID.uuidString
+        )?.FIM.sorted(
+            byKeyPath: "createdAt",
+            ascending: sortedAscending
+        )
         guard let fimList = fimList else { return [] }
         let fimListArray = Array(fimList)
         return fimListArray

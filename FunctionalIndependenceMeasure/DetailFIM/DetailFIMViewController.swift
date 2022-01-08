@@ -122,7 +122,7 @@ extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
                 fimItemTitle: fimItemTitle[indexPath.row],
                 fimItemNum: String(fimItemNum[indexPath.row])
             )
-            boldTextcell.backgroundColor = Colors.baseColor
+            boldTextcell.backgroundColor = Colors.mainColor.withAlphaComponent(0.1)
             return boldTextcell
         } else {
             cell.configure(
