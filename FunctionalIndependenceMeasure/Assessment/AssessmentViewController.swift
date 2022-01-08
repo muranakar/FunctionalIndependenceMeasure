@@ -27,6 +27,7 @@ class AssessmentViewController: UIViewController {
     @IBOutlet private weak var button5: UIButton!
     @IBOutlet private weak var button6: UIButton!
     @IBOutlet private weak var button7: UIButton!
+    @IBOutlet private weak var decisionButton: UIButton!
 
     private let fimRepository = FIMRepository()
 
@@ -77,7 +78,6 @@ class AssessmentViewController: UIViewController {
         updateLabelAndProgressView()
         configueViewProgressViewStyle()
         configueViewButtonsStyle()
-        configueViewLabelStyle()
     }
 
     @IBAction private func selectedFIMNum(sender: UIButton) {
@@ -226,15 +226,32 @@ class AssessmentViewController: UIViewController {
     }
 
     private func configueViewButtonsStyle() {
-        buttons.map() {
+        // 選択ボタンのView
+        buttons.forEach {
             $0.backgroundColor = Colors.baseColor
             $0.setTitleColor(Colors.mainColor, for: .normal)
             $0.layer.cornerRadius = 25
             $0.layer.borderWidth = 2
             $0.layer.borderColor = Colors.mainColor.cgColor
+            $0.layer.shadowOpacity = 0.5
+            $0.layer.shadowRadius = 2
+            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowOffset = CGSize(width: 1, height: 1)
         }
+        // 決定ボタンのView
+        decisionButton.backgroundColor = Colors.baseColor
+        decisionButton.setTitleColor(Colors.mainColor, for: .normal)
+        decisionButton.layer.cornerRadius = 10
+        decisionButton.layer.borderWidth = 2
+        decisionButton.layer.borderColor = Colors.mainColor.cgColor
+        decisionButton.layer.shadowOpacity = 0.7
+        decisionButton.layer.shadowRadius = 3
+        decisionButton.layer.shadowColor = Colors.mainColor.cgColor
+        decisionButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        decisionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
     }
 
+    // タップされた時の、選択ボタンのアニメーション
     private func configueViewTapButtonStyle(
         _ color: UIColor,
         button: UIButton
@@ -247,8 +264,5 @@ class AssessmentViewController: UIViewController {
             button.setTitleColor(Colors.baseColor, for: .selected)
         },
                        completion: nil)
-    }
-
-    private func configueViewLabelStyle() {
     }
 }

@@ -51,19 +51,27 @@ class FunctionSelectionViewController: UIViewController {
     // MARK: - View Configue
     private func configueNavigationBarColor() {
         let appearance = UINavigationBarAppearance()
-               appearance.configureWithOpaqueBackground()
-               appearance.backgroundColor = Colors.baseColor
-               navigationItem.standardAppearance = appearance
-               navigationItem.scrollEdgeAppearance = appearance
-               navigationItem.compactAppearance = appearance
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Colors.baseColor
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
     }
 
     private func configueButtonStyle() {
         asssessmentButton.tintColor = Colors.baseColor
         asssessmentButton.backgroundColor = Colors.mainColor
         asssessmentButton.layer.cornerRadius = 10
+        asssessmentButton.layer.shadowOpacity = 0.7
+        asssessmentButton.layer.shadowRadius = 3
+        asssessmentButton.layer.shadowColor = UIColor.black.cgColor
+        asssessmentButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         fimListButton.tintColor = Colors.baseColor
         fimListButton.backgroundColor = Colors.mainColor
         fimListButton.layer.cornerRadius = 10
+        fimListButton.layer.shadowOpacity = 0.7
+        fimListButton.layer.shadowRadius = 3
+        fimListButton.layer.shadowColor = UIColor.black.cgColor
+        fimListButton.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
 }

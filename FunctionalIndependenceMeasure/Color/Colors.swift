@@ -10,7 +10,7 @@ import UIKit
 struct Colors {
     static let baseColor = UIColor(hex: "F6F5F5")
     static let mainColor = UIColor(hex: "276678")
-    static let complementaryColor = UIColor(hex: "E97858")
+    static let complementaryColor = UIColor(hex: "d89987")
     //    static let base2Color = UIColor(hex: "D3E0EA")
     //    static let main1Color = UIColor(hex: "1687A7")
 }

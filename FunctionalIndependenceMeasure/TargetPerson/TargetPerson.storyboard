@@ -23,14 +23,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="373.5" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rd-lM-yBn">
-                                            <rect key="frame" x="45" y="11" width="214" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rd-lM-yBn">
+                                            <rect key="frame" x="40" y="8.5" width="56" height="26.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2rd-lM-yBn" firstAttribute="centerY" secondItem="mmp-De-uGK" secondAttribute="centerY" id="TFu-Gc-UuL"/>
+                                        <constraint firstItem="2rd-lM-yBn" firstAttribute="leading" secondItem="mmp-De-uGK" secondAttribute="leadingMargin" constant="20" id="d3X-Sg-flN"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="tagetPeronName" destination="2rd-lM-yBn" id="5eu-Rr-wrZ"/>
