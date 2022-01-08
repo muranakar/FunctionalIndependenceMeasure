@@ -70,6 +70,10 @@ class TargetPersonTableViewController: UITableViewController {
         fimRepository.loadTargetPerson(assessorUUID: assessorUUID!).count
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        44
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TargetPersonTableViewCell

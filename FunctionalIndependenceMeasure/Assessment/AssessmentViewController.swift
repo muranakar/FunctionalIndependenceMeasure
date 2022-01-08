@@ -28,6 +28,7 @@ class AssessmentViewController: UIViewController {
     @IBOutlet private weak var button6: UIButton!
     @IBOutlet private weak var button7: UIButton!
     @IBOutlet private weak var decisionButton: UIButton!
+    @IBOutlet private weak var attentionButton: UIButton!
 
     private let fimRepository = FIMRepository()
 
@@ -78,6 +79,15 @@ class AssessmentViewController: UIViewController {
         updateLabelAndProgressView()
         configueViewProgressViewStyle()
         configueViewButtonsStyle()
+    }
+
+    @IBAction private func backOneFIMItem(_ sender: Any) {
+        if fimItemCount >= 1 {
+            fimItemCount -= 1
+            assessmentResultFIM.removeLast()
+            updateScreenAndAllUIButtonIsSelectedFalse()
+            configueViewButtonsStyle()
+        }
     }
 
     @IBAction private func selectedFIMNum(sender: UIButton) {
@@ -141,6 +151,14 @@ class AssessmentViewController: UIViewController {
             updateScreenAndAllUIButtonIsSelectedFalse()
             configueViewButtonsStyle()
         }
+    }
+
+    @IBAction private func updateAttentionTextView(_ sender: Any) {
+        buttons.forEach { (button: UIButton) in
+            button.isSelected = false
+        }
+        textView.text = fimScoringCriteria[fimItemCount].attention
+        configueViewButtonsStyle()
     }
 
     private func updateScreenAndAllUIButtonIsSelectedFalse() {
@@ -249,6 +267,7 @@ class AssessmentViewController: UIViewController {
         decisionButton.layer.shadowColor = Colors.mainColor.cgColor
         decisionButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         decisionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        attentionButton.tintColor = Colors.complementaryColor
     }
 
     // タップされた時の、選択ボタンのアニメーション

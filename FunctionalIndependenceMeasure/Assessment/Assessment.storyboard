@@ -154,15 +154,29 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="JMb-WL-7q4"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6O-Gb-Jm0">
+                                <rect key="frame" x="296" y="795" width="75" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6Di-bM-SJd"/>
+                                    <constraint firstAttribute="height" constant="50" id="iHm-D2-rYS"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="exclamationmark.triangle" catalog="system"/>
+                                <connections>
+                                    <action selector="updateAttentionTextView:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ecd-eW-uVF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="O6O-Gb-Jm0" firstAttribute="bottom" secondItem="baQ-79-6VF" secondAttribute="bottom" id="49N-Sk-0wC"/>
+                            <constraint firstItem="baQ-79-6VF" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="10" id="4Vk-Dz-fzV"/>
                             <constraint firstItem="baQ-79-6VF" firstAttribute="top" secondItem="ZNL-VE-Ilk" secondAttribute="bottom" constant="30" id="6hZ-Ia-rRp"/>
                             <constraint firstItem="6FS-JV-M9w" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Bi1-yD-ch5"/>
                             <constraint firstItem="baQ-79-6VF" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="DHE-C8-IEH"/>
@@ -172,22 +186,30 @@
                             <constraint firstItem="mjx-2x-ySG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="IVW-Lg-KjR"/>
                             <constraint firstItem="6FS-JV-M9w" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="5" id="Jkd-rG-zxo"/>
                             <constraint firstItem="Jmw-OI-sZn" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="VvZ-aS-Pxx"/>
+                            <constraint firstItem="O6O-Gb-Jm0" firstAttribute="leading" secondItem="baQ-79-6VF" secondAttribute="trailing" constant="40" id="Zjq-Qk-9xv"/>
                             <constraint firstItem="LWV-hI-SCE" firstAttribute="top" secondItem="VJP-ba-8Gg" secondAttribute="bottom" constant="30" id="e9f-GQ-xLe"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="baQ-79-6VF" secondAttribute="bottom" constant="30" id="jZ9-uf-YcD"/>
                             <constraint firstItem="mjx-2x-ySG" firstAttribute="top" secondItem="Jmw-OI-sZn" secondAttribute="bottom" constant="20" id="kwx-Hi-xBb"/>
                             <constraint firstItem="LWV-hI-SCE" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="rab-hL-PWW"/>
                             <constraint firstItem="ZNL-VE-Ilk" firstAttribute="top" secondItem="mjx-2x-ySG" secondAttribute="bottom" constant="30" id="vrW-OW-zlG"/>
                             <constraint firstItem="Jmw-OI-sZn" firstAttribute="top" secondItem="LWV-hI-SCE" secondAttribute="bottom" constant="10" id="yJJ-jQ-073"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="ZhD-R1-kUd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="huX-tc-Azz">
+                        <barButtonItem key="leftBarButtonItem" title="評価中止" id="huX-tc-Azz">
                             <connections>
                                 <segue destination="BAy-hJ-cKC" kind="unwind" unwindAction="backToFunctionSelectionTableViewControllerWithSegue:" id="zfV-rl-Ajg"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="一つ戻る" id="Zbx-mC-dGB">
+                            <connections>
+                                <action selector="backOneFIMItem:" destination="Y6W-OH-hqX" id="aj2-LA-n79"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="attentionButton" destination="O6O-Gb-Jm0" id="MsU-6d-PqG"/>
                         <outlet property="button1" destination="39M-TS-qVh" id="0Kg-4W-ULu"/>
                         <outlet property="button2" destination="4U0-yP-wPY" id="6Fq-Al-Dvd"/>
                         <outlet property="button3" destination="bN5-bW-S0D" id="Hdw-r2-C6g"/>
@@ -236,6 +258,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

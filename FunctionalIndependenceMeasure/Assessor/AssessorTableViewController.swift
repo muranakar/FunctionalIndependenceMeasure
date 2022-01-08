@@ -63,6 +63,10 @@ class AssessorTableViewController: UITableViewController {
         fimRepository.loadAssessor().count
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        44
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AssessorTableViewCell
@@ -89,7 +93,6 @@ class AssessorTableViewController: UITableViewController {
         fimRepository.removeAssessor(uuid: uuid)
         tableView.reloadData()
     }
-
     // MARK: - View Configue
     private func configueColor() {
         let appearance = UINavigationBarAppearance()
