@@ -111,6 +111,10 @@ extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
         fimItemTitle.count
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        44
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DetailFIMTableViewCell

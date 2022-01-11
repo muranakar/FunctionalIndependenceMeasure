@@ -19,7 +19,6 @@
 		B2377156275EA64D00A48640 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2377154275EA64D00A48640 /* Main.storyboard */; };
 		B2377158275EA64E00A48640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2377157275EA64E00A48640 /* Assets.xcassets */; };
 		B237715B275EA64E00A48640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2377159275EA64E00A48640 /* LaunchScreen.storyboard */; };
-		B2377165275EA6BC00A48640 /* TargetPersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377164275EA6BC00A48640 /* TargetPersonTableViewController.swift */; };
 		B2377167275EA6E300A48640 /* InputAssessorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377166275EA6E200A48640 /* InputAssessorViewController.swift */; };
 		B237716D275EA97000A48640 /* FunctionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */; };
 		B237716F275EAA0F00A48640 /* AssessmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237716E275EAA0F00A48640 /* AssessmentViewController.swift */; };
@@ -59,7 +58,6 @@
 		B2377157275EA64E00A48640 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B237715A275EA64E00A48640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B237715C275EA64E00A48640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2377164275EA6BC00A48640 /* TargetPersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetPersonTableViewController.swift; sourceTree = "<group>"; };
 		B2377166275EA6E200A48640 /* InputAssessorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAssessorViewController.swift; sourceTree = "<group>"; };
 		B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionSelectionViewController.swift; sourceTree = "<group>"; };
 		B237716E275EAA0F00A48640 /* AssessmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 		B2377177275EAAFC00A48640 /* TargetPerson */ = {
 			isa = PBXGroup;
 			children = (
-				B2377164275EA6BC00A48640 /* TargetPersonTableViewController.swift */,
 				B237717B275EABA300A48640 /* TargetPersonTableViewCell.swift */,
 				B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */,
 				B2892861278DBBE700965E86 /* TargetPersonViewController.swift */,
@@ -401,7 +398,6 @@
 				B2377175275EAAB100A48640 /* FIMTableViewController.swift in Sources */,
 				B237716F275EAA0F00A48640 /* AssessmentViewController.swift in Sources */,
 				B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */,
-				B2377165275EA6BC00A48640 /* TargetPersonTableViewController.swift in Sources */,
 				B2C301302773CE7C0051FC1A /* DetailFIMTableViewCell.swift in Sources */,
 				B237716D275EA97000A48640 /* FunctionSelectionViewController.swift in Sources */,
 				B2377181275EACD200A48640 /* FIM.swift in Sources */,

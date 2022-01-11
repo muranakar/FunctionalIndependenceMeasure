@@ -58,7 +58,6 @@ class EditFIMTableViewController: UITableViewController {
         configueColor()
     }
     @IBAction private func save(_ sender: Any) {
-        print("\(fimItemNum)")
         fimRepository.updateFIM(fimItemNumArray: fimItemNum, fimUUID: fimUUID!)
         performSegue(withIdentifier: "save", sender: nil)
     }

@@ -9,7 +9,7 @@ import UIKit
 
 class AssessorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak private var tableview: UITableView!
-    @IBOutlet weak var inputButton: UIButton!
+    @IBOutlet weak private var inputButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,8 +90,7 @@ class AssessorViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView,
-                   commit editingStyle:
-                   UITableViewCell.EditingStyle,
+                   commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         guard let uuid = fimRepository.loadAssessor()[indexPath.row].uuid else { return }

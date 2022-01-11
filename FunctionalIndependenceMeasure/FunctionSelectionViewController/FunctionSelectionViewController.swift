@@ -19,10 +19,10 @@ class FunctionSelectionViewController: UIViewController {
             return
         }
         navigationItem.title = "対象者:\(targetPersonName)様"
-        configueNavigationBarColor()
-        configueButtonStyle()
+        configueViewNavigationBarColor()
+        configueViewButtonStyle()
     }
-    // MARK: - Segue- FunctionSelectionTableViewController → AssessmentViewController
+    // MARK: - Segue- FunctionSelectionViewController → AssessmentViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
         if let assessmentVC = nav.topViewController as? AssessmentViewController {
@@ -44,12 +44,12 @@ class FunctionSelectionViewController: UIViewController {
         }
     }
 
-    // MARK: - Segue- FunctionSelectionTableViewController ← AssessmentViewController
+    // MARK: - Segue- FunctionSelectionViewController ← AssessmentViewController
     @IBAction private func backToFunctionSelectionTableViewController(segue: UIStoryboardSegue) {
     }
 
     // MARK: - View Configue
-    private func configueNavigationBarColor() {
+    private func configueViewNavigationBarColor() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = Colors.baseColor
@@ -58,7 +58,7 @@ class FunctionSelectionViewController: UIViewController {
         navigationItem.compactAppearance = appearance
     }
 
-    private func configueButtonStyle() {
+    private func configueViewButtonStyle() {
         asssessmentButton.tintColor = Colors.baseColor
         asssessmentButton.backgroundColor = Colors.mainColor
         asssessmentButton.layer.cornerRadius = 10

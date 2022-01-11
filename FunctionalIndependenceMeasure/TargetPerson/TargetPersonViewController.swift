@@ -23,10 +23,10 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
             return
         }
         navigationItem.title = "\(assessorName)様の対象者リスト"
-        configueColor()
+        configueViewColor()
         configueViewButton()
     }
-    // MARK: - Segue- TargetPersonTableViewController →　InputTargetPersonViewController
+    // MARK: - Segue- TargetPersonViewController →　InputTargetPersonViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController else { return }
         if let inputVC = nav.topViewController as? InputTargetPersonViewController {
@@ -58,7 +58,7 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
         performSegue(withIdentifier: "input", sender: nil)
     }
 
-    // MARK: - Segue- TargetPersonTableViewController ←　InputTargetPersonViewController
+    // MARK: - Segue- TargetPersonViewController ←　InputTargetPersonViewController
     @IBAction private func backToTargetPersonTableViewController(segue: UIStoryboardSegue) { }
 
     @IBAction private func save(segue: UIStoryboardSegue) {
@@ -71,7 +71,6 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         fimRepository.loadTargetPerson(assessorUUID: assessorUUID!).count
-
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,7 +88,6 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedTargetPersonUUID = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid
         performSegue(withIdentifier: "next", sender: nil)
-
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
@@ -97,7 +95,11 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
         performSegue(withIdentifier: "edit", sender: nil)
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
         guard editingStyle == .delete else { return }
         guard let uuid = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid else { return }
         fimRepository.removeTargetPerson(targetPersonUUID: uuid)
@@ -105,7 +107,7 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     // MARK: - View Configue
-    private func configueColor() {
+    private func configueViewColor() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = Colors.baseColor

@@ -28,7 +28,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXZ-xp-z8B">
-                                                    <rect key="frame" x="20" y="10" width="304" height="24"/>
+                                                    <rect key="frame" x="20" y="10" width="48" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -46,7 +46,6 @@
                                             <constraints>
                                                 <constraint firstItem="ZXZ-xp-z8B" firstAttribute="leading" secondItem="kIJ-VV-Z1t" secondAttribute="leading" constant="20" id="Lmy-5D-Db2"/>
                                                 <constraint firstItem="fw5-7l-ekG" firstAttribute="centerY" secondItem="kIJ-VV-Z1t" secondAttribute="centerY" id="PC9-Nu-KNK"/>
-                                                <constraint firstItem="fw5-7l-ekG" firstAttribute="leading" secondItem="ZXZ-xp-z8B" secondAttribute="trailing" constant="10" id="iPb-fA-ko6"/>
                                                 <constraint firstItem="ZXZ-xp-z8B" firstAttribute="centerY" secondItem="kIJ-VV-Z1t" secondAttribute="centerY" id="rxT-pC-Ddu"/>
                                                 <constraint firstAttribute="trailing" secondItem="fw5-7l-ekG" secondAttribute="trailing" constant="30" id="tvJ-8d-LAA"/>
                                             </constraints>
@@ -82,9 +81,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Ep8-wu-NAD" secondAttribute="trailing" constant="30" id="63J-Dh-vNb"/>
                                                 <constraint firstItem="olM-mj-6Mx" firstAttribute="leading" secondItem="cmF-xI-5mI" secondAttribute="leading" constant="20" id="AWb-0T-C7B"/>
-                                                <constraint firstItem="Ep8-wu-NAD" firstAttribute="leading" secondItem="olM-mj-6Mx" secondAttribute="trailing" constant="10" id="HlO-wr-tuH"/>
                                                 <constraint firstItem="Ep8-wu-NAD" firstAttribute="centerY" secondItem="cmF-xI-5mI" secondAttribute="centerY" id="mEE-RL-R4v"/>
                                                 <constraint firstItem="olM-mj-6Mx" firstAttribute="centerY" secondItem="cmF-xI-5mI" secondAttribute="centerY" id="q3S-x5-fks"/>
+                                                <constraint firstItem="Ep8-wu-NAD" firstAttribute="leading" secondItem="olM-mj-6Mx" secondAttribute="trailing" constant="10" id="z9K-6v-3cD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
