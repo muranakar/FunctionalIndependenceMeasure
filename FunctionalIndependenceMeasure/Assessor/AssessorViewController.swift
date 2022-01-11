@@ -1,21 +1,26 @@
 //
-//  AssessorTableViewController.swift
-//  Functional Independence Measure
+//  AssessorViewController.swift
+//  FunctionalIndependenceMeasure
 //
-//  Created by 村中令 on 2021/12/07.
+//  Created by 村中令 on 2022/01/11.
 //
 
 import UIKit
 
-class AssessorTableViewController: UITableViewController {
-    var selectedAssessorUUID: UUID?
-    var editingAssessorUUID: UUID?
-    let fimRepository = FIMRepository()
+class AssessorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak private var tableview: UITableView!
+    @IBOutlet weak var inputButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configueColor()
+        tableview.delegate = self
+        tableview.dataSource = self
+        configueViewColor()
+        configueViewButton()
     }
+    var selectedAssessorUUID: UUID?
+    var editingAssessorUUID: UUID?
+    let fimRepository = FIMRepository()
 
     // MARK: - Segue-　AssessorTableViewController →　inputAccessoryViewController
     @IBAction private func input(_ sender: Any) {
@@ -37,7 +42,7 @@ class AssessorTableViewController: UITableViewController {
                 break
             }
         }
-        if let nextVC = nav.topViewController as? TargetPersonTableViewController {
+        if let nextVC = nav.topViewController as? TargetPersonViewController {
             switch segue.identifier ?? "" {
             case "next":
                 nextVC.assessorUUID = selectedAssessorUUID
@@ -51,23 +56,22 @@ class AssessorTableViewController: UITableViewController {
     @IBAction private func backToAssessorTableViewController(segue: UIStoryboardSegue) { }
 
     @IBAction private func save(segue: UIStoryboardSegue) {
-        tableView.reloadData()
+        tableview.reloadData()
     }
 
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         fimRepository.loadAssessor().count
     }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         44
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AssessorTableViewCell
         let assessor = fimRepository.loadAssessor()[indexPath.row]
@@ -75,31 +79,46 @@ class AssessorTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedAssessorUUID = fimRepository.loadAssessor()[indexPath.row].uuid
         performSegue(withIdentifier: "next", sender: nil)
     }
 
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         editingAssessorUUID = fimRepository.loadAssessor()[indexPath.row].uuid
         performSegue(withIdentifier: "edit", sender: nil)
     }
 
-    override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCell.EditingStyle,
-                            forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle:
+                   UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         guard let uuid = fimRepository.loadAssessor()[indexPath.row].uuid else { return }
         fimRepository.removeAssessor(uuid: uuid)
         tableView.reloadData()
     }
+
     // MARK: - View Configue
-    private func configueColor() {
+    private func configueViewColor() {
         let appearance = UINavigationBarAppearance()
-               appearance.configureWithOpaqueBackground()
-               appearance.backgroundColor = Colors.baseColor
-               navigationItem.standardAppearance = appearance
-               navigationItem.scrollEdgeAppearance = appearance
-               navigationItem.compactAppearance = appearance
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Colors.baseColor
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
+    }
+
+    private func configueViewButton() {
+        inputButton.backgroundColor = Colors.mainColor
+        inputButton.tintColor = .white
+        inputButton.layer.cornerRadius = 40
+        inputButton.imageView?.contentMode = .scaleAspectFill
+        inputButton.contentVerticalAlignment = .fill
+        inputButton.contentHorizontalAlignment = .fill
+        inputButton.layer.shadowOpacity = 0.7
+        inputButton.layer.shadowRadius = 3
+        inputButton.layer.shadowColor = Colors.mainColor.cgColor
+        inputButton.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
 }

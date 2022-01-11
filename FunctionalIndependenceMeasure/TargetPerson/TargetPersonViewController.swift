@@ -1,25 +1,30 @@
 //
-//  TargetPersonTableViewController.swift
-//  Functional Independence Measure
+//  TargetPersonViewController.swift
+//  FunctionalIndependenceMeasure
 //
-//  Created by 村中令 on 2021/12/07.
+//  Created by 村中令 on 2022/01/11.
 //
 
 import UIKit
 
-class TargetPersonTableViewController: UITableViewController {
+class TargetPersonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var assessorUUID: UUID?
     private var selectedTargetPersonUUID: UUID?
     private var editingTargetPersonUUID: UUID?
     private let fimRepository = FIMRepository()
+    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var inputButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         guard let assessorName = fimRepository.loadAssessor(assessorUUID: assessorUUID!)?.name else {
             return
         }
         navigationItem.title = "\(assessorName)様の対象者リスト"
         configueColor()
+        configueViewButton()
     }
     // MARK: - Segue- TargetPersonTableViewController →　InputTargetPersonViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,20 +66,19 @@ class TargetPersonTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         fimRepository.loadTargetPerson(assessorUUID: assessorUUID!).count
+
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         44
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TargetPersonTableViewCell
         let tagetPerson = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row]
@@ -82,35 +86,44 @@ class TargetPersonTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedTargetPersonUUID = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid
         performSegue(withIdentifier: "next", sender: nil)
+
     }
 
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         editingTargetPersonUUID = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid
         performSegue(withIdentifier: "edit", sender: nil)
     }
 
-    override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCell.EditingStyle,
-                            forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         guard let uuid = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid else { return }
         fimRepository.removeTargetPerson(targetPersonUUID: uuid)
         tableView.reloadData()
     }
+
     // MARK: - View Configue
     private func configueColor() {
         let appearance = UINavigationBarAppearance()
-               appearance.configureWithOpaqueBackground()
-               appearance.backgroundColor = Colors.baseColor
-               navigationItem.standardAppearance = appearance
-               navigationItem.scrollEdgeAppearance = appearance
-               navigationItem.compactAppearance = appearance
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Colors.baseColor
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
     }
 
     private func configueViewButton() {
-        
+        inputButton.backgroundColor = Colors.mainColor
+        inputButton.tintColor = .white
+        inputButton.layer.cornerRadius = 40
+        inputButton.imageView?.contentMode = .scaleAspectFill
+        inputButton.contentVerticalAlignment = .fill
+        inputButton.contentHorizontalAlignment = .fill
+        inputButton.layer.shadowOpacity = 0.7
+        inputButton.layer.shadowRadius = 3
+        inputButton.layer.shadowColor = Colors.mainColor.cgColor
+        inputButton.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
 }

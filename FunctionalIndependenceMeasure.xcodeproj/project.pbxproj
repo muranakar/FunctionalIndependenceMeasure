@@ -19,7 +19,6 @@
 		B2377156275EA64D00A48640 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2377154275EA64D00A48640 /* Main.storyboard */; };
 		B2377158275EA64E00A48640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2377157275EA64E00A48640 /* Assets.xcassets */; };
 		B237715B275EA64E00A48640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2377159275EA64E00A48640 /* LaunchScreen.storyboard */; };
-		B2377163275EA67A00A48640 /* AssessorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377162275EA67A00A48640 /* AssessorTableViewController.swift */; };
 		B2377165275EA6BC00A48640 /* TargetPersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377164275EA6BC00A48640 /* TargetPersonTableViewController.swift */; };
 		B2377167275EA6E300A48640 /* InputAssessorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2377166275EA6E200A48640 /* InputAssessorViewController.swift */; };
 		B237716D275EA97000A48640 /* FunctionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */; };
@@ -34,8 +33,10 @@
 		B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */; };
 		B2767C4B27750F15004E59C3 /* DetailFIMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2767C4A27750F15004E59C3 /* DetailFIMViewController.swift */; };
 		B2767C4D27750FCC004E59C3 /* DetailFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */; };
+		B277D4F4278D021800E6CADB /* AssessorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B277D4F3278D021800E6CADB /* AssessorViewController.swift */; };
 		B27A1F2227790FAA00ECBA0F /* FIMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */; };
 		B27A1F2327790FAA00ECBA0F /* FIMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */; };
+		B2892862278DBBE700965E86 /* TargetPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2892861278DBBE700965E86 /* TargetPersonViewController.swift */; };
 		B2AEFF152784E9CA0010F539 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AEFF142784E9CA0010F539 /* Colors.swift */; };
 		B2AF2576277BB26100F40DC9 /* EditFIM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2AF2575277BB26100F40DC9 /* EditFIM.storyboard */; };
 		B2AF2578277BB29300F40DC9 /* EditFIMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF2577277BB29300F40DC9 /* EditFIMTableViewController.swift */; };
@@ -58,7 +59,6 @@
 		B2377157275EA64E00A48640 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B237715A275EA64E00A48640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B237715C275EA64E00A48640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2377162275EA67A00A48640 /* AssessorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessorTableViewController.swift; sourceTree = "<group>"; };
 		B2377164275EA6BC00A48640 /* TargetPersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetPersonTableViewController.swift; sourceTree = "<group>"; };
 		B2377166275EA6E200A48640 /* InputAssessorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAssessorViewController.swift; sourceTree = "<group>"; };
 		B237716C275EA97000A48640 /* FunctionSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionSelectionViewController.swift; sourceTree = "<group>"; };
@@ -73,8 +73,10 @@
 		B2767C482774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextlBoldTableViewCell.swift; sourceTree = "<group>"; };
 		B2767C4A27750F15004E59C3 /* DetailFIMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFIMViewController.swift; sourceTree = "<group>"; };
 		B2767C4C27750FCC004E59C3 /* DetailFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailFIM.storyboard; sourceTree = "<group>"; };
+		B277D4F3278D021800E6CADB /* AssessorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessorViewController.swift; sourceTree = "<group>"; };
 		B27A1F2027790FAA00ECBA0F /* FIMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIMTableViewCell.swift; sourceTree = "<group>"; };
 		B27A1F2127790FAA00ECBA0F /* FIMTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FIMTableViewCell.xib; sourceTree = "<group>"; };
+		B2892861278DBBE700965E86 /* TargetPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetPersonViewController.swift; sourceTree = "<group>"; };
 		B2AEFF142784E9CA0010F539 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B2AF2575277BB26100F40DC9 /* EditFIM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditFIM.storyboard; sourceTree = "<group>"; };
 		B2AF2577277BB29300F40DC9 /* EditFIMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFIMTableViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */,
-				B2377162275EA67A00A48640 /* AssessorTableViewController.swift */,
+				B277D4F3278D021800E6CADB /* AssessorViewController.swift */,
 				B2377166275EA6E200A48640 /* InputAssessorViewController.swift */,
 				B2377154275EA64D00A48640 /* Main.storyboard */,
 				B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */,
@@ -161,6 +163,7 @@
 				B2377164275EA6BC00A48640 /* TargetPersonTableViewController.swift */,
 				B237717B275EABA300A48640 /* TargetPersonTableViewCell.swift */,
 				B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */,
+				B2892861278DBBE700965E86 /* TargetPersonViewController.swift */,
 				B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */,
 				B22FBF01275FFCC900DA71C8 /* InputTargetPerson.storyboard */,
 			);
@@ -389,10 +392,12 @@
 			files = (
 				B2377167275EA6E300A48640 /* InputAssessorViewController.swift in Sources */,
 				B2AEFF152784E9CA0010F539 /* Colors.swift in Sources */,
+				B277D4F4278D021800E6CADB /* AssessorViewController.swift in Sources */,
 				B237717C275EABA300A48640 /* TargetPersonTableViewCell.swift in Sources */,
 				B27A1F2227790FAA00ECBA0F /* FIMTableViewCell.swift in Sources */,
 				B2AF2578277BB29300F40DC9 /* EditFIMTableViewController.swift in Sources */,
 				B237717A275EAB8F00A48640 /* AssessorTableViewCell.swift in Sources */,
+				B2892862278DBBE700965E86 /* TargetPersonViewController.swift in Sources */,
 				B2377175275EAAB100A48640 /* FIMTableViewController.swift in Sources */,
 				B237716F275EAA0F00A48640 /* AssessmentViewController.swift in Sources */,
 				B2767C492774AC4C004E59C3 /* DetailTextlBoldTableViewCell.swift in Sources */,
@@ -403,7 +408,6 @@
 				B2377183275EACE400A48640 /* FIMRepository.swift in Sources */,
 				B2AF257A277BB42C00F40DC9 /* EditFIMTableViewCell.swift in Sources */,
 				B237714F275EA64D00A48640 /* AppDelegate.swift in Sources */,
-				B2377163275EA67A00A48640 /* AssessorTableViewController.swift in Sources */,
 				B2377186275EBF4000A48640 /* InputTargetPersonViewController.swift in Sources */,
 				B2377151275EA64D00A48640 /* SceneDelegate.swift in Sources */,
 				B2767C4B27750F15004E59C3 /* DetailFIMViewController.swift in Sources */,
@@ -483,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -538,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
