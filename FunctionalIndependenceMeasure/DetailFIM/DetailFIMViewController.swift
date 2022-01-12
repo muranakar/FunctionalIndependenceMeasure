@@ -69,7 +69,7 @@ class DetailFIMViewController: UIViewController {
         guard let targetPersonName =  fimRepository.loadTargetPerson(fimUUID: fimUUID!)?.name else {
             return
         }
-        navigationItem.title = "対象者:\(targetPersonName)様"
+        navigationItem.title = "対象者:　\(targetPersonName)　様"
         tableView.delegate = self
         tableView.dataSource = self
         configueColor()

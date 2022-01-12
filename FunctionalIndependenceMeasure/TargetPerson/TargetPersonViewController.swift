@@ -22,7 +22,7 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
         guard let assessorName = fimRepository.loadAssessor(assessorUUID: assessorUUID!)?.name else {
             return
         }
-        navigationItem.title = "\(assessorName)様の対象者リスト"
+        navigationItem.title = "\(assessorName)　様の対象者リスト"
         configueViewColor()
         configueViewButton()
     }

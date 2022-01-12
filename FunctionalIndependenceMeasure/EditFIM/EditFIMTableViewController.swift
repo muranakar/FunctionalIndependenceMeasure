@@ -54,7 +54,7 @@ class EditFIMTableViewController: UITableViewController {
         guard let targetPersonName =  fimRepository.loadTargetPerson(fimUUID: fimUUID!)?.name else {
             return
         }
-        navigationItem.title = "対象者:\(targetPersonName)様"
+        navigationItem.title = "対象者:　\(targetPersonName)　様"
         configueColor()
     }
     @IBAction private func save(_ sender: Any) {

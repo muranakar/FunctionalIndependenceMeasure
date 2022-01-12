@@ -9,10 +9,11 @@ import UIKit
 
 struct Colors {
     static let baseColor = UIColor(hex: "F6F5F5")
-    static let mainColor = UIColor(hex: "276678")
+    static let mainColor = UIColor(hex: "459acc")
     static let complementaryColor = UIColor(hex: "d89987")
-    //    static let base2Color = UIColor(hex: "D3E0EA")
-    //    static let main1Color = UIColor(hex: "1687A7")
+
+    static let lightbule = UIColor(hex: "56C1FF")
+    static let darkbule = UIColor(hex: "0076BA")
 }
 
 // hex値　を　rgb値　に変換するメソッド

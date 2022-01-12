@@ -18,7 +18,7 @@ class FunctionSelectionViewController: UIViewController {
         guard let targetPersonName =  fimRepository.loadTargetPerson(targetPersonUUID: targetPersonUUID!)?.name else {
             return
         }
-        navigationItem.title = "対象者:\(targetPersonName)様"
+        navigationItem.title = "対象者:　\(targetPersonName)　様"
         configueViewNavigationBarColor()
         configueViewButtonStyle()
     }

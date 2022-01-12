@@ -26,7 +26,7 @@ class FIMTableViewController: UITableViewController {
         guard let targetPersonName =  fimRepository.loadTargetPerson(targetPersonUUID: targetPersonUUID!)?.name else {
             return
         }
-        navigationItem.title = "対象者:\(targetPersonName)様"
+        navigationItem.title = "対象者:　\(targetPersonName)　様"
         tableView.register(UINib(nibName: "FIMTableViewCell", bundle: nil), forCellReuseIdentifier: "FIMTableViewCell")
         tableView.reloadData()
         configueColor()
