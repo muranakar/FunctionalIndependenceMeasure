@@ -111,7 +111,7 @@ final class FIMRepository {
         let fim = realm.object(ofType: FIM.self, forPrimaryKey: fimUUID.uuidString)
         return fim
     }
-    //　一人の対象者のUUIDから、複数のFIMのデータの呼び出し
+    //　一人の対象者のUUIDから、複数のFIMのデータの呼び出し(並び替えあり)
     func loadFIM(
         targetPersonUUID: UUID,
         sortedAscending: Bool
@@ -139,6 +139,7 @@ final class FIMRepository {
             list.append(fim)
         }
     }
+    
     // FIMデータの更新
     // 【気になる点】
     // データ更新の項目数が多く、一つのモデルオブジェクト（Realmだから、モデルオブジェクト？構造体ではなく？）にまとめて、そのデータを代入して

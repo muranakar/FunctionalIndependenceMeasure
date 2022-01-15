@@ -11,7 +11,7 @@ class DetailFIMViewController: UIViewController {
     //　画面遷移で値を受け取る変数
     var fimUUID: UUID?
 
-    // unwindSegueの先を、どの画面から遷移したかによって、変更する。
+    // どの画面から遷移したかによって、unwindSegueの画面遷移先を、変更する。
     enum Mode {
         case assessment
         case fim
@@ -72,7 +72,7 @@ class DetailFIMViewController: UIViewController {
         navigationItem.title = "対象者:　\(targetPersonName)　様"
         tableView.delegate = self
         tableView.dataSource = self
-        configueColor()
+        configueViewNavigationbarColor()
     }
 
     @IBAction private func editFIM(_ sender: Any) {
@@ -137,7 +137,7 @@ extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     // MARK: - View Configue
-    private func configueColor() {
+    private func configueViewNavigationbarColor() {
         let appearance = UINavigationBarAppearance()
                appearance.configureWithOpaqueBackground()
                appearance.backgroundColor = Colors.baseColor

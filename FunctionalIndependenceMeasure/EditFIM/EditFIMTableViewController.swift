@@ -55,7 +55,7 @@ class EditFIMTableViewController: UITableViewController {
             return
         }
         navigationItem.title = "対象者:　\(targetPersonName)　様"
-        configueColor()
+        configueViewNavigationbarColor()
     }
     @IBAction private func save(_ sender: Any) {
         fimRepository.updateFIM(fimItemNumArray: fimItemNum, fimUUID: fimUUID!)
@@ -82,7 +82,7 @@ class EditFIMTableViewController: UITableViewController {
         return cell
     }
     // MARK: - View Configue
-    private func configueColor() {
+    private func configueViewNavigationbarColor() {
         let appearance = UINavigationBarAppearance()
                appearance.configureWithOpaqueBackground()
                appearance.backgroundColor = Colors.baseColor

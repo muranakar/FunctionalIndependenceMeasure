@@ -29,7 +29,7 @@ class FIMTableViewController: UITableViewController {
         navigationItem.title = "対象者:　\(targetPersonName)　様"
         tableView.register(UINib(nibName: "FIMTableViewCell", bundle: nil), forCellReuseIdentifier: "FIMTableViewCell")
         tableView.reloadData()
-        configueColor()
+        configueViewNavigationbarColor()
     }
 
     // MARK: - Segue- FIMTableViewController →　InputTargetPersonViewController
@@ -136,7 +136,7 @@ class FIMTableViewController: UITableViewController {
         tableView.reloadData()
     }
     // MARK: - View Configue
-    private func configueColor() {
+    private func configueViewNavigationbarColor() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = Colors.baseColor

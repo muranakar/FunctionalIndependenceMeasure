@@ -80,7 +80,7 @@ class AssessmentViewController: UIViewController {
         configueViewProgressViewStyle()
         configueViewButtonsStyle()
     }
-
+// FIM項目を一つ戻る
     @IBAction private func backOneFIMItem(_ sender: Any) {
         if fimItemCount >= 1 {
             fimItemCount -= 1
@@ -190,7 +190,7 @@ class AssessmentViewController: UIViewController {
         }
     }
     // MARK: - UIAlert
-    let alertController: UIAlertController =
+    private let alertController: UIAlertController =
     UIAlertController(
         title: "未選択",
         message: "いずれかのボタンを選択してから、\n決定ボタンを押してください",
@@ -198,7 +198,7 @@ class AssessmentViewController: UIViewController {
     )
 
     // UIAlertのOKボタンのaction
-    let defaultAction: UIAlertAction =
+    private let defaultAction: UIAlertAction =
     UIAlertAction(
         title: "OK",
         style: .default
