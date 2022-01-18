@@ -16,6 +16,7 @@ class FIMTableViewCell: UITableViewCell {
     // 【あとからボタンを追加した際のコードに関して】
     //　あとからボタンを追加しました（copytextButton）。そのボタンに色を付けたい場合、
     // 毎回configueメソッドの引数に、UIColorを設定して、メソッド内で、copytextButton = color【←引数（UIColor）】と設定しないと行けないのか。
+    //　他にも、Viewの設定（文字の設定、角丸の設定など）、追加したい項目が増えて来るたびに、引数に設定して、tableviewのcellForRowAtで引数に入力しなければならないのか。
     @IBOutlet weak var copytextButton: UIButton!
     private var copyFIMTextHandler: () -> Void = {  }
 
