@@ -13,6 +13,9 @@ class FIMTableViewCell: UITableViewCell {
     @IBOutlet weak private var sumTheCognitionSubscaleIncludesLabel: UILabel!
     @IBOutlet weak private var createdAtLabel: UILabel!
     @IBOutlet weak private var updatedAtLabel: UILabel!
+    // 【あとからボタンを追加した際のコードに関して】
+    //　あとからボタンを追加しました（copytextButton）。そのボタンに色を付けたい場合、
+    // 毎回configueメソッドの引数に、UIColorを設定して、メソッド内で、copytextButton = color【←引数（UIColor）】と設定しないと行けないのか。
     @IBOutlet weak var copytextButton: UIButton!
     private var copyFIMTextHandler: () -> Void = {  }
 
