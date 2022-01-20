@@ -44,14 +44,6 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
                 break
             }
         }
-        if let nextVC = nav.topViewController as? FunctionSelectionViewController {
-            switch segue.identifier ?? "" {
-            case "next":
-                nextVC.targetPersonUUID = selectedTargetPersonUUID
-            default:
-                break
-            }
-        }
     }
 
     @IBAction private func input(_ sender: Any) {
@@ -87,7 +79,7 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedTargetPersonUUID = fimRepository.loadTargetPerson(assessorUUID: assessorUUID!)[indexPath.row].uuid
-        performSegue(withIdentifier: "next", sender: nil)
+        toFunctionSelectionViewController(selectedTargetPersonUUID: selectedTargetPersonUUID)
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
@@ -105,7 +97,14 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
         fimRepository.removeTargetPerson(targetPersonUUID: uuid)
         tableView.reloadData()
     }
-
+    // MARK: - Method
+    private func toFunctionSelectionViewController(selectedTargetPersonUUID: UUID?) {
+        let storyboard = UIStoryboard(name: "FunctionSelection", bundle: nil)
+        let nextVC =
+        storyboard.instantiateViewController(withIdentifier: "functionSelection") as! FunctionSelectionViewController
+        nextVC.targetPersonUUID = selectedTargetPersonUUID
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
     // MARK: - View Configue
     private func configueViewColor() {
         let appearance = UINavigationBarAppearance()

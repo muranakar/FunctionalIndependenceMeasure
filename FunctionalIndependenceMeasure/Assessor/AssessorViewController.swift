@@ -42,14 +42,6 @@ class AssessorViewController: UIViewController, UITableViewDelegate, UITableView
                 break
             }
         }
-        if let nextVC = nav.topViewController as? TargetPersonViewController {
-            switch segue.identifier ?? "" {
-            case "next":
-                nextVC.assessorUUID = selectedAssessorUUID
-            default:
-                break
-            }
-        }
     }
 
     // MARK: - Segue- AssessorTableViewController ←　inputAccessoryViewController
@@ -81,7 +73,7 @@ class AssessorViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedAssessorUUID = fimRepository.loadAssessor()[indexPath.row].uuid
-        performSegue(withIdentifier: "next", sender: nil)
+        toTargetPersonViewController(selectedAssessorUUID: selectedAssessorUUID)
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
@@ -96,6 +88,13 @@ class AssessorViewController: UIViewController, UITableViewDelegate, UITableView
         guard let uuid = fimRepository.loadAssessor()[indexPath.row].uuid else { return }
         fimRepository.removeAssessor(uuid: uuid)
         tableView.reloadData()
+    }
+    // MARK: - Method
+    private func toTargetPersonViewController(selectedAssessorUUID: UUID?) {
+        let storyboard = UIStoryboard(name: "TargetPerson", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "targetPerson") as! TargetPersonViewController
+        nextVC.assessorUUID = selectedAssessorUUID
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 
     // MARK: - View Configue

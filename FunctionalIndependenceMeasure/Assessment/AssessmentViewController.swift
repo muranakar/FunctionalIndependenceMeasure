@@ -146,7 +146,8 @@ class AssessmentViewController: UIViewController {
                 fatalError("FIMの中身がない。メソッド名：[\(#function)]")
             }
             fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
-            performSegue(withIdentifier: "detailFIM", sender: nil)
+
+            toDetailFIMViewController(fim: fim)
         } else {
             updateScreenAndAllUIButtonIsSelectedFalse()
             configueViewButtonsStyle()
@@ -189,6 +190,15 @@ class AssessmentViewController: UIViewController {
             }
         }
     }
+    // MARK: - Method
+       private func toDetailFIMViewController(fim: FIM?) {
+           let storyboard = UIStoryboard(name: "DetailFIM", bundle: nil)
+           let nextVC =
+           storyboard.instantiateViewController(withIdentifier: "detailFIM") as! DetailFIMViewController
+           nextVC.fimUUID = fim?.uuid
+           nextVC.mode = .assessment
+           navigationController?.pushViewController(nextVC, animated: true)
+       }
     // MARK: - UIAlert
     private let alertController: UIAlertController =
     UIAlertController(

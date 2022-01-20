@@ -11,7 +11,7 @@
         <!--DetailFIM View Controller-->
         <scene sceneID="gEd-TF-aVn">
             <objects>
-                <viewController id="GEZ-ud-6UE" customClass="DetailFIMViewController" customModule="FunctionalIndependenceMeasure" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailFIM" id="GEZ-ud-6UE" customClass="DetailFIMViewController" customModule="FunctionalIndependenceMeasure" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CJr-Q3-FXs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

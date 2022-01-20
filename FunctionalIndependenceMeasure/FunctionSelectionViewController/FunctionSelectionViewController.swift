@@ -22,30 +22,32 @@ class FunctionSelectionViewController: UIViewController {
         configueViewNavigationBarColor()
         configueViewButtonStyle()
     }
-    // MARK: - Segue- FunctionSelectionViewController → AssessmentViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let nav = segue.destination as? UINavigationController else { return }
-        if let assessmentVC = nav.topViewController as? AssessmentViewController {
-            switch segue.identifier ?? "" {
-            case "assessment":
-                assessmentVC.targetPersonUUID = targetPersonUUID
-            default:
-                break
-            }
-        }
+    @IBAction private func toAssessmentVC(_ sender: Any) {
+        toAssessmentViewController(targetPersonUUID: targetPersonUUID)
+    }
 
-        if let FIMTableVC = nav.topViewController as? FIMTableViewController {
-            switch segue.identifier ?? "" {
-            case "fimTable":
-                FIMTableVC.targetPersonUUID = targetPersonUUID
-            default:
-                break
-            }
-        }
+    @IBAction private func toFIMTableVC(_ sender: Any) {
+        toFIMTableViewController(targetPersonUUID: targetPersonUUID)
     }
 
     // MARK: - Segue- FunctionSelectionViewController ← AssessmentViewController
     @IBAction private func backToFunctionSelectionTableViewController(segue: UIStoryboardSegue) {
+    }
+    // MARK: - Method
+    private func toAssessmentViewController(targetPersonUUID: UUID?) {
+        let storyboard = UIStoryboard(name: "Assessment", bundle: nil)
+        let nextVC =
+        storyboard.instantiateViewController(withIdentifier: "assessment") as! AssessmentViewController
+        nextVC.targetPersonUUID = targetPersonUUID
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
+
+    private func toFIMTableViewController(targetPersonUUID: UUID?) {
+        let storyboard = UIStoryboard(name: "FIMTable", bundle: nil)
+        let nextVC =
+        storyboard.instantiateViewController(withIdentifier: "fimTable") as! FIMTableViewController
+        nextVC.targetPersonUUID = targetPersonUUID
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 
     // MARK: - View Configue

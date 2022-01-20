@@ -111,7 +111,7 @@ class FIMTableViewController: UITableViewController {
             targetPersonUUID: targetPersonUUID!,
             sortedAscending: isSortedAscending
         )[indexPath.row].uuid
-        performSegue(withIdentifier: "detailFIM", sender: nil)
+        toDetailFIMViewController()
     }
 
     //　navのボタンへの変更必要か。
@@ -134,6 +134,15 @@ class FIMTableViewController: UITableViewController {
         )[indexPath.row].uuid else { return }
         fimRepository.removeFIM(fimUUID: uuid)
         tableView.reloadData()
+    }
+    // MARK: - Method
+    private func toDetailFIMViewController() {
+        let storyboard = UIStoryboard(name: "DetailFIM", bundle: nil)
+        let nextVC =
+        storyboard.instantiateViewController(withIdentifier: "detailFIM") as! DetailFIMViewController
+        nextVC.fimUUID = selectedFIMUUID
+        nextVC.mode = .fim
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     // MARK: - View Configue
     private func configueViewNavigationbarColor() {

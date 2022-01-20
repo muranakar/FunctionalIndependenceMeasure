@@ -146,8 +146,8 @@
 		B2377176275EAAD400A48640 /* Assessor */ = {
 			isa = PBXGroup;
 			children = (
-				B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */,
 				B277D4F3278D021800E6CADB /* AssessorViewController.swift */,
+				B2377179275EAB8F00A48640 /* AssessorTableViewCell.swift */,
 				B2377166275EA6E200A48640 /* InputAssessorViewController.swift */,
 				B2377154275EA64D00A48640 /* Main.storyboard */,
 				B22FBEFD275FFA8600DA71C8 /* InputAssessor.storyboard */,
@@ -158,9 +158,9 @@
 		B2377177275EAAFC00A48640 /* TargetPerson */ = {
 			isa = PBXGroup;
 			children = (
+				B2892861278DBBE700965E86 /* TargetPersonViewController.swift */,
 				B237717B275EABA300A48640 /* TargetPersonTableViewCell.swift */,
 				B2377185275EBF4000A48640 /* InputTargetPersonViewController.swift */,
-				B2892861278DBBE700965E86 /* TargetPersonViewController.swift */,
 				B22FBEFF275FFCB200DA71C8 /* TargetPerson.storyboard */,
 				B22FBF01275FFCC900DA71C8 /* InputTargetPerson.storyboard */,
 			);

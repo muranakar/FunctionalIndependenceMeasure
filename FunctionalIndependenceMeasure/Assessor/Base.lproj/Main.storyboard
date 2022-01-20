@@ -9,14 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TargetPerson-->
-        <scene sceneID="PwE-T1-nk2">
-            <objects>
-                <viewControllerPlaceholder storyboardName="TargetPerson" id="yAT-iW-dMb" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K6f-5Z-m17" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2364" y="48"/>
-        </scene>
         <!--InputAssessor-->
         <scene sceneID="Hpu-DN-JPs">
             <objects>
@@ -93,7 +85,6 @@
                     <connections>
                         <outlet property="inputButton" destination="ehU-hx-Pbz" id="GBv-fn-ab6"/>
                         <outlet property="tableview" destination="whf-4D-oIB" id="m17-sc-isZ"/>
-                        <segue destination="yAT-iW-dMb" kind="presentation" identifier="next" modalPresentationStyle="fullScreen" id="h7R-2u-PIn"/>
                         <segue destination="7QI-UF-DLp" kind="presentation" identifier="input" modalPresentationStyle="fullScreen" id="WhE-5u-2zz"/>
                         <segue destination="7QI-UF-DLp" kind="presentation" identifier="edit" modalPresentationStyle="fullScreen" id="abR-sm-fqo"/>
                     </connections>
