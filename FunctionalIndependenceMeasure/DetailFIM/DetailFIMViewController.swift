@@ -26,42 +26,35 @@ class DetailFIMViewController: UIViewController {
         return fim
     }
 
-    private var fimItemNum: [Int] {
-        [
-            fim.sumAll,
-            fim.sumTheMotorSubscaleIncludes,
-            fim.eating,
-            fim.grooming,
-            fim.bathing,
-            fim.dressingUpperBody,
-            fim.dressingLowerBody,
-            fim.toileting,
-            fim.bladderManagement,
-            fim.bowelManagement,
-            fim.transfersBedChairWheelchair,
-            fim.transfersToilet,
-            fim.transfersBathShower,
-            fim.walkWheelchair,
-            fim.stairs,
-            fim.sumTheCognitionSubscaleIncludes,
-            fim.comprehension,
-            fim.expression,
-            fim.socialInteraction,
-            fim.problemSolving,
-            fim.memory
-        ]
+    struct FIMItem {
+        let title: String
+        let point: Int
     }
 
-    private var fimItemTitle: [String] {
-        [
-            "総合計", "運動項目合計", "食事", "整容", "清拭",
-            "更衣上半身", "更衣下半身", "トイレ動作", "排尿管理",
-            "排便管理", "ベッド・椅子・車椅子移乗", "トイレ移乗",
-            "浴槽・シャワー移乗", "歩行・車椅子", "階段",
-            "認知項目合計", "理解", "表出", "社会的交流", "問題解決", "記憶"
-        ]
-    }
-
+    private lazy var fimItems: [FIMItem] = [
+        FIMItem(title: "総合計", point: fim.sumAll),
+        FIMItem(title: "運動項目合計", point: fim.sumTheMotorSubscaleIncludes),
+        FIMItem(title: "食事", point: fim.eating),
+        FIMItem(title: "整容", point: fim.grooming),
+        FIMItem(title: "清拭", point: fim.bathing),
+        FIMItem(title: "更衣上半身", point: fim.dressingUpperBody),
+        FIMItem(title: "更衣下半身", point: fim.dressingUpperBody),
+        FIMItem(title: "トイレ動作", point: fim.toileting),
+        FIMItem(title: "排尿管理", point: fim.bladderManagement),
+        FIMItem(title: "排便管理", point: fim.bowelManagement),
+        FIMItem(title: "ベッド・椅子・車椅子移乗", point: fim.transfersBedChairWheelchair),
+        FIMItem(title: "トイレ移乗", point: fim.transfersToilet),
+        FIMItem(title: "浴槽・シャワー移乗", point: fim.transfersBathShower),
+        FIMItem(title: "歩行・車椅子", point: fim.walkWheelchair),
+        FIMItem(title: "階段", point: fim.stairs),
+        FIMItem(title: "認知項目合計", point: fim.sumTheCognitionSubscaleIncludes),
+        FIMItem(title: "理解", point: fim.comprehension),
+        FIMItem(title: "表出", point: fim.expression),
+        FIMItem(title: "社会的交流", point: fim.socialInteraction),
+        FIMItem(title: "問題解決", point: fim.problemSolving),
+        FIMItem(title: "記憶", point: fim.memory)
+    ]
+    
     @IBOutlet weak private var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -108,7 +101,7 @@ class DetailFIMViewController: UIViewController {
 
 extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        fimItemTitle.count
+        fimItems.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -123,19 +116,20 @@ extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 15 {
             boldTextcell.configure(
-                fimItemTitle: fimItemTitle[indexPath.row],
-                fimItemNum: String(fimItemNum[indexPath.row])
+                fimItemTitle: fimItems[indexPath.row].title,
+                fimItemNum: String(fimItems[indexPath.row].point)
             )
             boldTextcell.backgroundColor = Colors.mainColor.withAlphaComponent(0.1)
             return boldTextcell
         } else {
             cell.configure(
-                fimItemTitle: fimItemTitle[indexPath.row] ,
-                fimItemNum: String(fimItemNum[indexPath.row])
+                fimItemTitle: fimItems[indexPath.row].title ,
+                fimItemNum: String(fimItems[indexPath.row].point)
             )
             return cell
         }
     }
+
     // MARK: - View Configue
     private func configueViewNavigationbarColor() {
         let appearance = UINavigationBarAppearance()

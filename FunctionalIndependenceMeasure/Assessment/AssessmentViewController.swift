@@ -54,7 +54,7 @@ class AssessmentViewController: UIViewController {
         ]
     }
     //　UIButtonのTag管理を避けるために、ボタンと数字を関連付けるために、用いる数字の配列
-    private var fimNum = [1, 2, 3, 4, 5, 6, 7]
+    private var fimNum = Array(1...7)
 
     //　UIButtonが押された際に、そのボタンに合った文章を管理するため、辞書型で関連付けた。
     private var dictionaryButtonAndString: [UIButton: String] {
