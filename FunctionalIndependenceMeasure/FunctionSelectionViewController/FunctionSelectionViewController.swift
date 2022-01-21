@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FunctionSelectionViewController: UIViewController {
+final class FunctionSelectionViewController: UIViewController {
     var targetPersonUUID: UUID?
     let fimRepository = FIMRepository()
     @IBOutlet weak private var asssessmentButton: UIButton!

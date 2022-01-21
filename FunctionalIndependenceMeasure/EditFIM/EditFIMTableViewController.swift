@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditFIMTableViewController: UITableViewController {
+final class EditFIMTableViewController: UITableViewController {
     //　画面遷移で値を受け取る変数
     var fimUUID: UUID!
     let fimRepository = FIMRepository()

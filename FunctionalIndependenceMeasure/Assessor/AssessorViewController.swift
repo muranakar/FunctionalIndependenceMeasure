@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AssessorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class AssessorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak private var tableview: UITableView!
     @IBOutlet weak private var inputButton: UIButton!
 

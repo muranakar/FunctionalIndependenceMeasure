@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TargetPersonTableViewCell: UITableViewCell {
+final class TargetPersonTableViewCell: UITableViewCell {
     @IBOutlet private weak var tagetPeronName: UILabel!
 
     func configue(name: String) {

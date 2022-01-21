@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class FIMTableViewController: UITableViewController {
+final class FIMTableViewController: UITableViewController {
     //　画面遷移で値を受け取る変数
     var targetPersonUUID: UUID?
 

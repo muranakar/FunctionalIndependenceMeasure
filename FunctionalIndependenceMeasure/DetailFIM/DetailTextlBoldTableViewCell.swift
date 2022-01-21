@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailTextBoldFIMTableViewCell: UITableViewCell {
+final class DetailTextBoldFIMTableViewCell: UITableViewCell {
     @IBOutlet private weak var fimItemTitleLabel: UILabel!
     @IBOutlet private weak var fimItemNumLabel: UILabel!
 

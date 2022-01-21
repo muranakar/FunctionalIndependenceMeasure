@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TargetPersonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class TargetPersonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var assessorUUID: UUID?
     private var selectedTargetPersonUUID: UUID?
     private var editingTargetPersonUUID: UUID?
@@ -38,8 +38,8 @@ class TargetPersonViewController: UIViewController, UITableViewDelegate, UITable
                 guard let editingTargetPersonUUID = editingTargetPersonUUID else {
                     return
                 }
-                inputVC.mode = .edit(editingTargetPersonUUID)
-                inputVC.assessorUUID = assessorUUID
+                inputVC.mode = .edit
+                inputVC.editingTargetPersonUUID = editingTargetPersonUUID
             default:
                 break
             }

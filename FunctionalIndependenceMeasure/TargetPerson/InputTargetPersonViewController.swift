@@ -7,19 +7,19 @@
 
 import UIKit
 
-class InputTargetPersonViewController: UIViewController {
+final class InputTargetPersonViewController: UIViewController {
     // 画面遷移時に値を受け取る変数
     var assessorUUID: UUID?
 
     enum Mode {
         case input
-        case edit(UUID?)
+        case edit
     }
 
     var mode: Mode?
     private let fimRepository = FIMRepository()
-    private (set) var editingTargetPersonUUID: UUID?
-    private (set) var targetPerson: TargetPerson?
+    var editingTargetPersonUUID: UUID?
+    var targetPerson: TargetPerson?
     @IBOutlet weak private var targetPersonNameTextField: UITextField!
 
     override func viewDidLoad() {
@@ -27,22 +27,24 @@ class InputTargetPersonViewController: UIViewController {
         guard let mode = mode else {
             fatalError("mode の中身がありません。メソッド名：[\(#function)]")
         }
-
         // MARK: - テキストフィールドに名前を設定
-        targetPersonNameTextField.text = {
-            switch mode {
-            case .input:
-                return ""
-            case let .edit(editingTargetPersonUUID):
-                guard let editingTargetPersonUUID = editingTargetPersonUUID else {
-                    fatalError("editingAssessorUUID の中身がありません。メソッド名：[\(#function)]")
-                }
-                let targetPersonName = fimRepository.loadTargetPerson(targetPersonUUID: editingTargetPersonUUID)?.name
-                return targetPersonName
-            }
-        }()
+        targetPersonNameTextField.text = getName(mode: mode)
         configueColor()
     }
+    // MARK: - Method
+    private func getName(mode: Mode) -> String? {
+        switch mode {
+        case .input:
+            return ""
+        case .edit:
+            guard let editingTargetPersonUUID = editingTargetPersonUUID else {
+                fatalError("editingAssessorUUID の中身がありません。メソッド名：[\(#function)]")
+            }
+            let targetPersonName = fimRepository.loadTargetPerson(targetPersonUUID: editingTargetPersonUUID)?.name
+            return targetPersonName
+        }
+    }
+
     // MARK: - View Configue
     private func configueColor() {
         let appearance = UINavigationBarAppearance()
@@ -62,7 +64,7 @@ class InputTargetPersonViewController: UIViewController {
             let newTargetPerson = TargetPerson()
             newTargetPerson.name = targetPersonNameTextField.text ?? ""
             fimRepository.appendTargetPerson(assessorUUID: assessorUUID!, targetPerson: newTargetPerson)
-        case let .edit(editingTargetPersonUUID):
+        case .edit:
             guard let editingTargetPersonUUID = editingTargetPersonUUID else {
                 fatalError("editingTargetPersonUUID　の中身がありません。メソッド名：[\(#function)]")
             }

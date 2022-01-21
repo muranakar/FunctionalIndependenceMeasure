@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AssessorTableViewCell: UITableViewCell {
+final class AssessorTableViewCell: UITableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
 
     func configue(assessor: Assessor) {

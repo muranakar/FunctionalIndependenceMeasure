@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 // MARK: - Assessor 評価者
-class Assessor: Object {
+final class Assessor: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var name = ""
     var targetPersons = List<TargetPerson>()
@@ -27,7 +27,7 @@ class Assessor: Object {
 }
 
 // MARK: - TagetPerson　対象者
-class TargetPerson: Object {
+final class TargetPerson: Object {
     @objc dynamic var uuidString = UUID().uuidString
     @objc dynamic var name = ""
     var FIM = List<FIM>()
@@ -47,7 +47,7 @@ class TargetPerson: Object {
 }
 
 // MARK: - FIM　評価指標
-class FIM: Object {
+final class FIM: Object {
     @objc dynamic var uuidString = UUID().uuidString
     // RealmOptionalを用いて、nullを許容したほうが良いか？理解できていない。
     // RealmOptionalの場合、let （定数）で定義する必要があるため、数値の編集ができないか？

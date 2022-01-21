@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class AssessmentViewController: UIViewController {
+final class AssessmentViewController: UIViewController {
     //　画面遷移で値を受け取る変数
     var targetPersonUUID: UUID?
     // 画面遷移先へ値を渡す変数

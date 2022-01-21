@@ -7,15 +7,18 @@
 
 import UIKit
 
-class InputAssessorViewController: UIViewController {
+final class InputAssessorViewController: UIViewController {
+    // 画面遷移元から、値を代入される変数
+    var editingAssessorUUID: UUID?
+
     enum Mode {
         case input
         case edit(UUID?)
     }
     var mode: Mode?
     private let fimRepository = FIMRepository()
-    private (set) var editingAssessorUUID: UUID?
-    private (set) var assessor: Assessor?
+
+    var assessor: Assessor?
     @IBOutlet weak private var assessorNameTextField: UITextField!
 
     override func viewDidLoad() {
