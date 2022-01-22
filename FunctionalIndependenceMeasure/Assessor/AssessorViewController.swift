@@ -34,10 +34,8 @@ final class AssessorViewController: UIViewController, UITableViewDelegate, UITab
             case "input":
                 inputVC.mode = .input
             case "edit":
-                guard let editingAssessorUUID = editingAssessorUUID else {
-                    return
-                }
-                inputVC.mode = .edit(editingAssessorUUID)
+                inputVC.editingAssessorUUID = editingAssessorUUID
+                inputVC.mode = .edit
             default:
                 break
             }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class InputAssessorViewController: UIViewController {
     // 画面遷移元から、値を代入される変数
@@ -13,7 +14,7 @@ final class InputAssessorViewController: UIViewController {
 
     enum Mode {
         case input
-        case edit(UUID?)
+        case edit
     }
     var mode: Mode?
     private let fimRepository = FIMRepository()
@@ -23,23 +24,24 @@ final class InputAssessorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let mode = mode else {
-            fatalError("mode の中身が入っていない")
-        }
-        assessorNameTextField.text = {
-            switch mode {
-            case .input:
-                return ""
-            case let .edit(editingAssessorUUID):
-                guard let editingAssessorUUID = editingAssessorUUID else {
-                    fatalError("editingAssessorUUID の中身が入っていない")
-                }
-                let assesorName =
-                fimRepository.loadAssessor(assessorUUID: editingAssessorUUID)?.name
-                return assesorName
-            }
-        }()
+        guard let mode = mode else { fatalError("mode の中身が入っていない") }
+        assessorNameTextField.text = getName(mode: mode)
         configueColor()
+    }
+    
+    // MARK: - Method
+    private func getName(mode: Mode) -> String? {
+        switch mode {
+        case .input:
+            return ""
+        case .edit:
+            guard let editingAssessorUUID = editingAssessorUUID else {
+                fatalError("editingAssessorUUID の中身が入っていない")
+            }
+            let assesorName =
+            fimRepository.loadAssessor(assessorUUID: editingAssessorUUID)?.name
+            return assesorName
+        }
     }
 
 // MARK: - 評価者データを保存するUIButtonのIBAction
@@ -51,7 +53,7 @@ final class InputAssessorViewController: UIViewController {
             let newAssessor = Assessor()
             newAssessor.name = assessorNameTextField.text ?? ""
             fimRepository.apppendAssessor(assesor: newAssessor)
-        case let .edit(editingAssessorUUID):
+        case .edit:
             guard let editingAssessorUUID = editingAssessorUUID else {
                 return
             }
