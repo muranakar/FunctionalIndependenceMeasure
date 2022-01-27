@@ -172,27 +172,6 @@ final class FIMRepository {
             loadedFIM?.problemSolving = fimItemNumArray[16]
             loadedFIM?.memory = fimItemNumArray[17]
             loadedFIM?.updatedAt = Date()
-            //            loadedFIM.eating = fimItemNumArray.eating
-            //            loadedFIM.grooming = fimItemNumArray.grooming
-            //            loadedFIM.bathing = fimItemNumArray.bathing
-            //            loadedFIM.dressingUpperBody = fimItemNumArray.dressingUpperBody
-            //            loadedFIM.dressingLowerBody = fimItemNumArray.dressingLowerBody
-            //            loadedFIM.toileting = fimItemNumArray.toileting
-            //            loadedFIM.bladderManagement = fimItemNumArray.bladderManagement
-            //            loadedFIM.bowelManagement = fimItemNumArray.bowelManagement
-            //            loadedFIM.transfersBedChairWheelchair = fimItemNumArray.transfersBedChairWheelchair
-            //            loadedFIM.transfersToilet = fimItemNumArray.transfersToilet
-            //            loadedFIM.transfersBathShower = fimItemNumArray.transfersBathShower
-            //            loadedFIM.walkWheelchair = fimItemNumArray.walkWheelchair
-            //            loadedFIM.stairs = fimItemNumArray.stairs
-            //            loadedFIM.comprehension = fimItemNumArray.comprehension
-            //            loadedFIM.expression = fimItemNumArray.expression
-            //            loadedFIM.socialInteraction = fimItemNumArray.socialInteraction
-            //            loadedFIM.problemSolving = fimItemNumArray.problemSolving
-            //            loadedFIM.memory = fimItemNumArray.memory
-
-            //            realm.add(fimItemNumArray, update: .modified)
-            //            fimItemNumArray.updatedAt = Date()
         }
     }
     // FIMデータの削除

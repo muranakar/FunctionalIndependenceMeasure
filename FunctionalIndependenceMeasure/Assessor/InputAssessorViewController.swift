@@ -28,7 +28,6 @@ final class InputAssessorViewController: UIViewController {
         assessorNameTextField.text = getName(mode: mode)
         configueColor()
     }
-    
     // MARK: - Method
     private func getName(mode: Mode) -> String? {
         switch mode {

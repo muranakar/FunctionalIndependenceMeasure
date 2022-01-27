@@ -101,8 +101,6 @@ final class FIMTableViewController: UITableViewController {
                 // swiftlint:disable:next line_length
                 "FIM評価結果\n評価日\(createdAtString)\n評価者:\(assessor.name)\n対象者:\(targetPerson.name)\n合計値\(fim.sumAll)\n食事:\(fim.eating)\n整容:\(fim.grooming)\n清拭:\(fim.bathing)\n更衣上半身:\(fim.dressingUpperBody)\n更衣下半身:\(fim.dressingLowerBody)\nトイレ動作:\(fim.toileting)\n排尿管理:\(fim.bladderManagement)\n排便管理:\(fim.bowelManagement)\nベッド・椅子・車椅子移乗:\(fim.transfersBedChairWheelchair)\nトイレ移乗:\(fim.transfersToilet)\n浴槽・シャワー移乗:\(fim.transfersBathShower)\n歩行・車椅子:\(fim.walkWheelchair)\n階段:\(fim.stairs)\n理解:\(fim.comprehension)\n表出:\(fim.expression)\n社会的交流:\(fim.socialInteraction)\n問題解決:\(fim.problemSolving)\n記憶:\(fim.memory)"
             })
-        // View Configue
-        cell.copytextButton.tintColor = Colors.mainColor
         return cell
     }
 

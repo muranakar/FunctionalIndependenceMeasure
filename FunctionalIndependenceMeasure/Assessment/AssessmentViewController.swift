@@ -80,6 +80,13 @@ final class AssessmentViewController: UIViewController {
         configueViewProgressViewStyle()
         configueViewButtonsStyle()
     }
+    // FIM項目を一つスキップする
+    @IBAction private func skipOneFIMItem(_ sender: Any) {
+        assessmentResultFIM.append(0)
+        fimItemCount += 1
+        screenTransition18AndOverRepositoryAppend()
+    }
+
 // FIM項目を一つ戻る
     @IBAction private func backOneFIMItem(_ sender: Any) {
         if fimItemCount >= 1 {
@@ -116,42 +123,7 @@ final class AssessmentViewController: UIViewController {
         //　結果の配列に選択されたボタンと関連した数字を加える。
         assessmentResultFIM.append(num)
         fimItemCount += 1
-
-        if fimItemCount == 18 {
-            fim = FIM(
-                eating: assessmentResultFIM[0],
-                grooming: assessmentResultFIM[1],
-                bathing: assessmentResultFIM[2],
-                dressingUpperBody: assessmentResultFIM[3],
-                dressingLowerBody: assessmentResultFIM[4],
-                toileting: assessmentResultFIM[5],
-                bladderManagement: assessmentResultFIM[6],
-                bowelManagement: assessmentResultFIM[7],
-                transfersBedChairWheelchair: assessmentResultFIM[8],
-                transfersToilet: assessmentResultFIM[9],
-                transfersBathShower: assessmentResultFIM[10],
-                walkWheelchair: assessmentResultFIM[11],
-                stairs: assessmentResultFIM[12],
-                comprehension: assessmentResultFIM[13],
-                expression: assessmentResultFIM[14],
-                socialInteraction: assessmentResultFIM[15],
-                problemSolving: assessmentResultFIM[16],
-                memory: assessmentResultFIM[17],
-                createdAt: Date()
-            )
-            guard let targetPersonUUID = targetPersonUUID else {
-                fatalError("targetPersonUUIDの中身がない。メソッド名：[\(#function)]")
-            }
-            guard let fim = fim else {
-                fatalError("FIMの中身がない。メソッド名：[\(#function)]")
-            }
-            fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
-
-            toDetailFIMViewController(fim: fim)
-        } else {
-            updateScreenAndAllUIButtonIsSelectedFalse()
-            configueViewButtonsStyle()
-        }
+        screenTransition18AndOverRepositoryAppend()
     }
 
     @IBAction private func updateAttentionTextView(_ sender: Any) {
@@ -160,6 +132,44 @@ final class AssessmentViewController: UIViewController {
         }
         textView.text = fimScoringCriteria[fimItemCount].attention
         configueViewButtonsStyle()
+    }
+
+    private func screenTransition18AndOverRepositoryAppend() {
+        if fimItemCount == 18 {
+                    fim = FIM(
+                        eating: assessmentResultFIM[0],
+                        grooming: assessmentResultFIM[1],
+                        bathing: assessmentResultFIM[2],
+                        dressingUpperBody: assessmentResultFIM[3],
+                        dressingLowerBody: assessmentResultFIM[4],
+                        toileting: assessmentResultFIM[5],
+                        bladderManagement: assessmentResultFIM[6],
+                        bowelManagement: assessmentResultFIM[7],
+                        transfersBedChairWheelchair: assessmentResultFIM[8],
+                        transfersToilet: assessmentResultFIM[9],
+                        transfersBathShower: assessmentResultFIM[10],
+                        walkWheelchair: assessmentResultFIM[11],
+                        stairs: assessmentResultFIM[12],
+                        comprehension: assessmentResultFIM[13],
+                        expression: assessmentResultFIM[14],
+                        socialInteraction: assessmentResultFIM[15],
+                        problemSolving: assessmentResultFIM[16],
+                        memory: assessmentResultFIM[17],
+                        createdAt: Date()
+                    )
+                    guard let targetPersonUUID = targetPersonUUID else {
+                        fatalError("targetPersonUUIDの中身がない。メソッド名：[\(#function)]")
+                    }
+                    guard let fim = fim else {
+                        fatalError("FIMの中身がない。メソッド名：[\(#function)]")
+                    }
+                    fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
+
+                    toDetailFIMViewController(fim: fim)
+                } else {
+                    updateScreenAndAllUIButtonIsSelectedFalse()
+                    configueViewButtonsStyle()
+                }
     }
 
     private func updateScreenAndAllUIButtonIsSelectedFalse() {
