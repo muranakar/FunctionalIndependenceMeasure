@@ -38,7 +38,7 @@ final class DetailFIMViewController: UIViewController {
         FIMItem(title: "整容", point: fim.grooming),
         FIMItem(title: "清拭", point: fim.bathing),
         FIMItem(title: "更衣上半身", point: fim.dressingUpperBody),
-        FIMItem(title: "更衣下半身", point: fim.dressingUpperBody),
+        FIMItem(title: "更衣下半身", point: fim.dressingLowerBody),
         FIMItem(title: "トイレ動作", point: fim.toileting),
         FIMItem(title: "排尿管理", point: fim.bladderManagement),
         FIMItem(title: "排便管理", point: fim.bowelManagement),
