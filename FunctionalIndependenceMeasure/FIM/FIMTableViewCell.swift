@@ -10,6 +10,7 @@ import UIKit
 final class FIMTableViewCell: UITableViewCell {
     @IBOutlet weak private var sumAllLabel: UILabel!
     @IBOutlet weak private var sumTheMotorSubscaleIncludesLabel: UILabel!
+    @IBOutlet weak private var notEnteredLabel: UILabel!
     @IBOutlet weak private var sumTheCognitionSubscaleIncludesLabel: UILabel!
     @IBOutlet weak private var createdAtLabel: UILabel!
     @IBOutlet weak private var updatedAtLabel: UILabel!
@@ -40,5 +41,12 @@ final class FIMTableViewCell: UITableViewCell {
         createdAtLabel.text = createdAt
         updatedAtLabel.text = updatedAt
         self.copyFIMTextHandler = copyFIMTextHandler
+    }
+
+    func configureNotEnteredLabelTextEmptyString() {
+        notEnteredLabel.text = ""
+    }
+    func configureNotEnteredLabelText() {
+        notEnteredLabel.text = "未入力"
     }
 }

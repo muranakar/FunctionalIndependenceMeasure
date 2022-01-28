@@ -71,8 +71,14 @@ final class FIMTableViewController: UITableViewController {
             sortedAscending: isSortedAscending
         ).count
     }
-
+    // MARK: - リファクタリング必要あり。
+    // リファクタリングする必要あり
+    // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:enable cyclomatic_complexity
+        // swiftlint:enable function_body_length
+
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "FIMTableViewCell") as! FIMTableViewCell
         let fim = fimRepository.loadFIM(
@@ -91,7 +97,150 @@ final class FIMTableViewController: UITableViewController {
         if let updateAt = fim.updatedAt {
             updateAtString = dateFormatter(date: updateAt)
         }
+        // MARK: - 修正必要あり部分
 
+        var sumAll: String {
+            if fim.eating == 0,
+               fim.grooming == 0,
+               fim.bathing == 0,
+               fim.dressingUpperBody == 0,
+               fim.dressingLowerBody == 0,
+               fim.toileting == 0,
+               fim.bladderManagement == 0,
+               fim.bowelManagement == 0,
+               fim.transfersBedChairWheelchair == 0,
+               fim.transfersToilet == 0,
+               fim.transfersBathShower == 0,
+               fim.walkWheelchair == 0,
+               fim.stairs == 0,
+               fim.comprehension == 0,
+               fim.expression == 0,
+               fim.socialInteraction == 0,
+               fim.problemSolving == 0,
+               fim.memory == 0 {
+                return "\(fim.sumAll)　未入力項目あり"
+            } else {
+                return "\(fim.sumAll)"
+            }
+        }
+
+        var eating: String {
+            if fim.eating == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.eating)"
+            }
+        }
+        var grooming: String {
+            if fim.grooming == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.grooming)"
+            }
+        }
+
+        var bathing: String {
+            if fim.bathing == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.bathing)"
+            }}
+
+        var dressingUpperBody: String {
+            if fim.dressingUpperBody == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.dressingUpperBody)"
+            }}
+        var dressingLowerBody: String {
+            if fim.dressingLowerBody == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.dressingLowerBody)"
+            }}
+
+        var toileting: String {
+            if fim.toileting == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.toileting)"
+            }}
+
+        var bladderManagement: String {
+            if fim.bladderManagement == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.bladderManagement)"
+            }}
+
+        var bowelManagement: String {
+            if fim.bowelManagement == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.bowelManagement)"
+            }}
+
+        var transfersBedChairWheelchair: String {
+            if fim.transfersBedChairWheelchair == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.transfersBedChairWheelchair)"
+            }}
+
+        var transfersToilet: String {
+            if fim.transfersToilet == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.transfersToilet)"
+            }}
+        var transfersBathShower: String {
+            if fim.transfersBathShower == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.transfersBathShower)"
+            }}
+        var walkWheelchair: String {
+            if fim.walkWheelchair == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.walkWheelchair)"
+            }}
+        var stairs: String {
+            if fim.stairs == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.stairs)"
+            }}
+        var comprehension: String {
+            if fim.comprehension == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.comprehension)"
+            }}
+        var expression: String {
+            if fim.expression == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.expression)"
+            }}
+        var socialInteraction: String {
+            if fim.socialInteraction == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.socialInteraction)"
+            }}
+        var problemSolving: String {
+            if fim.problemSolving == 0 {
+                return "未入力"
+            } else {
+                return "\(fim.problemSolving)"
+            }}
+        var memory: String {
+            if fim.memory == 0 {return "未入力"
+            } else {
+                return "\(fim.memory)"
+            }}
+        // MARK: - ここまで修正必要
         cell.configure(
             fim: fim,
             createdAt: createdAtString,
@@ -99,8 +248,33 @@ final class FIMTableViewController: UITableViewController {
             copyFIMTextHandler: {
                 UIPasteboard.general.string =
                 // swiftlint:disable:next line_length
-                "FIM評価結果\n評価日\(createdAtString)\n評価者:\(assessor.name)\n対象者:\(targetPerson.name)\n合計値\(fim.sumAll)\n食事:\(fim.eating)\n整容:\(fim.grooming)\n清拭:\(fim.bathing)\n更衣上半身:\(fim.dressingUpperBody)\n更衣下半身:\(fim.dressingLowerBody)\nトイレ動作:\(fim.toileting)\n排尿管理:\(fim.bladderManagement)\n排便管理:\(fim.bowelManagement)\nベッド・椅子・車椅子移乗:\(fim.transfersBedChairWheelchair)\nトイレ移乗:\(fim.transfersToilet)\n浴槽・シャワー移乗:\(fim.transfersBathShower)\n歩行・車椅子:\(fim.walkWheelchair)\n階段:\(fim.stairs)\n理解:\(fim.comprehension)\n表出:\(fim.expression)\n社会的交流:\(fim.socialInteraction)\n問題解決:\(fim.problemSolving)\n記憶:\(fim.memory)"
+                "FIM評価結果\n評価日\(createdAtString)\n評価者:\(assessor.name)\n対象者:\(targetPerson.name)\n合計値\(sumAll)\n食事:\(eating)\n整容:\(grooming)\n清拭:\(bathing)\n更衣上半身:\(dressingUpperBody)\n更衣下半身:\(dressingLowerBody)\nトイレ動作:\(toileting)\n排尿管理:\(bladderManagement)\n排便管理:\(bowelManagement)\nベッド・椅子・車椅子移乗:\(transfersBedChairWheelchair)\nトイレ移乗:\(transfersToilet)\n浴槽・シャワー移乗:\(transfersBathShower)\n歩行・車椅子:\(walkWheelchair)\n階段:\(stairs)\n理解:\(comprehension)\n表出:\(expression)\n社会的交流:\(socialInteraction)\n問題解決:\(problemSolving)\n記憶:\(memory)"
             })
+
+        // fimの項目の中に、未入力があると、未入力ラベルが表示される。
+        if fim.eating == 0,
+           fim.grooming == 0,
+           fim.bathing == 0,
+           fim.dressingUpperBody == 0,
+           fim.dressingLowerBody == 0,
+           fim.toileting == 0,
+           fim.bladderManagement == 0,
+           fim.bowelManagement == 0,
+           fim.transfersBedChairWheelchair == 0,
+           fim.transfersToilet == 0,
+           fim.transfersBathShower == 0,
+           fim.walkWheelchair == 0,
+           fim.stairs == 0,
+           fim.comprehension == 0,
+           fim.expression == 0,
+           fim.socialInteraction == 0,
+           fim.problemSolving == 0,
+           fim.memory == 0 {
+            cell.configureNotEnteredLabelText()
+        } else {
+            cell.configureNotEnteredLabelTextEmptyString()
+        }
+
         return cell
     }
 
