@@ -15,12 +15,12 @@ class CopyAndPasteFunction {
         self.createdAtString = createdAtString
     }
 
-    var assessor: Assessor
-    var targetPerson: TargetPerson
-    var fim: FIM
-    var createdAtString: String
+    private var assessor: Assessor
+    private var targetPerson: TargetPerson
+    private var fim: FIM
+    private var createdAtString: String
 
-    var sumAll: String {
+    private var sumAll: String {
         if fim.eating == 0 ||
             fim.grooming == 0 ||
             fim.bathing == 0 ||
@@ -45,14 +45,14 @@ class CopyAndPasteFunction {
         }
     }
 
-    var eating: String {
+    private var eating: String {
         if fim.eating == 0 {
             return "未入力"
         } else {
             return "\(fim.eating)"
         }
     }
-    var grooming: String {
+    private var grooming: String {
         if fim.grooming == 0 {
             return "未入力"
         } else {
@@ -60,103 +60,103 @@ class CopyAndPasteFunction {
         }
     }
 
-    var bathing: String {
+    private var bathing: String {
         if fim.bathing == 0 {
             return "未入力"
         } else {
             return "\(fim.bathing)"
         }}
 
-    var dressingUpperBody: String {
+    private var dressingUpperBody: String {
         if fim.dressingUpperBody == 0 {
             return "未入力"
         } else {
             return "\(fim.dressingUpperBody)"
         }}
-    var dressingLowerBody: String {
+    private var dressingLowerBody: String {
         if fim.dressingLowerBody == 0 {
             return "未入力"
         } else {
             return "\(fim.dressingLowerBody)"
         }}
 
-    var toileting: String {
+    private var toileting: String {
         if fim.toileting == 0 {
             return "未入力"
         } else {
             return "\(fim.toileting)"
         }}
 
-    var bladderManagement: String {
+    private var bladderManagement: String {
         if fim.bladderManagement == 0 {
             return "未入力"
         } else {
             return "\(fim.bladderManagement)"
         }}
 
-    var bowelManagement: String {
+    private var bowelManagement: String {
         if fim.bowelManagement == 0 {
             return "未入力"
         } else {
             return "\(fim.bowelManagement)"
         }}
 
-    var transfersBedChairWheelchair: String {
+    private var transfersBedChairWheelchair: String {
         if fim.transfersBedChairWheelchair == 0 {
             return "未入力"
         } else {
             return "\(fim.transfersBedChairWheelchair)"
         }}
 
-    var transfersToilet: String {
+    private var transfersToilet: String {
         if fim.transfersToilet == 0 {
             return "未入力"
         } else {
             return "\(fim.transfersToilet)"
         }}
-    var transfersBathShower: String {
+    private var transfersBathShower: String {
         if fim.transfersBathShower == 0 {
             return "未入力"
         } else {
             return "\(fim.transfersBathShower)"
         }}
-    var walkWheelchair: String {
+    private var walkWheelchair: String {
         if fim.walkWheelchair == 0 {
             return "未入力"
         } else {
             return "\(fim.walkWheelchair)"
         }}
-    var stairs: String {
+    private var stairs: String {
         if fim.stairs == 0 {
             return "未入力"
         } else {
             return "\(fim.stairs)"
         }}
-    var comprehension: String {
+    private var comprehension: String {
         if fim.comprehension == 0 {
             return "未入力"
         } else {
             return "\(fim.comprehension)"
         }}
-    var expression: String {
+    private var expression: String {
         if fim.expression == 0 {
             return "未入力"
         } else {
             return "\(fim.expression)"
         }}
-    var socialInteraction: String {
+    private var socialInteraction: String {
         if fim.socialInteraction == 0 {
             return "未入力"
         } else {
             return "\(fim.socialInteraction)"
         }}
-    var problemSolving: String {
+    private  var problemSolving: String {
         if fim.problemSolving == 0 {
             return "未入力"
         } else {
             return "\(fim.problemSolving)"
         }}
-    var memory: String {
+    private var memory: String {
         if fim.memory == 0 {return "未入力"
         } else {
             return "\(fim.memory)"
