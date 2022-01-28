@@ -80,6 +80,27 @@ final class AssessmentViewController: UIViewController {
         configueViewProgressViewStyle()
         configueViewButtonsStyle()
     }
+
+    @IBAction private func cancelAssessment(_ sender: Any) {
+        // 部品のアラートを作る
+        let alertController = UIAlertController(
+            title: "評価中止",
+            message: "今回の入力データは途中保存されません。\n評価を中止しますか？",
+            preferredStyle: .alert
+        )
+        // OKボタン追加
+        let okAction = UIAlertAction(
+            title: "中止する",
+            style: .cancel,
+            handler: {(_: UIAlertAction!) in
+                self.performSegue(withIdentifier: "backToFunctionSelection", sender: nil)
+            })
+        let cancelAction = UIAlertAction(title: "中止しない", style: .default)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        // アラートを表示する
+        present(alertController, animated: true, completion: nil)
+    }
     // FIM項目を一つスキップする
     @IBAction private func skipOneFIMItem(_ sender: Any) {
         assessmentResultFIM.append(0)
@@ -87,7 +108,7 @@ final class AssessmentViewController: UIViewController {
         screenTransition18AndOverRepositoryAppend()
     }
 
-// FIM項目を一つ戻る
+    // FIM項目を一つ戻る
     @IBAction private func backOneFIMItem(_ sender: Any) {
         if fimItemCount >= 1 {
             fimItemCount -= 1
@@ -136,40 +157,40 @@ final class AssessmentViewController: UIViewController {
 
     private func screenTransition18AndOverRepositoryAppend() {
         if fimItemCount == 18 {
-                    fim = FIM(
-                        eating: assessmentResultFIM[0],
-                        grooming: assessmentResultFIM[1],
-                        bathing: assessmentResultFIM[2],
-                        dressingUpperBody: assessmentResultFIM[3],
-                        dressingLowerBody: assessmentResultFIM[4],
-                        toileting: assessmentResultFIM[5],
-                        bladderManagement: assessmentResultFIM[6],
-                        bowelManagement: assessmentResultFIM[7],
-                        transfersBedChairWheelchair: assessmentResultFIM[8],
-                        transfersToilet: assessmentResultFIM[9],
-                        transfersBathShower: assessmentResultFIM[10],
-                        walkWheelchair: assessmentResultFIM[11],
-                        stairs: assessmentResultFIM[12],
-                        comprehension: assessmentResultFIM[13],
-                        expression: assessmentResultFIM[14],
-                        socialInteraction: assessmentResultFIM[15],
-                        problemSolving: assessmentResultFIM[16],
-                        memory: assessmentResultFIM[17],
-                        createdAt: Date()
-                    )
-                    guard let targetPersonUUID = targetPersonUUID else {
-                        fatalError("targetPersonUUIDの中身がない。メソッド名：[\(#function)]")
-                    }
-                    guard let fim = fim else {
-                        fatalError("FIMの中身がない。メソッド名：[\(#function)]")
-                    }
-                    fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
+            fim = FIM(
+                eating: assessmentResultFIM[0],
+                grooming: assessmentResultFIM[1],
+                bathing: assessmentResultFIM[2],
+                dressingUpperBody: assessmentResultFIM[3],
+                dressingLowerBody: assessmentResultFIM[4],
+                toileting: assessmentResultFIM[5],
+                bladderManagement: assessmentResultFIM[6],
+                bowelManagement: assessmentResultFIM[7],
+                transfersBedChairWheelchair: assessmentResultFIM[8],
+                transfersToilet: assessmentResultFIM[9],
+                transfersBathShower: assessmentResultFIM[10],
+                walkWheelchair: assessmentResultFIM[11],
+                stairs: assessmentResultFIM[12],
+                comprehension: assessmentResultFIM[13],
+                expression: assessmentResultFIM[14],
+                socialInteraction: assessmentResultFIM[15],
+                problemSolving: assessmentResultFIM[16],
+                memory: assessmentResultFIM[17],
+                createdAt: Date()
+            )
+            guard let targetPersonUUID = targetPersonUUID else {
+                fatalError("targetPersonUUIDの中身がない。メソッド名：[\(#function)]")
+            }
+            guard let fim = fim else {
+                fatalError("FIMの中身がない。メソッド名：[\(#function)]")
+            }
+            fimRepository.appendFIM(targetPersonUUID: targetPersonUUID, fim: fim)
 
-                    toDetailFIMViewController(fim: fim)
-                } else {
-                    updateScreenAndAllUIButtonIsSelectedFalse()
-                    configueViewButtonsStyle()
-                }
+            toDetailFIMViewController(fim: fim)
+        } else {
+            updateScreenAndAllUIButtonIsSelectedFalse()
+            configueViewButtonsStyle()
+        }
     }
 
     private func updateScreenAndAllUIButtonIsSelectedFalse() {
@@ -201,14 +222,14 @@ final class AssessmentViewController: UIViewController {
         }
     }
     // MARK: - Method
-       private func toDetailFIMViewController(fim: FIM?) {
-           let storyboard = UIStoryboard(name: "DetailFIM", bundle: nil)
-           let nextVC =
-           storyboard.instantiateViewController(withIdentifier: "detailFIM") as! DetailFIMViewController
-           nextVC.fimUUID = fim?.uuid
-           nextVC.mode = .assessment
-           navigationController?.pushViewController(nextVC, animated: true)
-       }
+    private func toDetailFIMViewController(fim: FIM?) {
+        let storyboard = UIStoryboard(name: "DetailFIM", bundle: nil)
+        let nextVC =
+        storyboard.instantiateViewController(withIdentifier: "detailFIM") as! DetailFIMViewController
+        nextVC.fimUUID = fim?.uuid
+        nextVC.mode = .assessment
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
     // MARK: - UIAlert
     private let alertController: UIAlertController =
     UIAlertController(
@@ -287,7 +308,7 @@ final class AssessmentViewController: UIViewController {
         decisionButton.layer.shadowColor = Colors.mainColor.cgColor
         decisionButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         decisionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        attentionButton.tintColor = Colors.complementaryColor
+        attentionButton.tintColor = .red
     }
 
     // タップされた時の、選択ボタンのアニメーション
@@ -298,7 +319,8 @@ final class AssessmentViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0,
                        options: [.transitionCrossDissolve],
                        animations: {
-            [weak self] in
+            // MARK: - 注意WeakSelfにしなくても良いのか？
+            () -> Void in
             button.backgroundColor = color
             button.setTitleColor(Colors.baseColor, for: .selected)
         },

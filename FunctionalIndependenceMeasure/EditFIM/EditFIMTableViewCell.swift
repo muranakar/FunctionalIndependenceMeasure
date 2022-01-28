@@ -16,15 +16,15 @@ final class EditFIMTableViewCell: UITableViewCell {
     }
 
     let pickerView = UIPickerView()
-    private let fimNumber = [Int](1...7)
+    private let fimNumber = [Int](0...7)
 
     private var updateFIMNumHandler: (_ element: Int) -> Void = { _  in }
 
     required init?(coder: NSCoder) {
-         super.init(coder: coder)
-         pickerView.delegate = self
-         pickerView.dataSource = self
-     }
+        super.init(coder: coder)
+        pickerView.delegate = self
+        pickerView.dataSource = self
+    }
 
     func configue(labelText: String, textFieldText: String, updateFIMNumHandler: @escaping(Int) -> Void) {
         label.text = labelText
@@ -36,7 +36,13 @@ final class EditFIMTableViewCell: UITableViewCell {
 extension EditFIMTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerView {
-            textField.text = fimNumber.map { String($0) }[row]
+            var string: String {
+                if row == 0 {
+                    return "未入力"
+                } else {
+                    return fimNumber.map { String($0) }[row]}
+            }
+            textField.text = string
             updateFIMNumHandler(fimNumber[row])
         }
 
@@ -51,7 +57,12 @@ extension EditFIMTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
         fimNumber.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let string = fimNumber.map { String($0) }[row]
+        var string: String {
+            if row == 0 {
+                return "未入力"
+            } else {
+                return fimNumber.map { String($0) }[row]}
+        }
         return string
     }
 }

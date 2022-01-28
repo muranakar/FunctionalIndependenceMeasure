@@ -74,8 +74,15 @@ final class EditFIMTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EditFIMTableViewCell
+        var point: String {
+            if fimItemNum[indexPath.row] == 0 {
+                return "未入力"
+            } else {
+                return "\(fimItemNum[indexPath.row])"
+            }
+        }
         cell.configue(labelText: fimItemTitle[indexPath.row],
-                      textFieldText: String(fimItemNum[indexPath.row]),
+                      textFieldText: point,
                       updateFIMNumHandler: { [weak self] element in
             self?.fimItemNum[indexPath.row] = element
         })

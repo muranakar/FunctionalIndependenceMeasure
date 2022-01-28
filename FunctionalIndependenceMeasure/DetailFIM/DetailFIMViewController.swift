@@ -31,7 +31,7 @@ final class DetailFIMViewController: UIViewController {
         let point: Int
     }
 
-    private lazy var fimItems: [FIMItem] = [
+    private var fimItems: [FIMItem] {[
         FIMItem(title: "総合計", point: fim.sumAll),
         FIMItem(title: "運動項目合計", point: fim.sumTheMotorSubscaleIncludes),
         FIMItem(title: "食事", point: fim.eating),
@@ -53,7 +53,7 @@ final class DetailFIMViewController: UIViewController {
         FIMItem(title: "社会的交流", point: fim.socialInteraction),
         FIMItem(title: "問題解決", point: fim.problemSolving),
         FIMItem(title: "記憶", point: fim.memory)
-    ]
+    ]}
     @IBOutlet weak private var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -65,6 +65,10 @@ final class DetailFIMViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         configueViewNavigationbarColor()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     @IBAction private func editFIM(_ sender: Any) {
@@ -121,9 +125,19 @@ extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
             boldTextcell.backgroundColor = Colors.mainColor.withAlphaComponent(0.1)
             return boldTextcell
         } else {
+            // ポイントが０の場合は、「未入力」と表示する処理。
+            var point: String {
+                if fimItems[indexPath.row].point == 0 {
+                    cell.configureViewLabelColorRed()
+                    return "未入力"
+                } else {
+                    cell.configureViewLabelColorBlack()
+                    return "\(fimItems[indexPath.row].point)"
+                }
+            }
             cell.configure(
                 fimItemTitle: fimItems[indexPath.row].title ,
-                fimItemNum: String(fimItems[indexPath.row].point)
+                fimItemNum: point
             )
             return cell
         }

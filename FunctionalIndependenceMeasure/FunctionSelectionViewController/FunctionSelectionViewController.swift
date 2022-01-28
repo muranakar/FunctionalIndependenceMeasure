@@ -12,6 +12,7 @@ final class FunctionSelectionViewController: UIViewController {
     let fimRepository = FIMRepository()
     @IBOutlet weak private var asssessmentButton: UIButton!
     @IBOutlet weak private var fimListButton: UIButton!
+    @IBOutlet weak private var twitterButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,15 @@ final class FunctionSelectionViewController: UIViewController {
         navigationItem.title = "対象者:　\(targetPersonName)　様"
         configueViewNavigationBarColor()
         configueViewButtonStyle()
+        configueViewButtonTwitterURL()
     }
+    @IBAction private func moveTwitterURL(_ sender: Any) {
+            let url = NSURL(string: "https://twitter.com/iOS76923384")
+            if UIApplication.shared.canOpenURL(url! as URL) {
+                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+            }
+        }
+
     @IBAction private func toAssessmentVC(_ sender: Any) {
         toAssessmentViewController(targetPersonUUID: targetPersonUUID)
     }
@@ -76,4 +85,15 @@ final class FunctionSelectionViewController: UIViewController {
         fimListButton.layer.shadowColor = UIColor.black.cgColor
         fimListButton.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
+    private func configueViewButtonTwitterURL() {
+            twitterButton.backgroundColor = .white
+            twitterButton.layer.cornerRadius = 20
+            twitterButton.imageView?.contentMode = .scaleAspectFill
+            twitterButton.contentVerticalAlignment = .fill
+            twitterButton.contentHorizontalAlignment = .fill
+            twitterButton.layer.shadowOpacity = 0.7
+            twitterButton.layer.shadowRadius = 5
+            twitterButton.layer.shadowColor = Colors.mainColor.cgColor
+            twitterButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        }
 }

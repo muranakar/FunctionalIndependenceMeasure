@@ -15,4 +15,12 @@ final class DetailFIMTableViewCell: UITableViewCell {
         fimItemTitleLabel.text = fimItemTitle
         fimItemNumLabel.text = fimItemNum
     }
+
+    func configureViewLabelColorRed() {
+        fimItemNumLabel.textColor = .red
+    }
+
+    func configureViewLabelColorBlack() {
+        fimItemNumLabel.textColor = .black
+    }
 }
