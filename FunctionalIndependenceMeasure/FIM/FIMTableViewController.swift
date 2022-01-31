@@ -102,6 +102,8 @@ final class FIMTableViewController: UITableViewController {
                     fim: fim,
                     createdAtString: createdAtString
                 ).copyAndPasteString
+                // MARK: - weak selfを行うべきなのか、そうではないのか。
+                self.copyButtonPushAlert(title: "コピー完了", message: "FIMデータ内容のコピーが\n完了しました。")
             })
 
         // fimの項目の中に、未入力があると、未入力ラベルが表示される。
@@ -158,6 +160,12 @@ final class FIMTableViewController: UITableViewController {
         nextVC.fimUUID = selectedFIMUUID
         nextVC.mode = .fim
         navigationController?.pushViewController(nextVC, animated: true)
+    }
+    // MARK: - UIAlertController
+    func copyButtonPushAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     // MARK: - View Configue
     private func configueViewNavigationbarColor() {
