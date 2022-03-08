@@ -128,7 +128,6 @@ final class AssessorViewController: UIViewController, UITableViewDelegate, UITab
     }
     private func configueViewButtonTwitterURL() {
         twitterButton.backgroundColor = .white
-
         twitterButton.layer.cornerRadius = 20
         twitterButton.imageView?.contentMode = .scaleAspectFill
         twitterButton.contentVerticalAlignment = .fill
