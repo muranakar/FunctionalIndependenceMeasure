@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import QuickLook
 
 final class DetailFIMViewController: UIViewController {
     //　画面遷移で値を受け取る変数
@@ -100,6 +101,7 @@ final class DetailFIMViewController: UIViewController {
     @IBAction private func backToDetailFIMViewController(segue: UIStoryboardSegue) {
         tableView.reloadData()
     }
+
 }
 
 extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
@@ -146,10 +148,10 @@ extension DetailFIMViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - View Configue
     private func configueViewNavigationbarColor() {
         let appearance = UINavigationBarAppearance()
-               appearance.configureWithOpaqueBackground()
-               appearance.backgroundColor = Colors.baseColor
-               navigationItem.standardAppearance = appearance
-               navigationItem.scrollEdgeAppearance = appearance
-               navigationItem.compactAppearance = appearance
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Colors.baseColor
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
     }
 }

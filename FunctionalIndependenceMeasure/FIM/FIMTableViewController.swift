@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import QuickLook
 
 final class FIMTableViewController: UITableViewController {
     //　画面遷移で値を受け取る変数
@@ -18,6 +19,9 @@ final class FIMTableViewController: UITableViewController {
 
     //　並び替えのための変数
     private var isSortedAscending = false
+
+    // PDFpathを管理
+    var PDFpath: URL?
 
     let fimRepository = FIMRepository()
 
@@ -102,9 +106,18 @@ final class FIMTableViewController: UITableViewController {
                     fim: fim,
                     createdAtString: createdAtString
                 ).copyAndPasteString
-                // MARK: - weak selfを行うべきなのか、そうではないのか。
                 self.copyButtonPushAlert(title: "コピー完了", message: "FIMデータ内容のコピーが\n完了しました。")
-            })
+            }, makeFIMPDFHandler: { [weak self] in
+                        let fimPDF = FIMPDF(assessor: assessor, targetPerson: targetPerson, fim: fim)
+                        if let savedPath = fimPDF.saveToTempDirectory() {
+                            // PDFファイルを表示する
+                            self?.PDFpath = savedPath
+                            let previewController = QLPreviewController()
+                            previewController.dataSource = self
+                            self?.present(previewController, animated: true, completion: nil)
+                        }
+            }
+        )
 
         // fimの項目の中に、未入力があると、未入力ラベルが表示される。
         if fim.eating == 0 || fim.grooming == 0 || fim.bathing == 0 || fim.dressingUpperBody == 0 ||
@@ -185,4 +198,22 @@ final class FIMTableViewController: UITableViewController {
         let dateString = dateFormatter.string(from: date)
         return dateString
     }
+}
+
+
+extension FIMTableViewController: QLPreviewControllerDataSource {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+            if self.PDFpath != nil {
+                return 1
+            } else {
+                return 0
+            }
+        }
+
+        func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+                guard let pdfFilePath = self.PDFpath else {
+                    return "" as! QLPreviewItem
+                }
+                return pdfFilePath as QLPreviewItem
+        }
 }
