@@ -200,7 +200,6 @@ final class FIMTableViewController: UITableViewController {
     }
 }
 
-
 extension FIMTableViewController: QLPreviewControllerDataSource {
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
             if self.PDFpath != nil {
