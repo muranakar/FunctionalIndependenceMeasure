@@ -57,6 +57,10 @@ final class FIMPDF {
     }
     // swiftlint:disable:next function_body_length
     private func makeHTMLString() -> String {
+        var createdAtString = "--"
+        if let createdAt = fim.createdAt {
+            createdAtString  = dateFormatter(date: createdAt)
+        }
         // htmlヘッダーを生成します。
         return """
         <!DOCTYPE html>
@@ -71,6 +75,7 @@ final class FIMPDF {
             </style>
             <body>
                 <h1>\(targetPerson.name)　様</h1>
+                <h2 style="text-align:right">　作成日　\(createdAtString)</h2>
                 <h2>FIM（Functional　Independence Measure、機能的自立度評価表）</h2>
                 <table style="width:100%">
         <tr>
@@ -194,5 +199,16 @@ final private class FIMString {
             return
         }
         self.string = String(fim)
+    }
+}
+
+private extension FIMPDF{
+    func dateFormatter(date: Date) -> String {
+        let dateFormatter = Foundation.DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
     }
 }
