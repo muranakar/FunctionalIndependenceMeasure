@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         // Override point for customization after application launch.
+        // ナビゲーションバーの背景色
         return true
     }
 

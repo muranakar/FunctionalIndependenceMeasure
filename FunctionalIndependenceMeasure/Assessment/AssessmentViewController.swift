@@ -20,6 +20,7 @@ final class AssessmentViewController: UIViewController {
     @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var fimItemTitleLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var answerView: UIView!
     @IBOutlet private weak var button1: UIButton!
     @IBOutlet private weak var button2: UIButton!
     @IBOutlet private weak var button3: UIButton!
@@ -79,6 +80,7 @@ final class AssessmentViewController: UIViewController {
         updateLabelAndProgressView()
         configueViewProgressViewStyle()
         configueViewButtonsStyle()
+        configureViewAnswerView()
     }
 
     @IBAction private func cancelAssessment(_ sender: Any) {
@@ -325,5 +327,8 @@ final class AssessmentViewController: UIViewController {
             button.setTitleColor(Colors.baseColor, for: .selected)
         },
                        completion: nil)
+    }
+    private func configureViewAnswerView() {
+        answerView.backgroundColor = UIColor(named: "white")!
     }
 }

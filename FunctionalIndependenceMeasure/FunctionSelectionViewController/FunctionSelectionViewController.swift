@@ -12,7 +12,6 @@ final class FunctionSelectionViewController: UIViewController {
     let fimRepository = FIMRepository()
     @IBOutlet weak private var asssessmentButton: UIButton!
     @IBOutlet weak private var fimListButton: UIButton!
-    @IBOutlet weak private var twitterButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +21,7 @@ final class FunctionSelectionViewController: UIViewController {
         navigationItem.title = "対象者:　\(targetPersonName)　様"
         configueViewNavigationBarColor()
         configueViewButtonStyle()
-        configueViewButtonTwitterURL()
     }
-    @IBAction private func moveTwitterURL(_ sender: Any) {
-            let url = NSURL(string: "https://twitter.com/iOS76923384")
-            if UIApplication.shared.canOpenURL(url! as URL) {
-                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
-            }
-        }
 
     @IBAction private func toAssessmentVC(_ sender: Any) {
         toAssessmentViewController(targetPersonUUID: targetPersonUUID)
@@ -37,6 +29,15 @@ final class FunctionSelectionViewController: UIViewController {
 
     @IBAction private func toFIMTableVC(_ sender: Any) {
         toFIMTableViewController(targetPersonUUID: targetPersonUUID)
+    }
+    @IBAction private func shareTwitter(_ sender: Any) {
+        shareOnTwitter()
+    }
+    @IBAction private func shareLine(_ sender: Any) {
+        shareOnLine()
+    }
+    @IBAction private func shareOtherApp(_ sender: Any) {
+        shareOnOtherApp()
     }
 
     // MARK: - Segue- FunctionSelectionViewController ← AssessmentViewController
@@ -59,11 +60,74 @@ final class FunctionSelectionViewController: UIViewController {
         navigationController?.pushViewController(nextVC, animated: true)
     }
 
+    private func shareOnTwitter() {
+        // シェアするテキストを作成
+        let text = "ADL評価のFIMを評価することが可能！"
+        // swiftlint:disable:next line_length
+        let hashTag = " #ADL #FIM #身体機能 #病院 #クリニック #在宅 #リハビリ #理学療法士 #作業療法士 #作業療法士 #介護 #評価 #身体評価   \nhttps://apps.apple.com/jp/app/fim/id1606480076"
+        let completedText = text + "\n" + hashTag
+
+        // 作成したテキストをエンコード
+        let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+        // エンコードしたテキストをURLに繋げ、URLを開いてツイート画面を表示させる
+        if let encodedText = encodedText,
+           let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+            UIApplication.shared.open(url)
+        }
+    }
+
+    private  func shareOnLine() {
+        let urlscheme: String = "https://line.me/R/share?text="
+        // swiftlint:disable:next line_length
+        let message = "ADL評価のFIMを評価することが可能！ #ADL #FIM #身体機能 #病院 #クリニック #在宅 #リハビリ #理学療法士 #作業療法士 #作業療法士 #介護 #評価 #身体評価   \nhttps://apps.apple.com/jp/app/fim/id1606480076"
+
+        // line:/msg/text/(メッセージ)
+        let urlstring = urlscheme + "/" + message
+
+        // URLエンコード
+        guard let  encodedURL =
+                urlstring.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else {
+            return
+        }
+
+        // URL作成
+        guard let url = URL(string: encodedURL) else {
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: { (succes) in
+                    //  LINEアプリ表示成功
+                })
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            // LINEアプリが無い場合
+            let alertController = UIAlertController(title: "エラー",
+                                                    message: "LINEがインストールされていません",
+                                                    preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+            present(alertController,animated: true,completion: nil)
+        }
+    }
+
+    private func shareOnOtherApp() {
+        let url = URL(string: "https://sites.google.com/view/muranakar")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.open(url!)
+        }
+    }
+
+
+
     // MARK: - View Configue
     private func configueViewNavigationBarColor() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = Colors.baseColor
+        appearance.backgroundColor = UIColor(named: "navigation")!
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
@@ -85,15 +149,4 @@ final class FunctionSelectionViewController: UIViewController {
         fimListButton.layer.shadowColor = UIColor.black.cgColor
         fimListButton.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
-    private func configueViewButtonTwitterURL() {
-            twitterButton.backgroundColor = .white
-            twitterButton.layer.cornerRadius = 20
-            twitterButton.imageView?.contentMode = .scaleAspectFill
-            twitterButton.contentVerticalAlignment = .fill
-            twitterButton.contentHorizontalAlignment = .fill
-            twitterButton.layer.shadowOpacity = 0.7
-            twitterButton.layer.shadowRadius = 5
-            twitterButton.layer.shadowColor = Colors.mainColor.cgColor
-            twitterButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        }
 }

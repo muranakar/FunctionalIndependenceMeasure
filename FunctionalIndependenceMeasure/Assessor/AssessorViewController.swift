@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 final class AssessorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak private var tableview: UITableView!
@@ -79,6 +80,12 @@ final class AssessorViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reviewNum = ReviewRepository.processAfterAddReviewNumPulsOneAndSaveReviewNum()
+        if reviewNum == 5 || reviewNum == 20 {
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: scene)
+            }
+        }
         selectedAssessorUUID = fimRepository.loadAssessor()[indexPath.row].uuid
         toTargetPersonViewController(selectedAssessorUUID: selectedAssessorUUID)
     }
@@ -108,7 +115,7 @@ final class AssessorViewController: UIViewController, UITableViewDelegate, UITab
     private func configueViewColor() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = Colors.baseColor
+        appearance.backgroundColor = UIColor(named: "navigation")!
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance

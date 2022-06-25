@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h0F-jm-Rvs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h0F-jm-Rvs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,29 +40,45 @@
                                     <action selector="toFIMTableVC:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NbC-rT-uAv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoU-kO-3YH">
-                                <rect key="frame" x="20" y="782" width="130" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gCo-Z9-b5x">
+                                <rect key="frame" x="0.0" y="752" width="414" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter" translatesAutoresizingMaskIntoConstraints="NO" id="6df-bF-2bh">
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="80"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="f2q-De-5Cc" appends="YES" id="1x0-rN-OYj"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LINE_Brand_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2tP-Wj-pVz">
+                                        <rect key="frame" x="138" y="0.0" width="138" height="80"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="w2w-sB-TTK" appends="YES" id="g1u-zX-pR5"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="otherApp" translatesAutoresizingMaskIntoConstraints="NO" id="FAO-EQ-MWX">
+                                        <rect key="frame" x="276" y="0.0" width="138" height="80"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="jF9-en-hw2" appends="YES" id="dW7-h3-2PE"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="Irs-wM-uxH"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="LiO-au-zZc"/>
+                                    <constraint firstAttribute="height" constant="80" id="eOT-B3-lRn"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="修正依頼" subtitle="(Twitter)">
-                                    <imageReference key="image" image="envelope" catalog="system" symbolScale="large"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="moveTwitterURL:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="p7r-eb-vmY"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DoU-kO-3YH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="3mL-IH-CvN"/>
                             <constraint firstItem="NMl-xO-IGR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="5wE-D7-qtW"/>
+                            <constraint firstItem="gCo-Z9-b5x" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ie4-53-IbF"/>
                             <constraint firstItem="NMl-xO-IGR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="70" id="LRt-ri-oZb"/>
                             <constraint firstItem="FTL-pl-bow" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-70" id="Pfl-Xg-it9"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="DoU-kO-3YH" secondAttribute="bottom" constant="20" id="uTV-Ui-wPZ"/>
+                            <constraint firstAttribute="trailing" secondItem="gCo-Z9-b5x" secondAttribute="trailing" id="nhR-RP-rEd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="gCo-Z9-b5x" secondAttribute="bottom" constant="30" id="tHd-2a-LHo"/>
                             <constraint firstItem="FTL-pl-bow" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="upQ-go-9H1"/>
                         </constraints>
                     </view>
@@ -77,11 +92,25 @@
                     <connections>
                         <outlet property="asssessmentButton" destination="FTL-pl-bow" id="91r-NR-XS1"/>
                         <outlet property="fimListButton" destination="NMl-xO-IGR" id="x4C-Aq-haM"/>
-                        <outlet property="twitterButton" destination="DoU-kO-3YH" id="HHC-9K-ASl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GT0-R2-xlt" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="f2q-De-5Cc">
+                    <connections>
+                        <action selector="shareTwitter:" destination="Y6W-OH-hqX" id="iN4-Pi-cbc"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="w2w-sB-TTK">
+                    <connections>
+                        <action selector="shareLine:" destination="Y6W-OH-hqX" id="qYo-Bv-TuT"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="jF9-en-hw2">
+                    <connections>
+                        <action selector="shareOtherApp:" destination="Y6W-OH-hqX" id="EQu-l9-cUw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="79.6875"/>
         </scene>
@@ -105,10 +134,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LINE_Brand_icon" width="1001" height="1000"/>
         <image name="applepencil" catalog="system" width="128" height="113"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
-        <image name="envelope" catalog="system" width="128" height="93"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="otherApp" width="1080" height="1080"/>
+        <image name="twitter" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
