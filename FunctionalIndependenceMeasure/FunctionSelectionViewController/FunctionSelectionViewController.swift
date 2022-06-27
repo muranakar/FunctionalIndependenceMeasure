@@ -121,8 +121,6 @@ final class FunctionSelectionViewController: UIViewController {
         }
     }
 
-
-
     // MARK: - View Configue
     private func configueViewNavigationBarColor() {
         let appearance = UINavigationBarAppearance()
