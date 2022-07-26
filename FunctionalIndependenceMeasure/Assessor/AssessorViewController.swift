@@ -80,12 +80,6 @@ final class AssessorViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let reviewNum = ReviewRepository.processAfterAddReviewNumPulsOneAndSaveReviewNum()
-        if reviewNum == 5 || reviewNum == 20 {
-            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                SKStoreReviewController.requestReview(in: scene)
-            }
-        }
         selectedAssessorUUID = fimRepository.loadAssessor()[indexPath.row].uuid
         toTargetPersonViewController(selectedAssessorUUID: selectedAssessorUUID)
     }
