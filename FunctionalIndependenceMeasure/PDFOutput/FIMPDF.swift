@@ -202,7 +202,7 @@ final private class FIMString {
     }
 }
 
-private extension FIMPDF{
+private extension FIMPDF {
     func dateFormatter(date: Date) -> String {
         let dateFormatter = Foundation.DateFormatter()
         dateFormatter.locale = Locale(identifier: "ja_JP")

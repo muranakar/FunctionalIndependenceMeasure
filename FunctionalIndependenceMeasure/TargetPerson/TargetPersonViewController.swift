@@ -29,7 +29,7 @@ final class TargetPersonViewController: UIViewController, UITableViewDelegate, U
         configueViewButtonTwitterURL()
     }
     @IBAction private func moveTwitterURL(_ sender: Any) {
-            let url = NSURL(string: "https://twitter.com/iOS76923384")
+            let url = NSURL(string: "https://twitter.com/KaradaHelp")
             if UIApplication.shared.canOpenURL(url! as URL) {
                 UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
             }
