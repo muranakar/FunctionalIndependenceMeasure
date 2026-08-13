@@ -3,7 +3,7 @@
 //  FunctionalIndependenceMeasure
 //
 //  旧バージョンの Realm データを SwiftData へ一度だけ移し替える。
-//  ・Realm は読み取り専用で開くため、移行が失敗しても元データは壊れない
+//  ・元ファイルは複製してから読むため、移行が失敗しても元データは壊れない
 //  ・移行が完了するまで退避（リネーム）は行わない
 //  ・退避であって削除ではないので、万一のとき手動で復旧できる
 //
@@ -64,10 +64,19 @@ enum RealmToSwiftDataMigrator {
     // MARK: - 変換本体
 
     private static func migrate(realmURL: URL, context: ModelContext) throws -> RealmMigrationResult {
-        var configuration = Realm.Configuration(fileURL: realmURL, readOnly: true)
+        // 旧バージョンは Realm 10.14.0 で書いており、現在の Realm 20 系とはファイル形式が違う。
+        // 形式の更新は書き込みを伴うため、読み取り専用では開けずに失敗する。
+        // かといって元ファイルを直接書き換えると、移行に失敗したとき復旧できない。
+        // そこで作業用の複製を作り、そちらを読み書き可能で開いて形式を更新させる。
+        let workingURL = try makeWorkingCopy(of: realmURL)
+        defer { removeRealmFiles(at: workingURL) }
+
+        var configuration = Realm.Configuration(fileURL: workingURL)
         configuration.objectTypes = [LegacyAssessor.self, LegacyTargetPerson.self, LegacyFIM.self]
-        // 旧アプリはスキーマバージョンを明示していなかったため 0 のまま読む
-        configuration.schemaVersion = 0
+        // 旧アプリはスキーマバージョンを明示していなかったため 0 で書かれている。
+        // 1 に上げたうえで中身を触らない移行を渡し、定義のずれがあっても開けるようにする
+        configuration.schemaVersion = 1
+        configuration.migrationBlock = { _, _ in }
 
         let realm = try Realm(configuration: configuration)
 
@@ -126,6 +135,29 @@ enum RealmToSwiftDataMigrator {
     private static func existingAssessorIDs(context: ModelContext) throws -> Set<String> {
         let descriptor = FetchDescriptor<Assessor>()
         return Set(try context.fetch(descriptor).map(\.uuidString))
+    }
+
+    // MARK: - 作業用の複製
+
+    /// 元のRealmファイルを一時ディレクトリへ複製して、その場所を返す
+    private static func makeWorkingCopy(of realmURL: URL) throws -> URL {
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("realm-migration", isDirectory: true)
+        try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+
+        let destination = directory.appendingPathComponent("source.realm")
+        removeRealmFiles(at: destination)
+        // 本体だけ複製すればよい。lock や management は開くときに作り直される
+        try FileManager.default.copyItem(at: realmURL, to: destination)
+        return destination
+    }
+
+    /// Realm本体と付随ファイルをまとめて削除する
+    private static func removeRealmFiles(at url: URL) {
+        let fileManager = FileManager.default
+        for suffix in ["", ".lock", ".note", ".management"] {
+            try? fileManager.removeItem(at: URL(fileURLWithPath: url.path + suffix))
+        }
     }
 
     // MARK: - 退避
