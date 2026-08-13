@@ -39,6 +39,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 App Store Connect 上のビルドの状態を確認する
 
+### ios answer_export_compliance
+
+```sh
+[bundle exec] fastlane ios answer_export_compliance
+```
+
+輸出コンプライアンスが未回答のビルドに自動で回答する
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

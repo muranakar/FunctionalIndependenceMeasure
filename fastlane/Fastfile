@@ -48,10 +48,16 @@ platform :ios do
     )
 
     # バイナリのみアップロードする。審査提出はここでは行わない
+    # uses_non_exempt_encryption は Info.plist に ITSAppUsesNonExemptEncryption が
+    # 無い場合に使われる。Info.plist 側にも入れてあるので二重の備え
     upload_to_testflight(
       api_key: api_key,
-      skip_waiting_for_build_processing: true
+      skip_waiting_for_build_processing: true,
+      uses_non_exempt_encryption: false
     )
+
+    # 反映漏れに備え、アップロードしたビルドの回答状況を整える
+    answer_export_compliance
 
     UI.success("TestFlight へのアップロードが完了しました")
   end
@@ -107,6 +113,51 @@ platform :ios do
       UI.user_error!("バージョン #{version} のビルドが見つかりません")
     else
       UI.success("バージョン #{version} ビルド #{target.version} を確認できました（状態: #{target.processing_state}）")
+    end
+  end
+
+
+  desc "輸出コンプライアンスが未回答のビルドに自動で回答する"
+  lane :answer_export_compliance do
+    Spaceship::ConnectAPI.auth(
+      key_id: ENV['APP_STORE_CONNECT_API_KEY_ID'],
+      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+      filepath: ENV['API_KEY_P8_FILE']
+    )
+
+    app = Spaceship::ConnectAPI::App.find(APP_IDENTIFIER)
+
+    version = get_version_number(xcodeproj: XCODEPROJ, target: SCHEME)
+
+    # アップロード直後はビルドがまだ現れないため、対象バージョンが出るまで待つ
+    target_builds = []
+    5.times do |attempt|
+      builds = app.get_builds(includes: "preReleaseVersion", sort: "-uploadedDate", limit: 10)
+      target_builds = builds.select { |b| b.pre_release_version&.version == version }
+      break unless target_builds.empty? && attempt < 4
+
+      UI.message("バージョン #{version} のビルドがまだ現れません。待機します（#{attempt + 1}/5）")
+      sleep(15)
+    end
+
+    if target_builds.empty?
+      UI.important("バージョン #{version} のビルドが見つかりませんでした。" \
+                   "処理に時間がかかっている可能性があります。" \
+                   "少し待ってから fastlane answer_export_compliance を実行してください")
+      next
+    end
+
+    pending = target_builds.select { |b| b.uses_non_exempt_encryption.nil? }
+    if pending.empty?
+      UI.success("バージョン #{version} は回答済みです（追加の操作は不要）")
+      next
+    end
+
+    pending.each do |build|
+      # このアプリは標準的な暗号化しか使っていないため「該当なし」で回答する
+      build.update(attributes: { usesNonExemptEncryption: false })
+      version = build.pre_release_version&.version
+      UI.success("バージョン #{version} ビルド #{build.version} に回答しました")
     end
   end
 
