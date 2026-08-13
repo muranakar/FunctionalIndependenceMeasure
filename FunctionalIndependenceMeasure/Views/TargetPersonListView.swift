@@ -16,8 +16,17 @@ struct TargetPersonListView: View {
     @State private var editingTargetPerson: TargetPerson?
     @State private var deletionTarget: TargetPerson?
 
-    private var targetPersons: [TargetPerson] {
-        assessor.targetPersons.sorted { $0.createdAt < $1.createdAt }
+    // assessor.targetPersons を直接参照すると、対象者を追加しても画面が更新されない。
+    // リレーション経由の変更は SwiftUI へ通知されないため @Query で取得する
+    @Query private var targetPersons: [TargetPerson]
+
+    init(assessor: Assessor) {
+        self.assessor = assessor
+        let assessorID = assessor.uuidString
+        _targetPersons = Query(
+            filter: #Predicate<TargetPerson> { $0.assessor?.uuidString == assessorID },
+            sort: \TargetPerson.createdAt
+        )
     }
 
     var body: some View {

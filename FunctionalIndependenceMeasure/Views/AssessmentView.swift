@@ -167,6 +167,8 @@ struct AssessmentView: View {
         .buttonStyle(.bordered)
         .controlSize(.large)
         .tint(selectedScore == score ? Theme.main : Color.secondary)
+        // 採点基準の文章がラベルに含まれて特定しづらいため、テスト用の識別子を付けている
+        .accessibilityIdentifier("score-\(score)")
     }
 
     private func footer() -> some View {

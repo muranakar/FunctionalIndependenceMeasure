@@ -10,7 +10,18 @@
 		BB0000000000000000000012 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000000000000000000011 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BB0000000000000000000028 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB0000000000000000000002;
+			remoteInfo = FunctionalIndependenceMeasure;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		BB0000000000000000000025 /* FunctionalIndependenceMeasureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunctionalIndependenceMeasureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0000000000000000000006 /* FunctionalIndependenceMeasure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunctionalIndependenceMeasure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -33,6 +44,7 @@
 			path = FunctionalIndependenceMeasure;
 			sourceTree = "<group>";
 		};
+		BB0000000000000000000024 /* FunctionalIndependenceMeasureUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = FunctionalIndependenceMeasureUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0000000000000000000003 /* FunctionalIndependenceMeasure */,
+				BB0000000000000000000024 /* FunctionalIndependenceMeasureUITests */,
 				BB0000000000000000000005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0000000000000000000006 /* FunctionalIndependenceMeasure.app */,
+				BB0000000000000000000025 /* FunctionalIndependenceMeasureUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +103,27 @@
 			productReference = BB0000000000000000000006 /* FunctionalIndependenceMeasure.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BB0000000000000000000020 /* FunctionalIndependenceMeasureUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB0000000000000000000021 /* Build configuration list for PBXNativeTarget "FunctionalIndependenceMeasureUITests" */;
+			buildPhases = (
+				BB0000000000000000000022 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB0000000000000000000023 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BB0000000000000000000024 /* FunctionalIndependenceMeasureUITests */,
+			);
+			name = FunctionalIndependenceMeasureUITests;
+			packageProductDependencies = (
+			);
+			productName = FunctionalIndependenceMeasureUITests;
+			productReference = BB0000000000000000000025 /* FunctionalIndependenceMeasureUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -101,6 +136,10 @@
 				TargetAttributes = {
 					BB0000000000000000000002 = {
 						CreatedOnToolsVersion = 26.0;
+					};
+					BB0000000000000000000020 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = BB0000000000000000000002;
 					};
 				};
 			};
@@ -122,6 +161,7 @@
 			projectRoot = "";
 			targets = (
 				BB0000000000000000000002 /* FunctionalIndependenceMeasure */,
+				BB0000000000000000000020 /* FunctionalIndependenceMeasureUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -144,7 +184,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB0000000000000000000022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB0000000000000000000023 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB0000000000000000000002 /* FunctionalIndependenceMeasure */;
+			targetProxy = BB0000000000000000000028 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		BB000000000000000000000C /* Debug */ = {
@@ -320,6 +375,40 @@
 			};
 			name = Release;
 		};
+		BB0000000000000000000026 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DJ7VR35KC8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muranaka.FunctionalIndependenceMeasureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = FunctionalIndependenceMeasure;
+			};
+			name = Debug;
+		};
+		BB0000000000000000000027 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DJ7VR35KC8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muranaka.FunctionalIndependenceMeasureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = FunctionalIndependenceMeasure;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -337,6 +426,15 @@
 			buildConfigurations = (
 				BB000000000000000000000E /* Debug */,
 				BB000000000000000000000F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB0000000000000000000021 /* Build configuration list for PBXNativeTarget "FunctionalIndependenceMeasureUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000000000000000000026 /* Debug */,
+				BB0000000000000000000027 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
