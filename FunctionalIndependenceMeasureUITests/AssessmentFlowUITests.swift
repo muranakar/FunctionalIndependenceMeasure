@@ -15,6 +15,9 @@ final class AssessmentFlowUITests: XCTestCase {
     private let itemCount = 18
     private let fullScore = 126
 
+    /// 前に実行したテストのデータが端末に残るため、名前を毎回変えてテスト同士を独立させる
+    private lazy var runID = String(UUID().uuidString.prefix(6))
+
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
@@ -23,8 +26,8 @@ final class AssessmentFlowUITests: XCTestCase {
 
     /// 評価者登録 → 対象者登録 → FIM評価(全項目7点) → 結果確認 → 履歴確認
     func testAssessmentFlowSavesFullScore() throws {
-        let assessorName = "テスト評価者"
-        let targetPersonName = "テスト対象者"
+        let assessorName = "評価者\(runID)"
+        let targetPersonName = "対象者\(runID)"
 
         addAssessor(named: assessorName)
         tap(app.buttons[assessorName], "評価者の行")
@@ -65,10 +68,12 @@ final class AssessmentFlowUITests: XCTestCase {
 
     /// スキップした項目は未入力として扱われる
     func testSkippedItemIsRecordedAsUnanswered() throws {
-        addAssessor(named: "スキップ評価者")
-        tap(app.buttons["スキップ評価者"], "評価者の行")
-        addTargetPerson(named: "スキップ対象者")
-        tap(app.buttons["スキップ対象者"], "対象者の行")
+        let assessorName = "スキップ評価者\(runID)"
+        addAssessor(named: assessorName)
+        tap(app.buttons[assessorName], "評価者の行")
+        let targetPersonName = "スキップ対象者\(runID)"
+        addTargetPerson(named: targetPersonName)
+        tap(app.buttons[targetPersonName], "対象者の行")
 
         tap(app.buttons["評価する"], "評価するボタン")
 
@@ -94,10 +99,12 @@ final class AssessmentFlowUITests: XCTestCase {
 
     /// 未選択のまま決定するとアラートが出る
     func testDecideWithoutSelectionShowsAlert() throws {
-        addAssessor(named: "未選択評価者")
-        tap(app.buttons["未選択評価者"], "評価者の行")
-        addTargetPerson(named: "未選択対象者")
-        tap(app.buttons["未選択対象者"], "対象者の行")
+        let assessorName = "未選択評価者\(runID)"
+        addAssessor(named: assessorName)
+        tap(app.buttons[assessorName], "評価者の行")
+        let targetPersonName = "未選択対象者\(runID)"
+        addTargetPerson(named: targetPersonName)
+        tap(app.buttons[targetPersonName], "対象者の行")
 
         tap(app.buttons["評価する"], "評価するボタン")
         tap(app.buttons["決定"], "決定ボタン")

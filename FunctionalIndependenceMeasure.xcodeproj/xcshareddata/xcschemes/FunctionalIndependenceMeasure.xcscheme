@@ -34,6 +34,16 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BB0000000000000000000030"
+               BuildableName = "FunctionalIndependenceMeasureTests.xctest"
+               BlueprintName = "FunctionalIndependenceMeasureTests"
+               ReferencedContainer = "container:FunctionalIndependenceMeasure.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "BB0000000000000000000020"
                BuildableName = "FunctionalIndependenceMeasureUITests.xctest"
                BlueprintName = "FunctionalIndependenceMeasureUITests"

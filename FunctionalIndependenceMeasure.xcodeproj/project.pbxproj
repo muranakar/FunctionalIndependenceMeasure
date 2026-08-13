@@ -18,9 +18,17 @@
 			remoteGlobalIDString = BB0000000000000000000002;
 			remoteInfo = FunctionalIndependenceMeasure;
 		};
+		BB0000000000000000000038 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB0000000000000000000002;
+			remoteInfo = FunctionalIndependenceMeasure;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB0000000000000000000035 /* FunctionalIndependenceMeasureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunctionalIndependenceMeasureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0000000000000000000025 /* FunctionalIndependenceMeasureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunctionalIndependenceMeasureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0000000000000000000006 /* FunctionalIndependenceMeasure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunctionalIndependenceMeasure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -45,6 +53,7 @@
 			sourceTree = "<group>";
 		};
 		BB0000000000000000000024 /* FunctionalIndependenceMeasureUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = FunctionalIndependenceMeasureUITests; sourceTree = "<group>"; };
+		BB0000000000000000000034 /* FunctionalIndependenceMeasureTests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = FunctionalIndependenceMeasureTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +73,7 @@
 			children = (
 				BB0000000000000000000003 /* FunctionalIndependenceMeasure */,
 				BB0000000000000000000024 /* FunctionalIndependenceMeasureUITests */,
+				BB0000000000000000000034 /* FunctionalIndependenceMeasureTests */,
 				BB0000000000000000000005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +83,7 @@
 			children = (
 				BB0000000000000000000006 /* FunctionalIndependenceMeasure.app */,
 				BB0000000000000000000025 /* FunctionalIndependenceMeasureUITests.xctest */,
+				BB0000000000000000000035 /* FunctionalIndependenceMeasureTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +135,27 @@
 			productReference = BB0000000000000000000025 /* FunctionalIndependenceMeasureUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		BB0000000000000000000030 /* FunctionalIndependenceMeasureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB0000000000000000000031 /* Build configuration list for PBXNativeTarget "FunctionalIndependenceMeasureTests" */;
+			buildPhases = (
+				BB0000000000000000000032 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB0000000000000000000033 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BB0000000000000000000034 /* FunctionalIndependenceMeasureTests */,
+			);
+			name = FunctionalIndependenceMeasureTests;
+			packageProductDependencies = (
+			);
+			productName = FunctionalIndependenceMeasureTests;
+			productReference = BB0000000000000000000035 /* FunctionalIndependenceMeasureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -138,6 +170,10 @@
 						CreatedOnToolsVersion = 26.0;
 					};
 					BB0000000000000000000020 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = BB0000000000000000000002;
+					};
+					BB0000000000000000000030 = {
 						CreatedOnToolsVersion = 26.0;
 						TestTargetID = BB0000000000000000000002;
 					};
@@ -162,6 +198,7 @@
 			targets = (
 				BB0000000000000000000002 /* FunctionalIndependenceMeasure */,
 				BB0000000000000000000020 /* FunctionalIndependenceMeasureUITests */,
+				BB0000000000000000000030 /* FunctionalIndependenceMeasureTests */,
 			);
 		};
 /* End PBXProject section */
@@ -191,6 +228,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB0000000000000000000032 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -198,6 +242,11 @@
 			isa = PBXTargetDependency;
 			target = BB0000000000000000000002 /* FunctionalIndependenceMeasure */;
 			targetProxy = BB0000000000000000000028 /* PBXContainerItemProxy */;
+		};
+		BB0000000000000000000033 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB0000000000000000000002 /* FunctionalIndependenceMeasure */;
+			targetProxy = BB0000000000000000000038 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -409,6 +458,42 @@
 			};
 			name = Release;
 		};
+		BB0000000000000000000036 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DJ7VR35KC8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muranaka.FunctionalIndependenceMeasureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunctionalIndependenceMeasure.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FunctionalIndependenceMeasure";
+			};
+			name = Debug;
+		};
+		BB0000000000000000000037 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DJ7VR35KC8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muranaka.FunctionalIndependenceMeasureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunctionalIndependenceMeasure.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FunctionalIndependenceMeasure";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -435,6 +520,15 @@
 			buildConfigurations = (
 				BB0000000000000000000026 /* Debug */,
 				BB0000000000000000000027 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB0000000000000000000031 /* Build configuration list for PBXNativeTarget "FunctionalIndependenceMeasureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000000000000000000036 /* Debug */,
+				BB0000000000000000000037 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
