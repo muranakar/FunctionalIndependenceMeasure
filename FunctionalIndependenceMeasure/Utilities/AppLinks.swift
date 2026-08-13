@@ -43,10 +43,16 @@ enum ReviewCounter {
     // レビュー依頼が再び出てしまうため変えないこと
     private static let key = "review20220726"
 
+    /// UIテスト実行時はレビュー依頼のダイアログが操作を妨げるため出さない
+    private static var isDisabled: Bool {
+        ProcessInfo.processInfo.arguments.contains("-disableReviewRequest")
+    }
+
     /// 回数を1つ進め、レビュー依頼すべきタイミングなら true を返す
     static func incrementAndShouldRequestReview() -> Bool {
         let count = UserDefaults.standard.integer(forKey: key) + 1
         UserDefaults.standard.set(count, forKey: key)
+        guard !isDisabled else { return false }
         return AppLinks.reviewRequestCounts.contains(count)
     }
 }

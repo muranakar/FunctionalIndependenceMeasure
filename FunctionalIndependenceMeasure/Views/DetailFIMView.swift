@@ -41,8 +41,15 @@ struct DetailFIMView: View {
                         HStack {
                             Text(item.title)
                             Spacer()
-                            Text(record.displayScore(for: item))
-                                .foregroundStyle(record[item] == FIMScore.unanswered ? .secondary : .primary)
+                            if record[item] == FIMScore.unanswered {
+                                Text("未入力")
+                                    .foregroundStyle(.orange)
+                            } else {
+                                // 満点を併記して、その項目がどの程度かを一目で分かるようにする
+                                Text("\(record[item]) / \(FIMScore.max) 点")
+                                    .monospacedDigit()
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }

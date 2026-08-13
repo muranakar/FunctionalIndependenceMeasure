@@ -21,6 +21,8 @@ final class AssessmentFlowUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
+        // レビュー依頼のダイアログが操作を妨げるため、テスト中は出さない
+        app.launchArguments = ["-disableReviewRequest"]
         app.launch()
     }
 

@@ -41,7 +41,8 @@ struct AssessmentView: View {
                 ProgressView()
             }
         }
-        .navigationTitle("対象者:　\(targetPerson.name)　様")
+        // 対象者名が長いとナビゲーションバーで省略されるため、名前は画面内に置く
+        .navigationTitle("FIM 評価")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -61,6 +62,10 @@ struct AssessmentView: View {
                         ToolbarItem(placement: .confirmationAction) {
                             Button("完了") {
                                 completedRecord = nil
+                                // 評価の途中や結果確認中に割り込まないよう、閉じるときに依頼する
+                                if ReviewCounter.incrementAndShouldRequestReview() {
+                                    requestReview()
+                                }
                                 dismiss()
                             }
                         }
@@ -90,36 +95,52 @@ struct AssessmentView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     descriptionBox(criteria: criteria)
 
-                    ForEach(Array(FIMScore.range), id: \.self) { score in
+                    ForEach(Array(FIMScore.range).reversed(), id: \.self) { score in
                         scoreButton(score: score, criteria: criteria)
                     }
                 }
                 .padding()
             }
+            // 項目が変わったらスクロール位置を先頭に戻す。
+            // 戻さないと、前の項目でスクロールした位置のままになり項目名が画面外になる
+            .id(currentIndex)
 
             footer()
         }
     }
 
     private func header(item: FIMItem) -> some View {
-        VStack(spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text("対象者:　\(targetPerson.name)　様")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                Spacer()
+                Text("\(currentIndex + 1) / \(FIMItem.allCases.count)")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Theme.main)
+                    .monospacedDigit()
+            }
+
             ProgressView(value: Double(currentIndex + 1), total: Double(FIMItem.allCases.count))
                 .tint(Theme.main)
 
             HStack {
-                Text("\(currentIndex + 1)/\(FIMItem.allCases.count)")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
                 Text(item.title)
                     .font(.title3)
                     .fontWeight(.bold)
+                Text(item.category.rawValue)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 Spacer()
                 Button {
-                    selectedScore = nil
-                    isShowingAttention = true
+                    // 選択は消さずに開閉だけ切り替える。見比べてから決められるようにする
+                    isShowingAttention.toggle()
                 } label: {
-                    Label("注意点", systemImage: "exclamationmark.circle")
+                    Label("注意点", systemImage: isShowingAttention ? "chevron.up" : "exclamationmark.circle")
                         .labelStyle(.titleAndIcon)
+                        .font(.subheadline)
                 }
                 .tint(.red)
             }
@@ -128,45 +149,58 @@ struct AssessmentView: View {
         .padding(.top, 8)
     }
 
-    /// 選択中の点数の採点基準、未選択のときは注意点を表示する
+    /// 注意点。中身が無い項目では枠ごと出さない（空の箱が居座って選択肢が押し下げられるため）
+    @ViewBuilder
     private func descriptionBox(criteria: FIMScoringCriteria) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            if let selectedScore {
-                Text("\(selectedScore)点")
-                    .font(.caption)
-                    .foregroundStyle(Theme.main)
-                Text(criteria.description(for: selectedScore))
-            } else if isShowingAttention {
-                Text(criteria.attention)
-            }
+        let attention = criteria.attention.trimmingCharacters(in: .whitespacesAndNewlines)
+        // 「ーー注意点ーー」の見出しだけで中身が無い項目があるので、その場合は表示しない
+        let hasContent = !attention.isEmpty && attention.replacingOccurrences(of: "ー", with: "")
+            .trimmingCharacters(in: .whitespacesAndNewlines) != "注意点"
+
+        if isShowingAttention && hasContent {
+            Text(attention)
+                .font(.callout)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .padding()
+                .background(Color(.secondarySystemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .font(.callout)
-        .fixedSize(horizontal: false, vertical: true)
-        .frame(maxWidth: .infinity, minHeight: 100, alignment: .topLeading)
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
     private func scoreButton(score: Int, criteria: FIMScoringCriteria) -> some View {
-        Button {
+        let isSelected = selectedScore == score
+        let description = criteria.description(for: score)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return Button {
             selectedScore = score
-            isShowingAttention = false
         } label: {
-            HStack {
-                Text("\(score)点")
-                    .fontWeight(.bold)
-                Spacer()
-                Text(criteria.description(for: score))
-                    .font(.caption)
-                    .multilineTextAlignment(.trailing)
-                    .lineLimit(2)
+            HStack(alignment: .top, spacing: 12) {
+                Text("\(score)")
+                    .font(.title3.weight(.bold))
+                    .frame(width: 28)
+                    .monospacedDigit()
+
+                // 採点基準は判断の根拠になるため省略せずに全文を出す
+                Text(description)
+                    .font(.callout)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Spacer(minLength: 0)
+
+                if isSelected {
+                    Image(systemName: "checkmark.circle.fill")
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 6)
         }
         .buttonStyle(.bordered)
         .controlSize(.large)
-        .tint(selectedScore == score ? Theme.main : Color.secondary)
+        .tint(isSelected ? Theme.main : Color.secondary)
+        .accessibilityLabel("\(score)点。\(description)")
         // 採点基準の文章がラベルに含まれて特定しづらいため、テスト用の識別子を付けている
         .accessibilityIdentifier("score-\(score)")
     }
@@ -234,9 +268,5 @@ struct AssessmentView: View {
         // 評価記録は失うと再入力が必要になるため、自動保存に任せず確実に書き込む
         try? modelContext.save()
         completedRecord = record
-
-        if ReviewCounter.incrementAndShouldRequestReview() {
-            requestReview()
-        }
     }
 }
