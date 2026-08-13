@@ -31,6 +31,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 テストを実行する
 
+### ios verify
+
+```sh
+[bundle exec] fastlane ios verify
+```
+
+App Store Connect 上のビルドの状態を確認する
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

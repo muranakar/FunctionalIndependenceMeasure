@@ -6,6 +6,7 @@ default_platform(:ios)
 XCODEPROJ = "FunctionalIndependenceMeasure.xcodeproj"
 SCHEME = "FunctionalIndependenceMeasure"
 TEAM_ID = "DJ7VR35KC8"
+APP_IDENTIFIER = "com.muranaka.FunctionalIndependenceMeasure"
 
 platform :ios do
   desc "ビルドして TestFlight にアップロードする"
@@ -63,4 +64,50 @@ platform :ios do
       destination: "platform=iOS Simulator,name=iPhone 16 Pro"
     )
   end
+
+  desc "App Store Connect 上のビルドの状態を確認する"
+  lane :verify do
+    # Spaceship を直接使うので、Hash を返す app_store_connect_api_key ではなく auth を使う
+    Spaceship::ConnectAPI.auth(
+      key_id: ENV['APP_STORE_CONNECT_API_KEY_ID'],
+      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+      filepath: ENV['API_KEY_P8_FILE']
+    )
+
+    version = get_version_number(xcodeproj: XCODEPROJ, target: SCHEME)
+    app = Spaceship::ConnectAPI::App.find(APP_IDENTIFIER)
+    UI.message("アプリ: #{app.name} (#{APP_IDENTIFIER})")
+
+    builds = app.get_builds(
+      includes: "preReleaseVersion,buildBundles",
+      sort: "-uploadedDate",
+      limit: 5
+    )
+
+    if builds.empty?
+      UI.error("TestFlight にビルドが1件もありません")
+      next
+    end
+
+    UI.header("TestFlight 上の最新ビルド（新しい順）")
+    builds.each do |build|
+      uploaded = build.uploaded_date
+      ver = build.pre_release_version&.version
+      mark = (ver == version) ? " ←今回アップロードしたバージョン" : ""
+      UI.message("バージョン #{ver} / ビルド #{build.version} / 状態 #{build.processing_state} / 期限切れ #{build.expired} / #{uploaded}#{mark}")
+    end
+
+    latest = builds.first
+    # ITSAppUsesNonExemptEncryption を Info.plist に入れていないと、
+    # ここが未回答のまま配布がブロックされる
+    UI.message("輸出コンプライアンス（暗号化の使用）: #{latest.uses_non_exempt_encryption.inspect}")
+
+    target = builds.find { |b| b.pre_release_version&.version == version }
+    if target.nil?
+      UI.user_error!("バージョン #{version} のビルドが見つかりません")
+    else
+      UI.success("バージョン #{version} ビルド #{target.version} を確認できました（状態: #{target.processing_state}）")
+    end
+  end
+
 end
