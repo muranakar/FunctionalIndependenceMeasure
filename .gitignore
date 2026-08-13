@@ -24,3 +24,12 @@ Pods/*
 !.gitkeep
 .DS_Store
 docs
+
+# fastlane
+fastlane/.env
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+*.ipa
+*.dSYM.zip
