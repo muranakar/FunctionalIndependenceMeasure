@@ -28,6 +28,13 @@ enum RealmToSwiftDataMigrator {
     /// 移行完了フラグ。バージョンを付けているのは将来スキーマが変わった場合に区別するため
     private static let didMigrateKey = "didMigrateRealmToSwiftData_v1"
 
+    /// 移行を試みた回数。移行中に異常終了した場合でも数が残るようにしている
+    private static let attemptCountKey = "realmMigrationAttemptCount_v1"
+
+    /// この回数だけ試して駄目なら移行を諦める。
+    /// 諦めないと、起動のたびに同じ場所で落ちてアプリを開けなくなる
+    private static let maxAttemptCount = 3
+
     /// 既定の Realm ファイル URL（旧アプリは既定パスをそのまま使用していた）
     private static var legacyRealmURL: URL? {
         try? FileManager.default
@@ -47,6 +54,20 @@ enum RealmToSwiftDataMigrator {
             UserDefaults.standard.set(true, forKey: didMigrateKey)
             return .notNeeded
         }
+
+        // 何度やっても移行しきれない場合は打ち切る。
+        // 元のRealmファイルは退避せず残るので、後から手を打つ余地は残る
+        let attemptCount = UserDefaults.standard.integer(forKey: attemptCountKey)
+        guard attemptCount < maxAttemptCount else {
+            UserDefaults.standard.set(true, forKey: didMigrateKey)
+            return .failed("以前のデータを読み込めませんでした")
+        }
+
+        // 試す前に回数を記録して確定させる。
+        // 移行の途中で異常終了しても、次の起動では回数が増えた状態から始まるため、
+        // 同じ場所で落ち続けてアプリが開けなくなることを避けられる
+        UserDefaults.standard.set(attemptCount + 1, forKey: attemptCountKey)
+        UserDefaults.standard.synchronize()
 
         do {
             let result = try migrate(realmURL: realmURL, context: context)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB0000000000000000000012 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000000000000000000011 /* RealmSwift */; };
+		BB0000000000000000000040 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = BB0000000000000000000011 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 				BB0000000000000000000007 /* Sources */,
 				BB0000000000000000000008 /* Frameworks */,
 				BB0000000000000000000009 /* Resources */,
+				BB0000000000000000000041 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,6 +204,20 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB0000000000000000000041 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB0000000000000000000040 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BB0000000000000000000009 /* Resources */ = {
