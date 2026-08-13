@@ -5,8 +5,10 @@
 //  旧バージョン（〜1.5.4）が保存した Realm ファイルを読み取るためだけの定義。
 //
 //  旧バージョンのクラス名（Assessor / TargetPerson / FIM）は SwiftData 側のモデル名と
-//  衝突するため、Swiftの型名は Legacy 接頭辞を付けたうえで className() を上書きし、
+//  衝突するため、Swiftの型名は Legacy 接頭辞を付けたうえで _realmObjectName() を上書きし、
 //  Realm上のスキーマ名だけを当時のまま保っている。
+//  className() ではスキーマ名が変わらない（Swiftの型名がそのまま使われてしまい、
+//  旧ファイルを読めなくなる）ので、必ず _realmObjectName() を使うこと。
 //  プロパティ名もスキーマの一部なので、こちらも変更しないこと。
 //
 
@@ -19,7 +21,7 @@ final class LegacyAssessor: Object {
     @Persisted var name = ""
     @Persisted var targetPersons: List<LegacyTargetPerson>
 
-    override class func className() -> String { "Assessor" }
+    override class func _realmObjectName() -> String? { "Assessor" }
 }
 
 // MARK: - LegacyTargetPerson
@@ -31,7 +33,7 @@ final class LegacyTargetPerson: Object {
     @Persisted var FIM: List<LegacyFIM>
     @Persisted(originProperty: "targetPersons") var assessors: LinkingObjects<LegacyAssessor>
 
-    override class func className() -> String { "TargetPerson" }
+    override class func _realmObjectName() -> String? { "TargetPerson" }
 }
 
 // MARK: - LegacyFIM
@@ -59,7 +61,7 @@ final class LegacyFIM: Object {
     @Persisted var updatedAt: Date?
     @Persisted(originProperty: "FIM") var targetPersons: LinkingObjects<LegacyTargetPerson>
 
-    override class func className() -> String { "FIM" }
+    override class func _realmObjectName() -> String? { "FIM" }
 
     /// 評価順に並んだ得点
     var scoresInAssessmentOrder: [Int] {

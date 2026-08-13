@@ -229,6 +229,8 @@ struct AssessmentView: View {
         let record = FIMRecord(scores: scores)
         modelContext.insert(record)
         record.targetPerson = targetPerson
+        // 評価記録は失うと再入力が必要になるため、自動保存に任せず確実に書き込む
+        try? modelContext.save()
         completedRecord = record
 
         if ReviewCounter.incrementAndShouldRequestReview() {

@@ -12,6 +12,7 @@ struct EditFIMView: View {
     let record: FIMRecord
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     @State private var scores: [Int]
 
     init(record: FIMRecord) {
@@ -60,6 +61,8 @@ struct EditFIMView: View {
             record[item] = scores[item.rawValue]
         }
         record.updatedAt = .now
+        // 編集内容を失わないよう自動保存に任せず確実に書き込む
+        try? modelContext.save()
         dismiss()
     }
 }

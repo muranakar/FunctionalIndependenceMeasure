@@ -39,7 +39,9 @@ enum AppLinks {
 // MARK: - ReviewCounter
 /// 評価完了回数を数えてレビュー依頼のタイミングを判断する
 enum ReviewCounter {
-    private static let key = "reviewCount"
+    // 旧バージョンから引き継いでいるキー。変更すると既存ユーザーの回数が0に戻り、
+    // レビュー依頼が再び出てしまうため変えないこと
+    private static let key = "review20220726"
 
     /// 回数を1つ進め、レビュー依頼すべきタイミングなら true を返す
     static func incrementAndShouldRequestReview() -> Bool {
