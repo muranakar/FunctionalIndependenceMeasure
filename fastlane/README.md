@@ -47,6 +47,14 @@ App Store Connect 上のビルドの状態を確認する
 
 輸出コンプライアンスが未回答のビルドに自動で回答する
 
+### ios submit
+
+```sh
+[bundle exec] fastlane ios submit
+```
+
+審査に提出する（承認後は自動でリリース）
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
