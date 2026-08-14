@@ -1,0 +1,206 @@
+# fastlane 設定
+# 認証情報は fastlane/.env で渡す（git管理外）
+
+default_platform(:ios)
+
+XCODEPROJ = "FunctionalIndependenceMeasure.xcodeproj"
+SCHEME = "FunctionalIndependenceMeasure"
+TEAM_ID = "DJ7VR35KC8"
+APP_IDENTIFIER = "com.muranaka.FunctionalIndependenceMeasure"
+
+platform :ios do
+  desc "ビルドして TestFlight にアップロードする"
+  lane :release do
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APP_STORE_CONNECT_API_KEY_ID'],
+      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+      key_content: File.read(ENV['API_KEY_P8_FILE'])
+    )
+
+    # App Store Connect 上の最新ビルド番号の次を使う。
+    # ローカルの番号から数えると、既にアップロード済みの番号と衝突して弾かれる
+    latest = latest_testflight_build_number(
+      api_key: api_key,
+      initial_build_number: 0
+    )
+    increment_build_number(
+      xcodeproj: XCODEPROJ,
+      build_number: latest + 1
+    )
+    UI.message("ビルド番号: #{latest + 1}")
+
+    # SPM 構成のため xcodeproj を直接指定する（CocoaPods の workspace は廃止済み）
+    build_app(
+      project: XCODEPROJ,
+      scheme: SCHEME,
+      export_method: "app-store",
+      destination: "generic/platform=iOS",
+      output_directory: "./build",
+      output_name: "#{SCHEME}.ipa",
+      xcargs: "-allowProvisioningUpdates " \
+              "-authenticationKeyPath #{ENV['API_KEY_P8_FILE']} " \
+              "-authenticationKeyID #{ENV['APP_STORE_CONNECT_API_KEY_ID']} " \
+              "-authenticationKeyIssuerID #{ENV['APP_STORE_CONNECT_ISSUER_ID']}",
+      export_options: {
+        signingStyle: "automatic",
+        teamID: TEAM_ID
+      }
+    )
+
+    # バイナリのみアップロードする。審査提出はここでは行わない
+    # uses_non_exempt_encryption は Info.plist に ITSAppUsesNonExemptEncryption が
+    # 無い場合に使われる。Info.plist 側にも入れてあるので二重の備え
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true,
+      uses_non_exempt_encryption: false
+    )
+
+    # 反映漏れに備え、アップロードしたビルドの回答状況を整える
+    answer_export_compliance
+
+    UI.success("TestFlight へのアップロードが完了しました")
+  end
+
+  desc "テストを実行する"
+  lane :test do
+    run_tests(
+      project: XCODEPROJ,
+      scheme: SCHEME,
+      destination: "platform=iOS Simulator,name=iPhone 16 Pro"
+    )
+  end
+
+  desc "App Store Connect 上のビルドの状態を確認する"
+  lane :verify do
+    # Spaceship を直接使うので、Hash を返す app_store_connect_api_key ではなく auth を使う
+    Spaceship::ConnectAPI.auth(
+      key_id: ENV['APP_STORE_CONNECT_API_KEY_ID'],
+      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+      filepath: ENV['API_KEY_P8_FILE']
+    )
+
+    version = get_version_number(xcodeproj: XCODEPROJ, target: SCHEME)
+    app = Spaceship::ConnectAPI::App.find(APP_IDENTIFIER)
+    UI.message("アプリ: #{app.name} (#{APP_IDENTIFIER})")
+
+    builds = app.get_builds(
+      includes: "preReleaseVersion,buildBundles",
+      sort: "-uploadedDate",
+      limit: 5
+    )
+
+    if builds.empty?
+      UI.error("TestFlight にビルドが1件もありません")
+      next
+    end
+
+    UI.header("TestFlight 上の最新ビルド（新しい順）")
+    builds.each do |build|
+      uploaded = build.uploaded_date
+      ver = build.pre_release_version&.version
+      mark = (ver == version) ? " ←今回アップロードしたバージョン" : ""
+      UI.message("バージョン #{ver} / ビルド #{build.version} / 状態 #{build.processing_state} / 期限切れ #{build.expired} / #{uploaded}#{mark}")
+    end
+
+    latest = builds.first
+    # ITSAppUsesNonExemptEncryption を Info.plist に入れていないと、
+    # ここが未回答のまま配布がブロックされる
+    UI.message("輸出コンプライアンス（暗号化の使用）: #{latest.uses_non_exempt_encryption.inspect}")
+
+    target = builds.find { |b| b.pre_release_version&.version == version }
+    if target.nil?
+      UI.user_error!("バージョン #{version} のビルドが見つかりません")
+    else
+      UI.success("バージョン #{version} ビルド #{target.version} を確認できました（状態: #{target.processing_state}）")
+    end
+  end
+
+
+  desc "輸出コンプライアンスが未回答のビルドに自動で回答する"
+  lane :answer_export_compliance do
+    Spaceship::ConnectAPI.auth(
+      key_id: ENV['APP_STORE_CONNECT_API_KEY_ID'],
+      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+      filepath: ENV['API_KEY_P8_FILE']
+    )
+
+    app = Spaceship::ConnectAPI::App.find(APP_IDENTIFIER)
+
+    version = get_version_number(xcodeproj: XCODEPROJ, target: SCHEME)
+
+    # アップロード直後はビルドがまだ現れないため、対象バージョンが出るまで待つ
+    target_builds = []
+    5.times do |attempt|
+      builds = app.get_builds(includes: "preReleaseVersion", sort: "-uploadedDate", limit: 10)
+      target_builds = builds.select { |b| b.pre_release_version&.version == version }
+      break unless target_builds.empty? && attempt < 4
+
+      UI.message("バージョン #{version} のビルドがまだ現れません。待機します（#{attempt + 1}/5）")
+      sleep(15)
+    end
+
+    if target_builds.empty?
+      UI.important("バージョン #{version} のビルドが見つかりませんでした。" \
+                   "処理に時間がかかっている可能性があります。" \
+                   "少し待ってから fastlane answer_export_compliance を実行してください")
+      next
+    end
+
+    pending = target_builds.select { |b| b.uses_non_exempt_encryption.nil? }
+    if pending.empty?
+      UI.success("バージョン #{version} は回答済みです（追加の操作は不要）")
+      next
+    end
+
+    pending.each do |build|
+      # このアプリは標準的な暗号化しか使っていないため「該当なし」で回答する
+      build.update(attributes: { usesNonExemptEncryption: false })
+      version = build.pre_release_version&.version
+      UI.success("バージョン #{version} ビルド #{build.version} に回答しました")
+    end
+  end
+
+
+  desc "審査に提出する（承認後は自動でリリース）"
+  lane :submit do
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APP_STORE_CONNECT_API_KEY_ID'],
+      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+      key_content: File.read(ENV['API_KEY_P8_FILE'])
+    )
+
+    version = get_version_number(xcodeproj: XCODEPROJ, target: SCHEME)
+    UI.message("審査に提出するバージョン: #{version}")
+
+    # 説明文やスクリーンショットは既存のものをそのまま使う。
+    # metadata/ja/release_notes.txt だけ置いてあるので、今回の変更点のみ更新される
+    upload_to_app_store(
+      api_key: api_key,
+      app_version: version,
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_app_version_update: false,
+      overwrite_screenshots: false,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      submit_for_review: true,
+      # 審査を通ったら自動で公開する
+      automatic_release: true,
+      # 全員に一度に配るのではなく、7日かけて段階的に配信する。
+      # 万一の不具合に気づいたときに、途中で配信を止められる
+      phased_release: true,
+      submission_information: {
+        # 標準的な暗号化しか使っていない
+        export_compliance_uses_encryption: false,
+        # 広告識別子は使っていない
+        add_id_info_uses_idfa: false
+        # 第三者コンテンツの申告は既存の設定をそのまま使う。
+        # 評価尺度そのものの権利に関わるため、ここで書き換えない
+      }
+    )
+
+    UI.success("審査へ提出しました。承認され次第、自動で公開されます")
+  end
+
+end
