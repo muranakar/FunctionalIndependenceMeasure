@@ -12,6 +12,14 @@ struct FIMApp: App {
     private let storageError: String?
 
     init() {
+        #if DEBUG
+        // 撮影モードでは端末の記録に触れず、メモリ上の見本データだけを使う
+        if ScreenshotMode.isActive, let container = ScreenshotMode.makeContainer() {
+            modelContainer = container
+            storageError = nil
+            return
+        }
+        #endif
         do {
             modelContainer = try ModelContainer(
                 for: Assessor.self, TargetPerson.self, FIMRecord.self
@@ -43,8 +51,11 @@ struct RootView: View {
     @State private var migrationResult: RealmMigrationResult?
 
     var body: some View {
-        AssessorListView()
+        rootList
             .task {
+                #if DEBUG
+                if ScreenshotMode.isActive { return }
+                #endif
                 // 旧バージョンのRealmデータがあれば初回起動時に引き継ぐ
                 migrationResult = RealmToSwiftDataMigrator.migrateIfNeeded(context: modelContext)
             }
@@ -63,6 +74,21 @@ struct RootView: View {
                 お手数ですが、アプリの提供元までお問い合わせください。
                 """)
             }
+    }
+}
+
+private extension RootView {
+    @ViewBuilder
+    var rootList: some View {
+        #if DEBUG
+        if ScreenshotMode.isActive {
+            AssessorListView(initialPath: ScreenshotMode.seed(modelContext))
+        } else {
+            AssessorListView()
+        }
+        #else
+        AssessorListView()
+        #endif
     }
 }
 

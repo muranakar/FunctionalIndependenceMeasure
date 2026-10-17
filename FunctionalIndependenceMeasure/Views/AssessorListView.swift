@@ -17,6 +17,15 @@ struct AssessorListView: View {
     @State private var editingAssessor: Assessor?
     @State private var deletionTarget: Assessor?
 
+    init() {}
+
+    #if DEBUG
+    /// 撮影モード用：指定の画面まで遷移した状態で始める
+    init(initialPath: NavigationPath) {
+        _path = State(initialValue: initialPath)
+    }
+    #endif
+
     var body: some View {
         NavigationStack(path: $path) {
             Group {

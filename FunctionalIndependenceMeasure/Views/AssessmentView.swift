@@ -53,6 +53,14 @@ struct AssessmentView: View {
         .task {
             if criteria.isEmpty {
                 criteria = FIMScoringCriteria.loadAll()
+                #if DEBUG
+                if let start = ScreenshotMode.assessmentStartIndex {
+                    // 撮影用の見本の回答（それまでの項目は架空の点数で回答済みにする）
+                    scores = Array(ScreenshotMode.sampleScores.prefix(start))
+                    currentIndex = start
+                    selectedScore = ScreenshotMode.assessmentSelectedScore
+                }
+                #endif
             }
         }
         .sheet(item: $completedRecord) { record in
