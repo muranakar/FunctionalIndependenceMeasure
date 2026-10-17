@@ -80,6 +80,16 @@ struct DetailFIMView: View {
             EditFIMView(record: record)
         }
         .quickLookPreview($pdfURL)
+        #if DEBUG
+        .task {
+            try? await Task.sleep(for: .seconds(1))
+            if ScreenshotMode.showsPDF {
+                pdfURL = FIMPDFRenderer.writeToTemporaryDirectory(for: record)
+            } else if ScreenshotMode.showsEdit {
+                isEditing = true
+            }
+        }
+        #endif
         .alert("コピー完了", isPresented: $isShowingCopyCompleted) {
             Button("OK") {}
         } message: {
