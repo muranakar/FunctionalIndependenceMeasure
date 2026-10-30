@@ -10,7 +10,7 @@ import Foundation
 enum AppLinks {
     static let appStoreURL = URL(string: "https://apps.apple.com/jp/app/fim/id1606480076")!
     static let reviewURL = URL(string: "https://apps.apple.com/app/id1606480076?action=write-review")!
-    static let developerSiteURL = URL(string: "https://sites.google.com/view/muranakar")!
+    static let developerSiteURL = URL(string: "https://irodori-labo.com/")!
 
     // swiftlint:disable:next line_length
     private static let shareMessage = "ADL評価のFIMを評価することが可能！\n #ADL #FIM #身体機能 #病院 #クリニック #在宅 #リハビリ #理学療法士 #作業療法士 #介護 #評価 #身体評価   \n\(appStoreURL.absoluteString)"
