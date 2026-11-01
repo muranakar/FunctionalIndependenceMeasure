@@ -45,10 +45,17 @@ struct FIMApp: App {
     }
 }
 
+// MARK: - ContactForm
+/// 全アプリ共通のお問い合わせフォーム（irodori-labo）。このアプリを選んだ状態で開く
+enum ContactForm {
+    static let url = URL(string: "https://contact.irodori-labo.com/?app=fim&lang=ja")
+}
+
 // MARK: - RootView
 struct RootView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var migrationResult: RealmMigrationResult?
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         rootList
@@ -66,6 +73,10 @@ struct RootView: View {
                     set: { if !$0 { migrationResult = nil } }
                 )
             ) {
+                Button("お問い合わせフォームを開く") {
+                    if let url = ContactForm.url { openURL(url) }
+                    migrationResult = nil
+                }
                 Button("OK") { migrationResult = nil }
             } message: {
                 Text("""
@@ -109,6 +120,9 @@ struct StorageErrorView: View {
                 解決しない場合、記録が失われる恐れがあるため、
                 アプリを削除する前に提供元までお問い合わせください。
                 """)
+                if let url = ContactForm.url {
+                    Link("お問い合わせフォームを開く", destination: url)
+                }
                 if let message {
                     Text(message)
                         .font(.caption2)
