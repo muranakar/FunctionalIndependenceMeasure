@@ -14,7 +14,6 @@ struct AssessmentView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.requestReview) private var requestReview
 
     @State private var criteria: [FIMScoringCriteria] = []
     @State private var currentIndex = 0
@@ -70,9 +69,9 @@ struct AssessmentView: View {
                         ToolbarItem(placement: .confirmationAction) {
                             Button("完了") {
                                 completedRecord = nil
-                                // 評価の途中や結果確認中に割り込まないよう、閉じるときに依頼する
+                                // 評価の途中や結果確認中に割り込まないよう、結果を閉じて戻った先の画面で少し遅らせて依頼する
                                 if ReviewCounter.incrementAndShouldRequestReview() {
-                                    requestReview()
+                                    ReviewCounter.schedulePendingRequest()
                                 }
                                 dismiss()
                             }
