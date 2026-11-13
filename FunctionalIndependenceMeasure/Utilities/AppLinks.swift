@@ -42,17 +42,51 @@ enum ReviewCounter {
     // 旧バージョンから引き継いでいるキー。変更すると既存ユーザーの回数が0に戻り、
     // レビュー依頼が再び出てしまうため変えないこと
     private static let key = "review20220726"
+    private static let lastAskKey = "review.lastAskAt"
+    private static let lastVersionKey = "review.lastAskVersion"
+    static let minDaysBetween: Double = 120
+
+    /// 評価を終えて結果を閉じたとき true にし、戻った先の画面（FunctionSelectionView）で出す
+    private static var pendingRequest = false
 
     /// UIテスト実行時はレビュー依頼のダイアログが操作を妨げるため出さない
     private static var isDisabled: Bool {
         ProcessInfo.processInfo.arguments.contains("-disableReviewRequest")
     }
 
-    /// 回数を1つ進め、レビュー依頼すべきタイミングなら true を返す
-    static func incrementAndShouldRequestReview() -> Bool {
-        let count = UserDefaults.standard.integer(forKey: key) + 1
-        UserDefaults.standard.set(count, forKey: key)
+    private static var currentVersion: String {
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+    }
+
+    /// 完了回数が節目（10・31・50 回目）・前回の依頼から 120 日以上・版ごと 1 回まで
+    static func shouldRequest(count: Int, lastAsk: Date?, lastVersion: String?, currentVersion: String, now: Date) -> Bool {
+        guard AppLinks.reviewRequestCounts.contains(count) else { return false }
+        if lastVersion == currentVersion { return false }
+        if let lastAsk, now.timeIntervalSince(lastAsk) < minDaysBetween * 86_400 { return false }
+        return true
+    }
+
+    /// 回数を1つ進め、レビュー依頼すべきタイミングなら true を返す（評価を中止したときは呼ばない）
+    static func incrementAndShouldRequestReview(defaults: UserDefaults = .standard, now: Date = Date()) -> Bool {
+        let count = defaults.integer(forKey: key) + 1
+        defaults.set(count, forKey: key)
         guard !isDisabled else { return false }
-        return AppLinks.reviewRequestCounts.contains(count)
+        let version = currentVersion
+        guard shouldRequest(count: count,
+                            lastAsk: defaults.object(forKey: lastAskKey) as? Date,
+                            lastVersion: defaults.string(forKey: lastVersionKey),
+                            currentVersion: version, now: now) else { return false }
+        defaults.set(now, forKey: lastAskKey)
+        defaults.set(version, forKey: lastVersionKey)
+        return true
+    }
+
+    /// 評価完了で依頼すると決まったときに呼ぶ。戻った先の画面で出す
+    static func schedulePendingRequest() { pendingRequest = true }
+
+    /// 戻った先の画面で呼ぶ。出すべきなら true を返し、印を消す
+    static func consumePendingRequest() -> Bool {
+        defer { pendingRequest = false }
+        return pendingRequest
     }
 }

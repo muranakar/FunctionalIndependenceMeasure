@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct FunctionSelectionView: View {
     let targetPerson: TargetPerson
 
     @Environment(\.openURL) private var openURL
+    @Environment(\.requestReview) private var requestReview
 
     var body: some View {
         List {
@@ -48,5 +50,12 @@ struct FunctionSelectionView: View {
         }
         .navigationTitle("対象者:　\(targetPerson.name)　様")
         .navigationBarTitleDisplayMode(.inline)
+        .task {  // 画面に戻るたびに動く
+            // 評価を終えて結果を閉じ、この画面に戻ってから少し待って出す（結果の確認中や dismiss と同時には出さない）
+            guard ReviewCounter.consumePendingRequest() else { return }
+            try? await Task.sleep(for: .seconds(0.8))
+            guard !Task.isCancelled else { return }
+            requestReview()
+        }
     }
 }
