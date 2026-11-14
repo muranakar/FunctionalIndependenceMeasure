@@ -112,4 +112,64 @@ enum ScreenshotMode {
         return path
     }
 }
+
+#if targetEnvironment(macCatalyst)
+// MARK: - Mac（Catalyst）の撮影
+/// `-ssSnap` を付けると、ウィンドウを 1280×800 に固定し、数秒後に画面を PNG にして標準出力へ
+/// （`SNAP <名前> <base64>` の 1 行ずつ）書き出して終了する。
+/// サンドボックスの外へファイルを書けず、画面がロック中でも撮れるよう、レイヤーを直接描いて標準出力で渡す。
+extension ScreenshotMode {
+    static var wantsSnapshot: Bool { ProcessInfo.processInfo.arguments.contains("-ssSnap") }
+
+    @MainActor
+    static func snapshotIfRequested() async {
+        guard wantsSnapshot, let scene else { return }
+        let size = CGSize(width: 1280, height: 800)
+        for case let windowScene as UIWindowScene in UIApplication.shared.connectedScenes {
+            windowScene.sizeRestrictions?.minimumSize = size
+            windowScene.sizeRestrictions?.maximumSize = size
+            // iPhone 版のストア画像とそろえてライトで撮る
+            windowScene.windows.forEach { $0.overrideUserInterfaceStyle = .light }
+        }
+        try? await Task.sleep(for: .seconds(scene == 4 || scene == 5 ? 5 : 3))
+        let windows = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap(\.windows)
+            .filter { !$0.isHidden && $0.bounds.width > 100 }
+        for (index, window) in windows.enumerated() {
+            let format = UIGraphicsImageRendererFormat()
+            format.scale = 2
+            let image = UIGraphicsImageRenderer(bounds: window.bounds, format: format).image { context in
+                window.layer.render(in: context.cgContext)
+            }
+            if let data = image.pngData() {
+                emit(name: index == 0 ? "scene\(scene).png" : "scene\(scene)-w\(index).png", data: data)
+            }
+            // シート（編集画面など）は Mac では別の面に出るため、表示中の画面も個別に描く
+            var presented = window.rootViewController?.presentedViewController
+            var depth = 0
+            while let controller = presented, let view = controller.view, view.bounds.width > 100 {
+                depth += 1
+                let sheet = UIGraphicsImageRenderer(bounds: view.bounds, format: format).image { context in
+                    view.layer.render(in: context.cgContext)
+                }
+                if let data = sheet.pngData() { emit(name: "scene\(scene)-sheet\(depth).png", data: data) }
+                presented = controller.presentedViewController
+            }
+        }
+        // 書き出した PDF も渡す（Mac で PDF が正しく作れるかを確かめるため）
+        let temp = FileManager.default.temporaryDirectory
+        for file in (try? FileManager.default.contentsOfDirectory(at: temp, includingPropertiesForKeys: nil)) ?? []
+        where file.pathExtension == "pdf" {
+            if let data = try? Data(contentsOf: file) { emit(name: "scene\(scene).pdf", data: data) }
+        }
+        exit(0)
+    }
+
+    private static func emit(name: String, data: Data) {
+        print("SNAP \(name) \(data.base64EncodedString())")
+        fflush(stdout)
+    }
+}
+#endif
 #endif

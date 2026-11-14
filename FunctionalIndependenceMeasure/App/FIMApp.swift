@@ -61,7 +61,12 @@ struct RootView: View {
         rootList
             .task {
                 #if DEBUG
-                if ScreenshotMode.isActive { return }
+                if ScreenshotMode.isActive {
+                    #if targetEnvironment(macCatalyst)
+                    await ScreenshotMode.snapshotIfRequested()
+                    #endif
+                    return
+                }
                 #endif
                 // 旧バージョンのRealmデータがあれば初回起動時に引き継ぐ
                 migrationResult = RealmToSwiftDataMigrator.migrateIfNeeded(context: modelContext)
