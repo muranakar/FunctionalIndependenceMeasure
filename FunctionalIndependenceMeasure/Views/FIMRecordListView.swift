@@ -123,5 +123,9 @@ struct FIMRecordListView: View {
                     .foregroundStyle(.secondary)
             }
         }
+        #if targetEnvironment(macCatalyst)
+        // Mac の一覧は行の上下の余白が無く、行どうしが詰まって見えるため足す
+        .padding(.vertical, 6)
+        #endif
     }
 }
